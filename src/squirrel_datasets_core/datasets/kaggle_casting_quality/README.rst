@@ -59,8 +59,8 @@ A sample from the training set is provided below:
 
     {'url': '/home/winfried/projects/squirrel-datasets-core/src/archive/casting_data/casting_data/test/ok_front/cast_ok_0_9996.jpeg', 'label': 1, 'image': array(...)}
 
-Data Fields
-***********
+Dataset Schema
+**************
 
 - `img`: A numpy array containing the 300x300 RGB image.
 - `label`: `1` for ok front and `0` for defect front.
