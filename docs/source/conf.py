@@ -6,10 +6,6 @@ import datetime
 project = 'Squirrel Datasets'
 copyright = f'{datetime.datetime.now().year}, Merantix Labs GmbH'
 author = 'Merantix Labs GmbH'
-
-release = '0.1'
-version = '0.1.0'
-
 # -- General configuration
 
 extensions = [
