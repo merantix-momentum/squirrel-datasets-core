@@ -1,3 +1,3 @@
-from squirrel_datasets_core.datasets.imagenet.driver import RawImageNet
+from squirrel_datasets_core.datasets.imagenet.driver import RawImageNetDriver
 
-__all__ = ["RawImageNet"]
+__all__ = ["RawImageNetDriver"]

@@ -43,10 +43,10 @@ Download the data directly from `Kaggle <https://www.kaggle.com/ravirajsinh45/re
 .. code-block:: python
 
     from squirrel_datasets_core.datasets.kaggle_casting_quality.driver \ 
-        import RawKaggleCastingQuality
-    iter_train = RawKaggleCastingQuality("{PATH_TO_DATA}/casting_data/casting_data")\
+        import RawKaggleCastingQualityDriver
+    iter_train = RawKaggleCastingQualityDriver("{PATH_TO_DATA}/casting_data/casting_data")\
         .get_iter("train")
-    iter_test = RawKaggleCastingQuality("{PATH_TO_DATA}/casting_data/casting_data")\
+    iter_test = RawKaggleCastingQualityDriver("{PATH_TO_DATA}/casting_data/casting_data")\
         .get_iter("test")
 
 
