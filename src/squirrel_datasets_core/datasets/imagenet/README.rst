@@ -1,28 +1,29 @@
-.. list-table:: Dataset properties
+.. list-table::
     :header-rows: 1
 
     *   - pretty_name
-        - annotations_creators
-        - language_creators
-        - languages
-        - licenses
-        - multilinguality
-        - size_categories
-        - source_datasets
-        - task_categories
-        - task_ids
-        - paperswithcode_id
-    *   - Imagenet Dataset
+        - Imagenet Dataset
+    *   - annotations_creators
+        -
+    *   - language_creators
+        -
+    *   - languages
         - 
+    *   - licenses
         - 
-        - []
+    *   - multilinguality
+        -
+    *   - size_categories
         - 
-        - []
-        - 
-        - 
-        - 
+    *   - source_datasets
+        -
+    *   - task_categories
         - image-classification
-        - 
+    *   - task_ids
+        -
+    *   - paperswithcode_id
+        -
     
+
 Dataset Description
 ###################

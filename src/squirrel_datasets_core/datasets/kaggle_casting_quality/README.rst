@@ -1,28 +1,28 @@
-.. list-table:: Dataset properties
+.. list-table::
     :header-rows: 1
 
     *   - pretty_name
-        - annotations_creators
-        - language_creators
-        - languages
-        - licenses
-        - multilinguality
-        - size_categories
-        - source_datasets
-        - task_categories
-        - task_ids
-        - paperswithcode_id
-    *   - Kaggle Casting Quality
-        - 
-        - 
+        - Kaggle Casting Quality
+    *   - annotations_creators
+        -
+    *   - language_creators
+        -
+    *   - languages
         - []
+    *   - licenses
         - CC BY-NC-ND 4.0
-        - []
+    *   - multilinguality
+        -
+    *   - size_categories
         - 1K<n<10K
-        - 
-        - 
+    *   - source_datasets
+        -
+    *   - task_categories
         - image-classification
-        - 
+    *   - task_ids
+        -
+    *   - paperswithcode_id
+        -
     
 Dataset Description
 ###################
@@ -42,9 +42,12 @@ Download the data directly from `Kaggle <https://www.kaggle.com/ravirajsinh45/re
 
 .. code-block:: python
 
-    from squirrel_datasets_core.datasets.kaggle_casting_quality.driver import RawKaggleCastingQuality
-    iter_train = RawKaggleCastingQuality("{PATH_TO_DATA}/casting_data/casting_data").get_iter("train")
-    iter_test = RawKaggleCastingQuality("{PATH_TO_DATA}/casting_data/casting_data").get_iter("test")
+    from squirrel_datasets_core.datasets.kaggle_casting_quality.driver \ 
+        import RawKaggleCastingQuality
+    iter_train = RawKaggleCastingQuality("{PATH_TO_DATA}/casting_data/casting_data")\
+        .get_iter("train")
+    iter_test = RawKaggleCastingQuality("{PATH_TO_DATA}/casting_data/casting_data")\
+        .get_iter("test")
 
 
 Dataset Structure
@@ -57,7 +60,9 @@ A sample from the training set is provided below:
 
 .. code-block::
 
-    {'url': '/home/winfried/projects/squirrel-datasets-core/src/archive/casting_data/casting_data/test/ok_front/cast_ok_0_9996.jpeg', 'label': 1, 'image': array(...)}
+    {'url': '{PATH_TO_DATA}/casting_data/casting_data/test/ok_front/cast_ok_0_9996.jpeg', 
+            'label': 1, 
+            'image': array(...)}
 
 Dataset Schema
 **************
@@ -74,56 +79,57 @@ Data Splits
 |kaggle-casting|6633 |715 | 
 +--------------+-----+----+
 
-Dataset Creation
-################
+..
+    Dataset Creation
+    ################
 
-Curation Rationale
-******************
+    Curation Rationale
+    ******************
 
-[More Information Needed]
- 
-Source Data
-***********
+    [More Information Needed]
+    
+    Source Data
+    ***********
 
-Initial Data Collection and Normalization
+    Initial Data Collection and Normalization
 
-[More Information Needed]
- 
-Annotations
-***********
+    [More Information Needed]
+    
+    Annotations
+    ***********
 
-Annotation process
- 
-[More Information Needed]
- 
-Who are the annotators?
- 
-[More Information Needed]
- 
-Personal and Sensitive Information
-**********************************
+    Annotation process
+    
+    [More Information Needed]
+    
+    Who are the annotators?
+    
+    [More Information Needed]
+    
+    Personal and Sensitive Information
+    **********************************
 
-[More Information Needed]
- 
-Considerations for Using the Data
-####################################
+    [More Information Needed]
+    
+    Considerations for Using the Data
+    ####################################
 
-Social Impact of Dataset
-**********************************
+    Social Impact of Dataset
+    **********************************
 
-[More Information Needed]
- 
-Discussion of Biases
-**********************************
+    [More Information Needed]
+    
+    Discussion of Biases
+    **********************************
 
-[More Information Needed]
- 
-Other Known Limitations
-**********************************
+    [More Information Needed]
+    
+    Other Known Limitations
+    **********************************
 
-[More Information Needed]
-  
-Citation Information
-**********************************
+    [More Information Needed]
+    
+    Citation Information
+    **********************************
 
-[More Information Needed]
+    [More Information Needed]
