@@ -9,7 +9,7 @@ from squirrel.iterstream import Composable, FilePathGenerator
 from squirrel_datasets_core.driver.fsspec import TwoDImageFileDriver
 
 
-class RawImageNet(RecordIteratorDriver, TwoDImageFileDriver):
+class RawImageNetDriver(RecordIteratorDriver, TwoDImageFileDriver):
     name = "raw_imagenet"
 
     def __init__(
@@ -22,7 +22,7 @@ class RawImageNet(RecordIteratorDriver, TwoDImageFileDriver):
         val_blacklist_url: Optional[str] = None,
         **kwargs,
     ) -> None:
-        """Init RawImageNet driver.
+        """Init RawImageNetDriver.
 
         Args:
             url (str): Path to the root directory of the dataset.
@@ -163,7 +163,7 @@ class RawImageNet(RecordIteratorDriver, TwoDImageFileDriver):
     @staticmethod
     def load_sample(sample: Dict[str, Any]) -> Dict[str, Any]:
         """Load sample from dict containing url to sample."""
-        sample["image"] = RawImageNet.load_image(sample["url"])
+        sample["image"] = RawImageNetDriver.load_image(sample["url"])
         return sample
 
     def get_iter(
@@ -204,29 +204,29 @@ class RawImageNet(RecordIteratorDriver, TwoDImageFileDriver):
             cls_map = self.get_id_to_idx_and_name_mapper()
 
             if split == "train":
-                it = it.to(RawImageNet.parse_gt_train, cls_map=cls_map)
+                it = it.to(RawImageNetDriver.parse_gt_train, cls_map=cls_map)
 
                 if self.loc_train_mapping_path is not None:
                     loc_map = self.get_loc_mapper(self.loc_train_mapping_path)
-                    it = it.to(RawImageNet.parse_bbox, cls_map=cls_map, loc_map=loc_map)
+                    it = it.to(RawImageNetDriver.parse_bbox, cls_map=cls_map, loc_map=loc_map)
 
             elif split == "val":
                 if self.val_blacklist_path is not None:
                     val_blacklist = self.get_val_blacklist_indices()
-                    it = it.to(RawImageNet.filter_val_samples_by_idx, idx_blacklist=val_blacklist)
+                    it = it.to(RawImageNetDriver.filter_val_samples_by_idx, idx_blacklist=val_blacklist)
 
                 if self.cls_val_mapping_path is not None:
                     val_clsidx_map = self.get_val_clsidx_list()
                     clsidx_map = self.get_idx_to_id_and_name_mapper()
-                    it = it.to(RawImageNet.parse_gt_val, clsidx_map=clsidx_map, clsidx_val_list=val_clsidx_map)
+                    it = it.to(RawImageNetDriver.parse_gt_val, clsidx_map=clsidx_map, clsidx_val_list=val_clsidx_map)
 
                 if self.loc_val_mapping_path is not None:
                     loc_map = self.get_loc_mapper(self.loc_val_mapping_path)
-                    it = it.to(RawImageNet.parse_bbox, cls_map=cls_map, loc_map=loc_map)
+                    it = it.to(RawImageNetDriver.parse_bbox, cls_map=cls_map, loc_map=loc_map)
 
         for h in hooks:
             it = it.to(h)
 
         if not parse:
             return it
-        return it.map(RawImageNet.load_sample)
+        return it.map(RawImageNetDriver.load_sample)

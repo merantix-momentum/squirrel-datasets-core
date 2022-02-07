@@ -8,7 +8,7 @@ from squirrel.iterstream import Composable, FilePathGenerator, IterableSource
 from squirrel_datasets_core.driver.fsspec import TwoDImageFileDriver
 
 
-class RawKaggleCastingQuality(RecordIteratorDriver, TwoDImageFileDriver):
+class RawKaggleCastingQualityDriver(RecordIteratorDriver, TwoDImageFileDriver):
     name = "raw_kaggle_casting_quality"
 
     def __init__(self, url: str, **kwargs) -> None:
@@ -18,7 +18,7 @@ class RawKaggleCastingQuality(RecordIteratorDriver, TwoDImageFileDriver):
     @staticmethod
     def load_sample(sample: Dict) -> Dict:
         """Load sample from dict containing url to sample."""
-        sample["image"] = RawKaggleCastingQuality.load_image(sample["url"])
+        sample["image"] = RawKaggleCastingQualityDriver.load_image(sample["url"])
         return sample
 
     def get_iter(self, split: str, hooks: Optional[List[Callable]] = None, parse: bool = True, **kwargs) -> Composable:
@@ -36,4 +36,4 @@ class RawKaggleCastingQuality(RecordIteratorDriver, TwoDImageFileDriver):
             it = it.to(h)
         if not parse:
             return it
-        return it.map(RawKaggleCastingQuality.load_sample)
+        return it.map(RawKaggleCastingQualityDriver.load_sample)

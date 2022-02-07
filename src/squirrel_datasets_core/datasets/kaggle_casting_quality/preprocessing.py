@@ -3,7 +3,7 @@ from dataclasses import dataclass
 import hydra
 from hydra.core.config_store import ConfigStore
 
-from squirrel_datasets_core.datasets.kaggle_casting_quality.driver import RawKaggleCastingQuality
+from squirrel_datasets_core.datasets.kaggle_casting_quality.driver import RawKaggleCastingQualityDriver
 from squirrel_datasets_core.preprocessing.save_shards import SaveShardsConfig, save_shards
 from squirrel_datasets_core.spark.setup_spark import get_spark
 
@@ -30,7 +30,7 @@ def main(cfg: KaggleCastingShardConfig) -> None:
         cfg=cfg,
         session=get_spark("kagglecastingquality-preprocessing"),
         iter_kwargs=dict(split=cfg.split, parse=cfg.parse),
-        hooks=[RawKaggleCastingQuality.load_sample],
+        hooks=[RawKaggleCastingQualityDriver.load_sample],
     )
 
 
