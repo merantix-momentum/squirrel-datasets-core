@@ -1,12 +1,23 @@
 Squirrel Datasets Documentation
 ===============================
+`Squirrel Datasets <https://github.com/merantix-momentum/squirrel-datasets-core>`_ is an extension of the Squirrel platform for data transform, access, and discovery. 
+It includes common drivers for public datasets, which are ready to use along with data preprocessing logic.
+Visit the official `Squirrel Documentation <https://squirrel.readthedocs.io>`_ on more information how to use Squirrel.
 
+Find out more about Merantix Labs on our `Website <https://www.merantixlabs.com/>`_.
 
-Datasets
---------
+Available Datasets
+------------------
 
 .. toctree::
    :maxdepth: 2
 
    dataset_links/kaggle_casting_quality   
    dataset_links/imagenet
+
+Contribute
+------------------
+
+.. toctree::
+
+   add_dataset
