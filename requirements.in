@@ -1,1 +1,9 @@
-sphinx-rtd-theme
+datasets
+mxlabs-squirrel[gcp, zarr]>=0.9,<0.10
+numpy
+pillow
+torchvision
+scipy
+pyspark==3.2.0
+hydra-core>=1.1.0
+hub
