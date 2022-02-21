@@ -1,8 +1,7 @@
 import importlib
 import pkgutil
-from typing import List, Tuple, Type
+from typing import List, Type
 
-from squirrel.catalog import CatalogKey, Source
 from squirrel.driver import Driver
 from squirrel.framework.plugins.hookimpl import hookimpl
 
