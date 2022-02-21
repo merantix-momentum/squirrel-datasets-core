@@ -1,15 +1,20 @@
 """Driver that can parse the Data Science Bowl 2018 dataset."""
+from __future__ import annotations
+
 import os
 from functools import partial
-from typing import Callable, Dict, List, Optional
+from typing import Callable, Dict, List, Optional, TYPE_CHECKING
 
-from squirrel.driver.driver import RecordIteratorDriver
-from squirrel.iterstream import Composable, FilePathGenerator, IterableSource
+from squirrel.driver import IterDriver
+from squirrel.iterstream import FilePathGenerator, IterableSource
 
-from squirrel_datasets_core.driver.fsspec import TwoDImageFileDriver
+from squirrel_datasets_core.io import load_image
+
+if TYPE_CHECKING:
+    from squirrel.iterstream import Composable
 
 
-class DataScienceBowl2018Driver(RecordIteratorDriver, TwoDImageFileDriver):
+class DataScienceBowl2018Driver(IterDriver):
     """Driver that can iterate over the samples of the `2018 Data Science Bowl
     <https://www.kaggle.com/c/data-science-bowl-2018>`_ dataset.
 
@@ -18,6 +23,16 @@ class DataScienceBowl2018Driver(RecordIteratorDriver, TwoDImageFileDriver):
     """
 
     name = "ds_bowl_18"
+
+    def __init__(self, url: str, **kwargs) -> None:
+        """Initializes the DataScienceBowl2018Driver.
+
+        Args:
+            url (str): Path to the directory containing the dataset.
+            **kwargs: Other keyword arguments passes to super class initializer.
+        """
+        super().__init__(**kwargs)
+        self.url = url
 
     @staticmethod
     def load_sample(sample: Dict, parse_image: bool = True, parse_mask: bool = True) -> Dict:
@@ -29,11 +44,11 @@ class DataScienceBowl2018Driver(RecordIteratorDriver, TwoDImageFileDriver):
         if parse_image:
             stem = os.path.splitext(os.path.basename(sample_url))[0]
             url = os.path.join(sample_url, "images", f"{stem}.png")
-            sample["image"] = DataScienceBowl2018Driver.load_image(url)
+            sample["image"] = load_image(url)
 
         if sample["split"] == "stage1_train" and parse_mask:
             gen = FilePathGenerator(os.path.join(sample_url, "masks"))
-            sample["masks"] = [DataScienceBowl2018Driver.load_image(url).astype("bool") for url in gen]
+            sample["masks"] = [load_image(url).astype("bool") for url in gen]
 
         return sample
 

@@ -1,12 +1,17 @@
+from __future__ import annotations
+
 import os
 from dataclasses import dataclass
 from functools import partial
-from typing import Callable, Dict, Iterable, List, Optional
+from typing import Callable, Dict, Iterable, List, Optional, TYPE_CHECKING
 
 from pyspark.sql import SparkSession
 from squirrel.catalog import Catalog, Source
-from squirrel.driver.messagepack.msgstore import MessagepackStore
-from squirrel.driver.spec import Sample, Shard
+from squirrel.serialization import MessagepackSerializer
+from squirrel.store import SquirrelStore
+
+if TYPE_CHECKING:
+    from squirrel.constants import ShardType
 
 
 @dataclass
@@ -19,13 +24,15 @@ class SaveShardsConfig:
     num_samples: Optional[int] = None  # number of samples to take from the dataset, if None, all samples will be taken
 
 
-def save_iterable_as_shard(pt: Iterable, output_url: str) -> None:
+def save_iterable_as_shard(shard_it: Iterable[ShardType], output_url: str) -> None:
     """Helper to save a shard into a messagepack store using squirrel"""
-    pt = list(pt)
-    if len(pt) == 0:
-        return
-    store = MessagepackStore(output_url)
-    store.set(Shard(pt))
+    # only initialize store if really needed
+    store = None
+    for shard_id, shard in enumerate(shard_it):
+        if store is None:
+            store = SquirrelStore(output_url, serializer=MessagepackSerializer())
+
+        store.set(key=f"shard_{shard_id}", value=shard)
 
 
 def save_shards(
@@ -59,7 +66,6 @@ def save_shards(
     pipe = session.sparkContext.parallelize(src_it)
     for h in hooks:
         pipe = pipe.map(h)
-    pipe = pipe.map(Sample)
     pipe = pipe.coalesce(cfg.num_shards)
     _ = pipe.foreachPartition(partial(save_iterable_as_shard, output_url=out_url))
 

@@ -1,24 +1,35 @@
+from __future__ import annotations
+
 import os
 from itertools import chain
-from typing import Callable, Dict, List, Optional
+from typing import Callable, Dict, List, Optional, TYPE_CHECKING
 
-from squirrel.driver import RecordIteratorDriver
-from squirrel.iterstream import Composable, FilePathGenerator, IterableSource
+from squirrel.driver import IterDriver
+from squirrel.iterstream import FilePathGenerator, IterableSource
 
-from squirrel_datasets_core.driver.fsspec import TwoDImageFileDriver
+from squirrel_datasets_core.io import load_image
+
+if TYPE_CHECKING:
+    from squirrel.iterstream import Composable
 
 
-class RawKaggleCastingQualityDriver(RecordIteratorDriver, TwoDImageFileDriver):
+class RawKaggleCastingQualityDriver(IterDriver):
     name = "raw_kaggle_casting_quality"
 
     def __init__(self, url: str, **kwargs) -> None:
-        """Init driver."""
-        self.path = url
+        """Initializes the RawKaggleCastingQualityDriver.
+
+        Args:
+            url (str): Path to the directory containing the dataset.
+            **kwargs: Other keyword arguments passes to super class initializer.
+        """
+        super().__init__(**kwargs)
+        self.url = url
 
     @staticmethod
     def load_sample(sample: Dict) -> Dict:
         """Load sample from dict containing url to sample."""
-        sample["image"] = RawKaggleCastingQualityDriver.load_image(sample["url"])
+        sample["image"] = load_image(sample["url"])
         return sample
 
     def get_iter(self, split: str, hooks: Optional[List[Callable]] = None, parse: bool = True, **kwargs) -> Composable:
@@ -27,10 +38,10 @@ class RawKaggleCastingQualityDriver(RecordIteratorDriver, TwoDImageFileDriver):
         if hooks is None:
             hooks = []
 
-        samples_def = FilePathGenerator(os.path.join(self.path, split, "def_front")).map(
+        samples_def = FilePathGenerator(os.path.join(self.url, split, "def_front")).map(
             lambda x: {"url": x, "label": 0}
         )
-        samples_ok = FilePathGenerator(os.path.join(self.path, split, "ok_front")).map(lambda x: {"url": x, "label": 1})
+        samples_ok = FilePathGenerator(os.path.join(self.url, split, "ok_front")).map(lambda x: {"url": x, "label": 1})
         it = IterableSource(chain(samples_ok, samples_def)).shuffle(size=1_000_000, initial=1_000_000)
         for h in hooks:
             it = it.to(h)

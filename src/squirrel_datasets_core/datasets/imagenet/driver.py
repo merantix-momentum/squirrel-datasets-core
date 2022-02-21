@@ -1,15 +1,19 @@
+from __future__ import annotations
+
 import os
 from pathlib import Path
-from typing import Any, Dict, Generator, Iterable, List, Optional, Set, Tuple
+from typing import Any, Dict, Generator, Iterable, List, Optional, Set, TYPE_CHECKING, Tuple
 
-from squirrel.driver import RecordIteratorDriver
-from squirrel.driver.file.dataloader import FileLoader
-from squirrel.iterstream import Composable, FilePathGenerator
+from squirrel.driver import FileDriver, IterDriver
+from squirrel.iterstream import FilePathGenerator
 
-from squirrel_datasets_core.driver.fsspec import TwoDImageFileDriver
+from squirrel_datasets_core.io import load_image
+
+if TYPE_CHECKING:
+    from squirrel.iterstream import Composable
 
 
-class RawImageNetDriver(RecordIteratorDriver, TwoDImageFileDriver):
+class RawImageNetDriver(IterDriver):
     name = "raw_imagenet"
 
     def __init__(
@@ -116,7 +120,7 @@ class RawImageNetDriver(RecordIteratorDriver, TwoDImageFileDriver):
     def get_loc_mapper(self, url: str) -> Dict[str, List[Dict[str, Any]]]:
         """Get dict that maps from an imagenet filename to a list of bbox dicts."""
         loc_map = dict()
-        with FileLoader(url).get_store(mode="rt") as f:
+        with FileDriver(url).open(mode="rt") as f:
             f.readline()  # skip the header
             for row in f.readlines():
                 file_name, bboxes_raw = row.strip().split(",")
@@ -131,13 +135,13 @@ class RawImageNetDriver(RecordIteratorDriver, TwoDImageFileDriver):
 
     def get_val_clsidx_list(self) -> List[int]:
         """Get list of class indices for validation samples."""
-        with FileLoader(self.cls_val_mapping_path).get_store(mode="rt") as f:
+        with FileDriver(self.cls_val_mapping_path).open(mode="rt") as f:
             val_clsidx = [int(row.strip()) - 1 for row in f.readlines()]
         return val_clsidx
 
     def get_val_blacklist_indices(self) -> Set[int]:
         """Get a set of blacklisted validation sample indices."""
-        with FileLoader(self.val_blacklist_path).get_store(mode="rt") as f:
+        with FileDriver(self.val_blacklist_path).open(mode="rt") as f:
             blacklist_idx = {int(row.strip()) - 1 for row in f.readlines()}
         return blacklist_idx
 
@@ -146,7 +150,7 @@ class RawImageNetDriver(RecordIteratorDriver, TwoDImageFileDriver):
         WARNING: Imagenet idx start from 1. Here we start from 0.
         """
         gt_map = dict()
-        with FileLoader(self.cls_mapping_path).get_store(mode="rt") as f:
+        with FileDriver(self.cls_mapping_path).open(mode="rt") as f:
             for row in f.readlines():
                 row = row.strip()
                 class_id, class_idx, class_name = row.split(" ")
@@ -163,7 +167,7 @@ class RawImageNetDriver(RecordIteratorDriver, TwoDImageFileDriver):
     @staticmethod
     def load_sample(sample: Dict[str, Any]) -> Dict[str, Any]:
         """Load sample from dict containing url to sample."""
-        sample["image"] = RawImageNetDriver.load_image(sample["url"])
+        sample["image"] = load_image(sample["url"])
         return sample
 
     def get_iter(
