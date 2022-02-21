@@ -1,0 +1,13 @@
+sphinx-rtd-theme
+twine
+wheel
+pytest>=5.3.5
+pytest-timeout
+pytest-cov
+pytest-xdist
+Sphinx<4.0.0
+sphinx_versions
+pyspark>=3.2.0
+flaky # for retry flaky tests
+nbmake
+jupyter
