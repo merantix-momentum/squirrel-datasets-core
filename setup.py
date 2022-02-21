@@ -7,9 +7,9 @@ import os
 import re
 import sys
 
-from setuptools import find_packages, setup
+from setuptools import setup
 
-SOURCE_DIR = "squirrel_datasets_core"
+SOURCE_DIR = "src/squirrel_datasets_core"
 
 # Read package information from other files so that just one version has to be maintained.
 _version_re = re.compile(r"__version__\s+=\s+(.*)")
@@ -82,12 +82,12 @@ if os.path.exists("scripts"):
 else:
     SCRIPTS = []
 
-ENTRY_POINTS = {"squirrel": ["datasets_core = squirrel_datasets_core.squirrel_plugin"]}
+ENTRY_POINTS = {"squirrel": ["squirrel_datasets_core = squirrel_datasets_core.squirrel_plugin"]}
 
 # Setup package using PIP
 if __name__ == "__main__":
     setup(
-        name=SOURCE_DIR,
+        name="squirrel_datasets_core",
         version=version,
         python_requires=">=3.8.0",
         description="Squirrel public datasets collection",
@@ -95,8 +95,8 @@ if __name__ == "__main__":
         author="Merantix Labs GmbH",
         license="",
         # Needed to make jinja work and not get linting errors in the rendered file
-        package_dir=dict([(SOURCE_DIR, SOURCE_DIR)]),
-        packages=find_packages(where="./src/"),
+        package_dir={"": "src"},
+        packages=["squirrel_datasets_core"],
         scripts=SCRIPTS,
         include_package_data=True,
         install_requires=requirements,
@@ -104,4 +104,5 @@ if __name__ == "__main__":
         extras_require=extras_require,
         entry_points=ENTRY_POINTS,
         classifiers=["Public"],
+        package_data={"": ["*.rst"]},
     )
