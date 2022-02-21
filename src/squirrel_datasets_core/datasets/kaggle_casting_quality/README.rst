@@ -60,9 +60,11 @@ A sample from the training set is provided below:
 
 .. code-block::
 
-    {'url': '{PATH_TO_DATA}/casting_data/casting_data/test/ok_front/cast_ok_0_9996.jpeg', 
-            'label': 1, 
-            'image': array(...)}
+    {
+        'url': '{PATH_TO_DATA}/casting_data/casting_data/test/ok_front/cast_ok_0_9996.jpeg', 
+        'label': 1, 
+        'image': array(...)
+    }
 
 Dataset Schema
 **************
