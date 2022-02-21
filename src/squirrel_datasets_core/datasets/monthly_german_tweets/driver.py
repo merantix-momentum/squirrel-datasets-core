@@ -2,20 +2,24 @@
 This driver can be used to parse the Zenodo Monthly German Tweet dataset obtainable at
     https://zenodo.org/record/3633935#.YcMujb1Khqt
 """
+from __future__ import annotations
+
 import json
-from typing import Callable, Generator, List, Optional
+from typing import Iterable, Iterator, List, TYPE_CHECKING
 
-from squirrel.driver import RecordIteratorDriver
+from squirrel.driver import MapDriver
 from squirrel.fsspec.fs import get_fs_from_url
-from squirrel.iterstream import Composable, FilePathGenerator
+from squirrel.iterstream import FilePathGenerator
+
+if TYPE_CHECKING:
+    from squirrel.iterstream import Composable
 
 
-class MonthlyGermanTweetsDriver(RecordIteratorDriver):
+class MonthlyGermanTweetsDriver(MapDriver):
     name = "raw_monthly_german_tweets"
 
     def __init__(self, folder: str, **kwargs) -> None:
-        """
-        Init the iterator.
+        """Init the MonthlyGermanTweets driver.
 
         Args:
             folder: Path to the unzipped data dump
@@ -25,9 +29,7 @@ class MonthlyGermanTweetsDriver(RecordIteratorDriver):
         self.parse_error_count = 0
 
     def parse_archive(self, url: str) -> List[str]:
-        """Parse a single archive. Note the custom parsing function due to the
-        special file layout.
-        """
+        """Parse a single archive. Note the custom parsing function due to the special file layout."""
 
         fs = get_fs_from_url(url)
         with fs.open(url, "rb", compression=self.compression) as f:
@@ -37,8 +39,8 @@ class MonthlyGermanTweetsDriver(RecordIteratorDriver):
         samples = ["{" + elem for elem in dec.split(",{") if not elem.startswith("{")]
         return samples
 
-    def iterate_single_archive(self, url: str) -> Generator:
-        """Iterate over all samples in a single archive"""
+    def get(self, url: str) -> Iterator:
+        """Yields all samples in a single archive."""
 
         samples = self.parse_archive(url)
 
@@ -49,33 +51,17 @@ class MonthlyGermanTweetsDriver(RecordIteratorDriver):
             except json.JSONDecodeError:
                 self.parse_error_count += 1
 
-    def get_iter(
-        self,
-        key_hooks: Optional[List[Callable]] = None,
-        prefetch_buffer: int = 1_000,
-        max_workers: Optional[int] = None,
-        **kwargs,
-    ) -> Composable:
-        """
-        Returns a composable that iterates over the raw data in a full unzipped shard of the
-        Monthly German Tweets dataset.
+    def get_iter(self, flatten: bool = True, **kwargs) -> Composable:
+        """Returns a composable that iterates over the raw data in a full unzipped shard of the Monthly German Tweets
+        dataset.
 
         Args:
-            key_hooks: List of Callables to modify the iteration over the archives in the shard
-            prefetch_buffer: buffer size of the samples buffer
-            max_workers: number of workers to use in the async_map loading.
+            flatten (bool): Whether to flatten the returned iterable. Defaults to False.
+            **kwargs: Other keyword arguments passed to :py:meth:`MapDriver.get_iter`.
         """
 
-        it = FilePathGenerator(self.folder)
+        super().get_iter(flatten=flatten, **kwargs)
 
-        if key_hooks:
-            for hook in key_hooks:
-                it = it.to(hook)
-
-        _map = (
-            it.map(self.iterate_single_archive)
-            if max_workers == 0
-            else it.async_map(self.iterate_single_archive, prefetch_buffer, max_workers)
-        )
-
-        return _map.flatten()
+    def keys(self, **kwargs) -> Iterable:
+        """Returns the paths of the files in the root directory relative to root."""
+        return FilePathGenerator(self.folder)
