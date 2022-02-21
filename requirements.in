@@ -7,3 +7,4 @@ scipy
 pyspark==3.2.0
 hydra-core>=1.1.0
 hub
+docutils
