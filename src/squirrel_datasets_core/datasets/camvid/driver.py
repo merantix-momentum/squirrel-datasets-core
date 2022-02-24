@@ -13,7 +13,7 @@ from squirrel_datasets_core.io.io import load_image
 if TYPE_CHECKING:
     from squirrel.iterstream import Composable
 
-_classes = [
+_CLASSES = [
     "sky",
     "building",
     "pole",
@@ -27,7 +27,7 @@ _classes = [
     "bicyclist",
     "unlabelled",
 ]
-CAMVID_NAME_TO_LABEL_ID = dict(zip(_classes, range(12)))
+CAMVID_NAME_TO_LABEL_ID = dict(zip(_CLASSES, range(12)))
 CAMVID_LABEL_ID_TO_NAME = {idx: cls for cls, idx in CAMVID_NAME_TO_LABEL_ID.items()}
 
 
