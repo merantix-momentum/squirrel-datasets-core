@@ -21,6 +21,7 @@ extensions = [
 intersphinx_mapping = {
     "python": ("https://docs.python.org/3/", None),
     "sphinx": ("https://www.sphinx-doc.org/en/master/", None),
+    "squirrel": ("https://squirrel.readthedocs.io/", None),
 }
 intersphinx_disabled_domains = ["std"]
 
