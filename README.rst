@@ -7,4 +7,4 @@ your own datasets with the tools we provide here.
 
 For preprocessing, we currently support Spark as the main tool to carry out the task.
 
-Please see our [documentation](https://squirrel-datasets-core.readthedocs.io) for further details.
+Please see our `documentation <https://squirrel-datasets-core.readthedocs.io>`_ for further details.
