@@ -1,7 +1,8 @@
 import importlib
 import pkgutil
-from typing import List, Type
+from typing import List, Tuple, Type
 
+from squirrel.catalog import CatalogKey, Source
 from squirrel.driver import Driver
 from squirrel.framework.plugins.hookimpl import hookimpl
 
@@ -23,3 +24,24 @@ def squirrel_drivers() -> List[Type[Driver]]:
             pass
 
     return drivers
+
+
+@hookimpl
+def squirrel_sources() -> List[Tuple[CatalogKey, Source]]:
+    """Custom sources added by this package.
+    Returns:
+        List of (CatalogKey, Source) tuples.
+    """
+    """Custom sources added by this package."""
+    datasets = []
+
+    import squirrel_datasets_core.datasets as ds
+
+    for m in pkgutil.iter_modules(ds.__path__):
+        try:
+            d = importlib.import_module(f"{ds.__package__}.{m.name}").SOURCES
+            datasets += d
+        except AttributeError:
+            pass
+
+    return datasets
