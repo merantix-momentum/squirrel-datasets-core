@@ -60,7 +60,7 @@ class MonthlyGermanTweetsDriver(MapDriver):
             **kwargs: Other keyword arguments passed to :py:meth:`MapDriver.get_iter`.
         """
 
-        super().get_iter(flatten=flatten, **kwargs)
+        return super().get_iter(flatten=flatten, **kwargs)
 
     def keys(self, **kwargs) -> Iterable:
         """Returns the paths of the files in the root directory relative to root."""

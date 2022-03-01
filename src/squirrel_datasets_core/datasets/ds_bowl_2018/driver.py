@@ -19,7 +19,7 @@ class DataScienceBowl2018Driver(IterDriver):
     <https://www.kaggle.com/c/data-science-bowl-2018>`_ dataset.
 
     The driver expects the image and label formats, directory structure and the data split used in the competition.
-    Drivers allows three dataset splits: stage1_train, stage1_test, stage2_test.
+    Drivers allows three dataset splits: stage1_train, stage1_test, stage2_test_final.
     """
 
     name = "ds_bowl_18"
@@ -64,7 +64,7 @@ class DataScienceBowl2018Driver(IterDriver):
         """Create iterstream for the given split.
 
         Args:
-            split (str): Split name. Must be one of ("stage1_train", "stage1_test", "stage2_test").
+            split (str): Split name. Must be one of ("stage1_train", "stage1_test", "stage2_test_final").
             hooks (List[Iterable], optional): Hooks to apply. Hooks are applied before parsing the samples. Defaults to
                 None.
             parse_image (bool, optional): Whether to load the image into sample dictionary. Image will be stored under
@@ -77,7 +77,7 @@ class DataScienceBowl2018Driver(IterDriver):
         Returns:
             Composable: Composable containing the samples.
         """
-        assert split in {"stage1_train", "stage1_test", "stage2_test"}
+        assert split in {"stage1_train", "stage1_test", "stage2_test_final"}
         if hooks is None:
             hooks = []
 
