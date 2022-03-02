@@ -14,7 +14,7 @@
     *   - multilinguality
         -
     *   - size_categories
-        - 
+        - 1K<n<10K
     *   - source_datasets
         -
     *   - task_categories
