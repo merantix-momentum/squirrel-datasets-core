@@ -29,8 +29,7 @@ Dataset Description
 ###################
 
 * Homepage: `Allenai C4 <https://github.com/allenai/allennlp/discussions/5056>`_
-* Licenses: `Open Data Commons Attribution License (ODC-By) v1.0
- <https://opendatacommons.org/licenses/by/1-0/>`_
+* Licenses: `Open Data Commons Attribution License (ODC-By) v1.0 <https://opendatacommons.org/licenses/by/1-0/>`_
  
 Dataset Summary
 ***************
