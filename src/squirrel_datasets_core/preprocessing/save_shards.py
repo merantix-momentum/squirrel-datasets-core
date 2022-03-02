@@ -1,18 +1,19 @@
 from __future__ import annotations
 
-import os
 from dataclasses import dataclass
 from functools import partial
-from typing import Callable, Dict, Iterable, List, Optional, TYPE_CHECKING
+from typing import Callable, Dict, List, Optional, TYPE_CHECKING
 
 from pyspark.sql import SparkSession
 from squirrel.catalog import Catalog, Source
 from squirrel.serialization import MessagepackSerializer
 from squirrel.store import SquirrelStore
+from pyspark import TaskContext
 
 if TYPE_CHECKING:
     from squirrel.constants import ShardType
-
+    from squirrel.iterstream import Composable
+    from squirrel.store import AbstractStore
 
 @dataclass
 class SaveShardsConfig:
@@ -24,38 +25,46 @@ class SaveShardsConfig:
     num_samples: Optional[int] = None  # number of samples to take from the dataset, if None, all samples will be taken
 
 
-def save_iterable_as_shard(shard_it: Iterable[ShardType], output_url: str) -> None:
+def save_iterable_as_shard(shard: ShardType, store: AbstractStore) -> None:
     """Helper to save a single shard into a messagepack store using squirrel"""
-    # only initialize store if really needed
-    store = None
-    for shard_id, shard in enumerate(shard_it):
-        if store is None:
-            store = SquirrelStore(output_url, serializer=MessagepackSerializer())
-
-        store.set(key=f"shard_{shard_id}", value=shard)
+    store.set(key=f"shard_{TaskContext.get().partitionId()}", value=list(shard))
 
 
-def iterstream_to_shards(
-    src_it: Iterable,
+def save_composable_to_shards(
+    src_it: Composable,
     session: SparkSession,
     out_url: str,
     num_samples: int,
     num_shards: int,
-    hooks: Optional[List[Callable[[Dict], Dict]]] = None
+    hooks: Optional[List[Callable[[Dict], Dict]]] = None,
+    save_catalog: Optional[bool] = False,
+    catalog_identifier: Optional[str] = "",
+    catalog_version: Optional[int] = 1,
+    catalog_output_url: Optional[str] = "",
 ) -> None:
     """Save single iterstream to messagepack."""
     if num_samples is not None:
         src_it = src_it.take(num_samples)
 
-    # run preprocessing with spark
+    store = SquirrelStore(out_url, serializer=MessagepackSerializer())
     pipe = session.sparkContext.parallelize(src_it)
     for h in hooks:
         pipe = pipe.map(h)
     pipe = pipe.coalesce(num_shards)
-    _ = pipe.foreachPartition(partial(save_iterable_as_shard, output_url=out_url))
+    _ = pipe.foreachPartition(partial(save_iterable_as_shard, store=store))
+
+    if save_catalog:
+        ncat = Catalog()
+        # set version via DummyCatalogSource
+        cat_source = ncat[catalog_identifier]
+        cat_source[catalog_version + 1] = Source(
+            driver_name="messagepack",
+            driver_kwargs={"url": out_url},
+        )
+        ncat.to_file(catalog_output_url)
 
 
-def save_shards(
+def save_source_to_shards(
     cfg: SaveShardsConfig,
     session: SparkSession,
     iter_kwargs: Dict,
@@ -72,22 +81,11 @@ def save_shards(
     if hooks is None:
         hooks = []
 
-    # resolve relative paths
-    out_url = os.path.abspath(cfg.output_data_url)
-
     # get raw data
     cat = Catalog.from_plugins()
     d = cat[cfg.identifier][cfg.version]
     src_it = d.load.get_iter(**iter_kwargs)
 
-    iterstream_to_shards(src_it, session, out_url, cfg.num_samples, cfg.num_shards, hooks)
-    
-    ncat = Catalog()
-    # set version via DummyCatalogSource
-    cat_source = ncat[cfg.identifier]
-    cat_source[cfg.version + 1] = Source(
-        driver_name="messagepack",
-        metadata=d.metadata,
-        driver_kwargs={"url": out_url},
-    )
-    ncat.to_file(cfg.output_catalog_url)
+    save_composable_to_shards(src_it, session, cfg.output_data_url, cfg.num_samples, cfg.num_shards, hooks,
+                              save_catalog=True, catalog_identifier=cfg.identifier, catalog_version=cfg.version, 
+                              catalog_output_url=cfg.output_catalog_url)
