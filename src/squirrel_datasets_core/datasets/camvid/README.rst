@@ -72,8 +72,7 @@ Dataset Schema
 **************
 
 - `img`: A numpy array containing the 480x360 RGB image.
-- `label`: semantic segmentation map. sky (0), building (1), pole (2), road (3), pavement (4), tree (5),
-    sign/symbol (6), fence (7), car (8), pedestrian (9), bicyclist (10), unlabelled (11)
+- `label`: semantic segmentation map - sky (0), building (1), pole (2), road (3), pavement (4), tree (5), sign/symbol (6), fence (7), car (8), pedestrian (9), bicyclist (10), unlabelled (11)
  
 Data Splits
 ***********
