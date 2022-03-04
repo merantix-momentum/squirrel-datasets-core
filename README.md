@@ -6,7 +6,7 @@ Merantix Labs - Squirrel Datasets Core
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
 [![Documentation Status](https://readthedocs.org/projects/squirrel-datasets-core/badge/?version=latest)](https://docs.squirrel.merantixlabs.cloud/)
 [![Generic badge](https://img.shields.io/badge/Website-Merantix%20Momentum-blue.svg)](https://www.merantixlabs.com/)
-[![Slack](https://join.slack.com/t/squirrel-core/shared_invite/zt-14k6sk6sw-zQPHfqAI8Xq5WYd~UqgNFw)
+[![Slack](https://img.shields.io/badge/Slack-4A154B?style=for-the-badge&logo=slack&logoColor=white)](https://join.slack.com/t/squirrel-core/shared_invite/zt-14k6sk6sw-zQPHfqAI8Xq5WYd~UqgNFw)
 
 # What is Squirrel Datasets Core?
 
