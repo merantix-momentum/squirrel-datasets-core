@@ -41,7 +41,7 @@ Download and prepare data
 
 The dataset can be loaded directly via the squirrel Catalog API. 
 Make sure that squirrel-dataset-core is installed via pip, which will register this dataset.
-Visit the tensorflow site `<https://www.tensorflow.org/datasets/catalog/c4>`_ for all the avaibable languages.
+Visit the TensorFlow site `<https://www.tensorflow.org/datasets/catalog/c4>`_ for all the available languages.
 Use the following code to load the data:
 
 .. code-block:: python
