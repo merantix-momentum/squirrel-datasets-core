@@ -2,7 +2,7 @@
     :header-rows: 1
 
     *   - pretty_name
-        - Camvid Dataset
+        - CamVid Dataset
     *   - annotations_creators
         -
     *   - language_creators
