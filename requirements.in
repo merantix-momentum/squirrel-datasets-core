@@ -1,5 +1,5 @@
 datasets
-mxlabs-squirrel[gcp, zarr]>=0.9,<0.10
+squirrel-core[gcp, zarr]>=0.12,<0.13
 numpy
 pillow
 torchvision
