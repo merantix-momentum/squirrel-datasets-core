@@ -168,3 +168,6 @@ npm-debug.log
 
 # Hydra
 outputs/
+
+
+test/data
