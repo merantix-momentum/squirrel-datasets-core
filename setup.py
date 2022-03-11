@@ -93,7 +93,7 @@ if __name__ == "__main__":
         description="Squirrel public datasets collection",
         long_description=f"{readme}\n\n{history}",
         author="Merantix Labs GmbH",
-        license="",
+        license="Apache 2.0",
         # Needed to make jinja work and not get linting errors in the rendered file
         package_dir={"": "src"},
         packages=["squirrel_datasets_core"],
