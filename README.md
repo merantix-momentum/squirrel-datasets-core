@@ -1,13 +1,18 @@
-Merantix Labs - Squirrel Datasets Core
-================================================================================
-[![Python](https://img.shields.io/pypi/pyversions/squirrel-datasets-core.svg?style=plastic)](https://badge.fury.io/py/squirrel-core)
-[![PyPI](https://badge.fury.io/py/squirrel-datasets-core.svg)](https://badge.fury.io/py/squirrel-core)
-[![Downloads](https://pepy.tech/badge/squirrel-datasets-core)](https://pepy.tech/project/squirrel-core)
+<div align="center">
+  
+# Squirrel Datasets Core
+  
+[![Python](https://img.shields.io/pypi/pyversions/squirrel-core.svg?style=plastic)](https://badge.fury.io/py/squirrel-datasets-core)
+[![PyPI](https://badge.fury.io/py/squirrel-core.svg)](https://badge.fury.io/py/squirrel-datasets-core)
+[![Downloads](https://pepy.tech/badge/squirrel-core)](https://pepy.tech/project/squirrel-datasets-core)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
-[![Documentation Status](https://readthedocs.org/projects/squirrel-datasets-core/badge/?version=latest)](https://docs.squirrel.merantixlabs.cloud/)
-[![Generic badge](https://img.shields.io/badge/Website-Merantix%20Momentum-blue.svg)](https://www.merantixlabs.com/)
-[![Slack](https://img.shields.io/badge/Slack-4A154B?style=for-the-badge&logo=slack&logoColor=white)](https://join.slack.com/t/squirrel-core/shared_invite/zt-14k6sk6sw-zQPHfqAI8Xq5WYd~UqgNFw)
+[![Documentation Status](https://readthedocs.org/projects/squirrel-core/badge/?version=latest)](https://squirrel-datasets-core.readthedocs.io)
+[![Generic badge](https://img.shields.io/badge/Website-Merantix%20Labs-blue)](https://www.merantixlabs.com/)
+[![Slack](https://img.shields.io/badge/slack-chat-green.svg?logo=slack)](https://join.slack.com/t/squirrel-core/shared_invite/zt-14k6sk6sw-zQPHfqAI8Xq5WYd~UqgNFw)
 
+</div>
+
+---
 # What is Squirrel Datasets Core?
 
 `squirrel-datasets-core` is a hub where the user can 1) explore existing datasets registered in the data mesh by other users and 2) preprocess their datasets and share them with other users. As an end user, you will
