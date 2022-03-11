@@ -49,7 +49,7 @@ def save_composable_to_shards(
     pipe = session.sparkContext.parallelize(src_it)
     for h in hooks:
         pipe = pipe.map(h)
-    pipe = pipe.coalesce(num_shards)
+    pipe = pipe.repartition(num_shards)
     _ = pipe.foreachPartition(partial(save_iterable_as_shard, store=store))
 
     if save_catalog:
