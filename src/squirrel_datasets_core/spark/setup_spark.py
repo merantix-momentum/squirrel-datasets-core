@@ -11,6 +11,7 @@ def get_spark(
     add_gcs_connector: bool = True,
     add_hadoop: bool = False,
     mem_size: str = "4g",
+    n_master_cores: int = None
 ) -> SparkSession:
     """
     Get a spark session for your operation.
@@ -25,6 +26,7 @@ def get_spark(
         add_hadoop: If true, will add hadoop native libs to spark lib path, such that spark can use native hadoop lib
             tools to compress and decompress zst files.
         mem_size: Memory size for the driver node.
+        n_master_cores: Specify number of parallel threads directly.
 
     Returns:
         SparkSession
@@ -45,7 +47,11 @@ def get_spark(
         conf = _add_native_hadoop(conf, extra_lib_path=_EXTRA_LIB_PATH)
 
     assert isinstance(app_name, str), ValueError("`app_name` accept string only.")
-    spark = SparkSession.builder.appName(app_name).config(conf=conf).getOrCreate()
+
+    if n_master_cores is not None:
+        spark = SparkSession.builder.master(f"local[{n_master_cores}]").appName(app_name).config(conf=conf).getOrCreate()
+    else:
+        spark = SparkSession.builder.appName(app_name).config(conf=conf).getOrCreate()
 
     if dataset_conf:
         for key, value in dataset_conf.items():
