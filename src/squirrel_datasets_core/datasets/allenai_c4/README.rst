@@ -50,7 +50,7 @@ Use the following code to load the data:
     plugin_catalog = Catalog.from_plugins()
 
     # For each of the 101 languages there is a train and valid split
-    it_af_val = plugin_catalog["c4"].load.select("af", "valid").get_iter()
+    it_af_val = plugin_catalog["c4"].get_driver().select("af", "valid").get_iter()
 
 Dataset Structure
 ###################

@@ -48,7 +48,7 @@ Use the following code to load the data:
     from squirrel.catalog import Catalog
 
     plugin_catalog = Catalog.from_plugins()
-    it = plugin_catalog["conceptual-captions-12m"].load.get_iter()
+    it = plugin_catalog["conceptual-captions-12m"].get_driver().get_iter()
 
 Dataset Structure
 ###################

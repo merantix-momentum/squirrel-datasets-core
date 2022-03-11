@@ -48,7 +48,7 @@ Use the following code to load the data:
     from squirrel.catalog import Catalog
     plugin_catalog = Catalog.from_plugins()
 
-    it_af = plugin_catalog["cc100"].load.select("gd").get_iter()
+    it_af = plugin_catalog["cc100"].get_driver().select("gd").get_iter()
 
 Dataset Structure
 ###################
