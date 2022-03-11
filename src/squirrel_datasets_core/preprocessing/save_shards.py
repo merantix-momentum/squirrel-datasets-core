@@ -8,7 +8,6 @@ from pyspark.sql import SparkSession
 from squirrel.catalog import Catalog, Source
 from squirrel.serialization import MessagepackSerializer
 from squirrel.store import SquirrelStore
-from pyspark import TaskContext
 
 if TYPE_CHECKING:
     from squirrel.constants import ShardType
@@ -27,7 +26,7 @@ class SaveShardsConfig:
 
 def save_iterable_as_shard(shard: ShardType, store: AbstractStore) -> None:
     """Helper to save a single shard into a messagepack store using squirrel"""
-    store.set(key=f"shard_{TaskContext.get().partitionId()}", value=list(shard))
+    store.set(value=list(shard))
 
 
 def save_composable_to_shards(
