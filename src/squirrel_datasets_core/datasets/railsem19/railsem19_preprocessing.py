@@ -188,9 +188,9 @@ def process_shard(
 def main(
     split_key: str,
     workdir: str,
-    num_workers: int = 4,
-    gcp_project: str = "mxm-safetrain",
-    gcp_location: str = "mxm-safetrain-data/derived/railsem19",
+    gcp_project: str,
+    gcp_location: str,
+    num_workers: int = 4
 ) -> None:
     """
     Main entrypoint to extract the RailSem19 dataset and split it into the different subsets.
@@ -198,9 +198,9 @@ def main(
     Args:
         split_key: A string containing the split to extract. One of (val|test|train|additional)
         workdir: full path to the folder containing the raw and extracted data sources
-        num_workers: integer specifying the number of ProcessPoolExecutors
         gcp_project: Project ID where to store the data
         gcp_location: bucket path to the storage location
+        num_workers: integer specifying the number of ProcessPoolExecutors
     """
 
     splits = {
@@ -229,6 +229,7 @@ if __name__ == "__main__":
     """
     To extract the RailSem19 dataset call
 
-        python railsem19_preprocessing.py --split_key=<SPLIT> --workdir=<PATH TO RAW RS19 DATA>
+        python railsem19_preprocessing.py --split_key=<SPLIT> --workdir=<PATH TO RAW RS19 DATA> 
+                                          --gcp_project=<GCP PROJECT> --gcp_location=<GCP LOCATION>
     """
     fire.Fire(main)
