@@ -7,6 +7,7 @@ RUN apt-get update && \
 ADD . .
 
 RUN pip3 install keyrings.google-artifactregistry-auth==0.0.3 --index-url=https://pypi.org/simple/
+RUN pip3 config debug
 RUN pip3 install --upgrade pip && \
     pip3 install --require-hashes -r requirements.txt --no-deps --disable-pip-version-check && \
     pip3 cache purge
