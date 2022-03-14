@@ -15,4 +15,3 @@ nbmake
 jupyter
 networkx
 pre-commit==2.16.0
-matplotlib # used for tutorial

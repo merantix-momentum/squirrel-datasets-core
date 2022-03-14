@@ -9,7 +9,7 @@ import sys
 
 from setuptools import setup
 
-SOURCE_DIR = "squirrel_datasets_core"
+SOURCE_DIR = "src/squirrel_datasets_core"
 
 # Read package information from other files so that just one version has to be maintained.
 _version_re = re.compile(r"__version__\s+=\s+(.*)")

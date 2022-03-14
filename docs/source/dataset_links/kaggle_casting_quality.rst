@@ -1,3 +1,3 @@
 Dataset Card - Kaggle Casting Quality
 =====================================
-.. include:: ../../../squirrel_datasets_core/datasets/kaggle_casting_quality/README.rst
+.. include:: ../../../src/squirrel_datasets_core/datasets/kaggle_casting_quality/README.rst

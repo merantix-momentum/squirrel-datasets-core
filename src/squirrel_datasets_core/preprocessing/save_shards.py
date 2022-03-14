@@ -14,7 +14,6 @@ if TYPE_CHECKING:
     from squirrel.iterstream import Composable
     from squirrel.store import AbstractStore
 
-
 @dataclass
 class SaveShardsConfig:
     identifier: str  # identifier used in the catalog for the dataset
@@ -43,7 +42,7 @@ def save_composable_to_shards(
     catalog_output_url: Optional[str] = "",
 ) -> None:
     """Save single iterstream to messagepack.
-
+    
     Args:
         src_it (Composable): Composable to fetch data from.
         session (SparkSession): Spark session to use for processing.
@@ -99,15 +98,6 @@ def save_source_to_shards(
     d = cat[cfg.identifier][cfg.version]
     src_it = d.load.get_iter(**iter_kwargs)
 
-    save_composable_to_shards(
-        src_it,
-        session,
-        cfg.output_data_url,
-        cfg.num_samples,
-        cfg.num_shards,
-        hooks,
-        save_catalog=True,
-        catalog_identifier=cfg.identifier,
-        catalog_version=cfg.version,
-        catalog_output_url=cfg.output_catalog_url,
-    )
+    save_composable_to_shards(src_it, session, cfg.output_data_url, cfg.num_samples, cfg.num_shards, hooks,
+                              save_catalog=True, catalog_identifier=cfg.identifier, catalog_version=cfg.version, 
+                              catalog_output_url=cfg.output_catalog_url)

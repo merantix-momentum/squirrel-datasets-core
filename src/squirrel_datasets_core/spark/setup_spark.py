@@ -11,7 +11,7 @@ def get_spark(
     add_gcs_connector: bool = True,
     add_hadoop: bool = False,
     mem_size: str = "4g",
-    n_master_cores: int = None,
+    n_master_cores: int = None
 ) -> SparkSession:
     """
     Get a spark session for your operation.
@@ -49,9 +49,7 @@ def get_spark(
     assert isinstance(app_name, str), ValueError("`app_name` accept string only.")
 
     if n_master_cores is not None:
-        spark = (
-            SparkSession.builder.master(f"local[{n_master_cores}]").appName(app_name).config(conf=conf).getOrCreate()
-        )
+        spark = SparkSession.builder.master(f"local[{n_master_cores}]").appName(app_name).config(conf=conf).getOrCreate()
     else:
         spark = SparkSession.builder.appName(app_name).config(conf=conf).getOrCreate()
 
