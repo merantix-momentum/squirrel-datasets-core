@@ -26,24 +26,38 @@ Please see our [documentation](https://squirrel-datasets-core.readthedocs.io) fo
 If you have any questions or would like to contribute, join our Slack community!
 
 # Installation
-Squirrel Datasets Core requires the latest stable version of Squirrel Core to be installed:
+Currently, we have not released a functional version of `squirrel-core` and `squirrel-datasets-core` into the public 
+pypi registry. Therefore we ask you to use the following installation method, which uses the source code directly:
 
+First, you need to clone the `squirrel-core` and `squirrel-datasets-core` repositories by:
 ```shell
-pip install squirrel-core
+git clone https://github.com/merantix-momentum/squirrel-core.git
+```
+and 
+```shell
+git clone https://github.com/merantix-momentum/squirrel-datasets-core.git
+```
+Then you can install both packages by
+```shell
+pip install -e squirrel-core
+```
+and
+```shell
+pip install -e squirrel-core-datasets
 ```
 
-Install Squirrel Datasets Core via:
-
-```shell
-pip install squirrel-datasets-core
-```
+In the documentation, you may also see some requirements to install the two packages first, please follow the 
+instruction above, instead of installing from public pypi registry (e.g `pip install squirrel-core` or 
+`pip install squirrel-datasets-core`). We kindly ask for your patience.
 
 # Documentation
 
-To view the docs locally, please use the following command in root directory of this repo:
+To view the docs locally, please use the following command in root directory of `squirrel-datasets-core`:
 ```
-sphinx-build ./docs/source ./docs/build && open ./docs/build/index.html
+sphinx-build ./docs/source ./docs/build
 ```
+The command above will create all documentation pages under `./docs/build`.
+To view the start page, open `./docs/build/index.html` in your browser. 
 
 # Contributing
 Squirrel is open source and community contributions are welcome!
