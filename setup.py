@@ -24,10 +24,40 @@ with open("./%s/__init__.py" % SOURCE_DIR, "rb") as f:
 
     version = get_var("__version__")
 
+
+def assert_version(ver: str) -> None:
+    """Assert version follows semantics such as 0.0.1 or 0.0.1-dev123. Notice English letters are not allowed after
+    'dev'.
+    """
+    pattern = (
+        r"^(?P<major>\d+)\.(?P<minor>\d+)\.(?P<patch>\d+)"
+        + r"(?P<prepost>\.post\d+|(dev|a|b|rc)\d+)?(?P<devsuffix>[+-]dev)?\d*$"
+    )
+    assert bool(re.match(pattern, ver)), ValueError(
+        f"Version string '{ver}' does not conform with regex '{pattern}', which is required by pypi metadata "
+        "normalization."
+    )
+
+
+def normalize_version(_version: str, _version_tag: str) -> str:
+    """Normalize version string according to tag build or dev build, to conform with the standard of PEP 440."""
+    if "dev" in _version_tag:
+        # remove alphabetic characters after keyword 'dev', which is forbidden PEP 440.
+        short_sha = _version_tag[3:]  # substring after the word 'dev'
+        numberic_sha = "".join([char for char in short_sha if char.isdigit()])
+        _version += "-dev" + numberic_sha
+    else:
+        # In tag build, use the $TAG_NAME as the version string.
+        _version = _version_tag.replace("v", "")
+    assert_version(_version)
+    return _version
+
+
 # add tag to version if provided
 if "--version_tag" in sys.argv:
     v_idx = sys.argv.index("--version_tag")
-    version = version + "." + sys.argv[v_idx + 1]
+    version_tag = sys.argv[v_idx + 1]
+    version = normalize_version(version, version_tag)
     sys.argv.remove("--version_tag")
     sys.argv.pop(v_idx)
 
