@@ -57,6 +57,9 @@ def save_composable_to_shards(
     """
     if num_samples is not None:
         src_it = src_it.take(num_samples)
+        
+    if hooks is None:
+        hooks = []
 
     store = SquirrelStore(out_url, serializer=MessagepackSerializer())
     pipe = session.sparkContext.parallelize(src_it)
@@ -90,9 +93,6 @@ def save_source_to_shards(
         iter_kwargs (Dict): Keyword arguments passed to :py:meth:`Driver.get_iter`.
         hooks (Optional[List[Callable[[Dict], Dict]]], optional): Methods to map to the samples before creating shards.
     """
-    if hooks is None:
-        hooks = []
-
     # get raw data
     cat = Catalog.from_plugins()
     d = cat[cfg.identifier][cfg.version]
