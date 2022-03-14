@@ -1,3 +1,3 @@
 Dataset Card - Imagenet
 =====================================
-.. include:: ../../../src/squirrel_datasets_core/datasets/imagenet/README.rst
+.. include:: ../../../squirrel_datasets_core/datasets/imagenet/README.rst

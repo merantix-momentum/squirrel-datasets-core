@@ -3,7 +3,7 @@
 # To update, run:
 #
 #    pip-compile --generate-hashes --no-annotate --no-emit-index-url --output-file=requirements.txt --strip-extras requirements.dev.in requirements.hub.in requirements.in requirements.preprocessing.in requirements.torchvision.in
-
+#
 aiohttp==3.8.1 \
     --hash=sha256:11691cf4dc5b94236ccc609b70fec991234e7ef8d4c02dd0c9668d1e486f5abf
 aiosignal==1.2.0 \
@@ -56,6 +56,9 @@ colorclass==2.2.2 \
     --hash=sha256:6f10c273a0ef7a1150b1120b6095cbdd68e5cf36dfd5d0fc957a2500bbf99a55
 coverage==6.3.2 \
     --hash=sha256:8fbbdc8d55990eac1b0919ca69eb5a988a802b854488c34b8f37f3e2025fa90d
+cycler==0.11.0 \
+    --hash=sha256:3a27e95f763a428a739d2add979fa7494c912a32c17c4c38c4d5f082cad165a3 \
+    --hash=sha256:9c87405839a19696e837b3b818fed3f5f69f16f1eec1a1ad77e043dcea9c772f
 datasets==1.18.4 \
     --hash=sha256:e13695ad7aeda2af4430ac1a0b62def9c4b60bb4cc14dbaa240e6683cac50c49
 debugpy==1.5.1 \
@@ -84,6 +87,9 @@ fire==0.4.0 \
     --hash=sha256:c5e2b8763699d1142393a46d0e3e790c5eb2f0706082df8f647878842c216a62
 flaky==3.7.0 \
     --hash=sha256:d6eda73cab5ae7364504b7c44670f70abed9e75f77dd116352f662817592ec9c
+fonttools==4.30.0 \
+    --hash=sha256:084dd1762f083a1bf49e41da1bfeafb475c9dce46265690a6bdd33290b9a63f4 \
+    --hash=sha256:6985cc5380c06db07fdc73ade15e6adbd4ce6ff850d7561ca00f97090b4b263d
 frozenlist==1.3.0 \
     --hash=sha256:871d42623ae15eb0b0e9df65baeee6976b2e161d0ba93155411d58ff27483ad8
 fsspec==2022.2.0 \
@@ -166,12 +172,20 @@ keyring==23.5.0 \
     --hash=sha256:b0d28928ac3ec8e42ef4cc227822647a19f1d544f21f96457965dc01cf555261
 keyrings-google-artifactregistry-auth==0.0.3 \
     --hash=sha256:abbda4133107876a948f5ac8da2513fefa47280ca17be48dc7b0c226175d1922
+kiwisolver==1.3.2 \
+    --hash=sha256:22521219ca739654a296eea6d4367703558fba16f98688bd8ce65abff36eaa84 \
+    --hash=sha256:b5074fb09429f2b7bc82b6fb4be8645dcbac14e592128beeff5461dcde0af09f \
+    --hash=sha256:fc4453705b81d03568d5b808ad8f09c77c47534f6ac2e72e733f9ca4714aa75c
 llvmlite==0.38.0 \
     --hash=sha256:48558fddce5ff351f9de98beff35888aa351598e5635b3b91d67ec9e10d458cc
 markdown-it-py==2.0.1 \
     --hash=sha256:31974138ca8cafbcb62213f4974b29571b940e78364584729233f59b8dfdb8bd
 markupsafe==2.1.0 \
     --hash=sha256:62c0285e91414f5c8f621a17b69fc0088394ccdaa961ef469e833dbff64bd5ea
+matplotlib==3.5.1 \
+    --hash=sha256:506b210cc6e66a0d1c2bb765d055f4f6bc2745070fb1129203b67e85bbfa5c18 \
+    --hash=sha256:6c094e4bfecd2fa7f9adffd03d8abceed7157c928c2976899de282f3600f0a3d \
+    --hash=sha256:b2e9810e09c3a47b73ce9cab5a72243a1258f61e7900969097a817232246ce1c
 matplotlib-inline==0.1.3 \
     --hash=sha256:aed605ba3b72462d64d475a21a9296f400a19c4f74a31b59103d2a99ffd5aa5c
 mdit-py-plugins==0.3.0 \

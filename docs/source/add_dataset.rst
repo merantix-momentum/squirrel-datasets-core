@@ -20,7 +20,7 @@ is defined through a :py:class:`Driver` class.
 Add a New Dataset
 ------------------
 After having understood the two above discussed main tasks and how we handle them, here is how it looks like when you
-want to add a new dataset into :code:`squirrel-datasets`: define your preprocessing logic; define your loading logic;
+want to add a new dataset into :code:`squirrel-datasets-core`: define your preprocessing logic; define your loading logic;
 register the dataset into a catalog plugin.
 
 #. Define your preprocessing logic.
@@ -41,7 +41,7 @@ register the dataset into a catalog plugin.
 
    - If there is no driver suitable for your dataset, then you need to define a custom driver. The custom driver should
      have the same interface as :py:class:`squirrel.driver.IterDriver`. We recommend that you subclass from
-     this class, then add the loading logic inside. This class should be saved under 
+     this class, then add the loading logic inside. This class should be saved under
      :code:`squirrel_datasets_core/datasets/example_dataset/driver.py`
 
    .. note::
@@ -53,5 +53,5 @@ register the dataset into a catalog plugin.
 
 .. _Apache Spark: https://spark.apache.org/docs/latest/
 .. _PySpark: https://spark.apache.org/docs/latest/api/python/
-.. _squirrel.driver: https://squirrel.readthedocs.io/
-.. _squirrel_datasets_core.datasets.imagenet: https://squirrel.readthedocs.io/
+.. _squirrel.driver: https://github.com/merantix-momentum/squirrel-core/blob/main/docs/usage/driver.rst
+.. _squirrel_datasets_core.datasets.imagenet: https://github.com/merantix-momentum/squirrel-datasetes-core/blob/main/squirrel-datasets_core/datasets/imagenet/
