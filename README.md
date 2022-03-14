@@ -38,6 +38,13 @@ Install Squirrel Datasets Core via:
 pip install squirrel-datasets-core
 ```
 
+# Documentation
+
+To view the docs locally, please use the following command in root directory of this repo:
+```
+sphinx-build ./docs/source ./docs/build && open ./docs/build/index.html
+```
+
 # Contributing
 Squirrel is open source and community contributions are welcome!
 
