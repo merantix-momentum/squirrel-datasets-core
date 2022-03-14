@@ -10,7 +10,8 @@ Preprocessing
 -------------
 For the first task, i.e. preprocessing, we recommend using `Apache Spark`_. The scenario is that quite often you would
 like to work with data stored in Google Cloud Storage and finish your batch processing job on a kubernetes cluser. We use
-`PySpark`_ for defining the preprocessing logic in python.
+`PySpark`_ for defining the preprocessing logic in python. You can find a tutorial how to use spark for preprocessing under 
+:code:`examples/08.Spark_Preprocessing.ipynb`.
 
 Data Loading
 ------------
@@ -26,7 +27,7 @@ register the dataset into a catalog plugin.
 #. Define your preprocessing logic.
 
    - Create a new directory under :code:`squirrel_datasets_core/datasets` named after your dataset, e.g. "example_dataset".
-     Write your preprocessing scripts under a new ``preprocessing.py`` file in it.
+     Write your preprocessing scripts under a new ``preprocessing.py`` file in it if needed.
 
 #. Define your loading logic.
 
