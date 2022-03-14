@@ -185,13 +185,7 @@ def process_shard(
     return f"success_{shard_id:03d}"
 
 
-def main(
-    split_key: str,
-    workdir: str,
-    gcp_project: str,
-    gcp_location: str,
-    num_workers: int = 4
-) -> None:
+def main(split_key: str, workdir: str, gcp_project: str, gcp_location: str, num_workers: int = 4) -> None:
     """
     Main entrypoint to extract the RailSem19 dataset and split it into the different subsets.
 
@@ -229,7 +223,7 @@ if __name__ == "__main__":
     """
     To extract the RailSem19 dataset call
 
-        python railsem19_preprocessing.py --split_key=<SPLIT> --workdir=<PATH TO RAW RS19 DATA> 
+        python railsem19_preprocessing.py --split_key=<SPLIT> --workdir=<PATH TO RAW RS19 DATA>
                                           --gcp_project=<GCP PROJECT> --gcp_location=<GCP LOCATION>
     """
     fire.Fire(main)
