@@ -7,7 +7,6 @@ RUN apt-get update && \
 ADD . .
 
 RUN pip3 install keyrings.google-artifactregistry-auth==0.0.3 --index-url=https://pypi.org/simple/
-RUN pip3 config debug
 RUN pip3 install --upgrade pip && \
     pip3 install --require-hashes -r requirements.txt --no-deps --disable-pip-version-check && \
     pip3 cache purge
@@ -27,11 +26,6 @@ RUN rm -rf /opt/spark && \
     tar -xzf spark-3.2.0-bin-hadoop3.2.tgz -C /opt && \
     mv /opt/spark-3.2.0-bin-hadoop3.2/ /opt/spark
 ENV SPARK_HOME="/opt/spark"
-
-# add hadoop
-ADD https://archive.apache.org/dist/hadoop/common/hadoop-3.2.0/hadoop-3.2.0.tar.gz .
-RUN tar xf hadoop-3.2.0.tar.gz && mv hadoop-3.2.0 /opt/hadoop && rm hadoop-3.2.0.tar.gz
-ENV HADOOP_HOME="/opt/hadoop"
 
 # add shaded gcs connector
 ADD https://repo1.maven.org/maven2/com/google/cloud/bigdataoss/gcs-connector/hadoop3-2.2.2/gcs-connector-hadoop3-2.2.2-shaded.jar /opt/spark/jars/gcs-connector-hadoop3-latest.jar
