@@ -52,7 +52,7 @@ instruction above, instead of installing from public pypi registry (e.g `pip ins
 
 # Documentation
 
-To view the docs locally, please use the following command in root directory of the repo:
+To view the docs locally, please use the following command in root directory of `squirrel-datasets-core`:
 ```
 sphinx-build ./docs/source ./docs/build
 ```
