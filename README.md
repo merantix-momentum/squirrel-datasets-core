@@ -43,7 +43,7 @@ pip install -e squirrel-core
 ```
 and
 ```shell
-pip install -e squirrel-core-datasets
+pip install -e squirrel-datasets-core[all]
 ```
 
 In the documentation, you may also see some requirements to install the two packages first, please follow the 
