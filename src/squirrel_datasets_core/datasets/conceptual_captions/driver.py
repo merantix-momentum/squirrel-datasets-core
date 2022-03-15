@@ -57,7 +57,7 @@ class CC12MDriver(IterDriver):
         Args:
             url: location of the image
         """
-        req = Request(url, headers={'User-Agent': 'Mozilla/5.0'})
+        req = Request(url, headers={"User-Agent": "Mozilla/5.0"})
         resp = urllib.request.urlopen(req)
         image = np.asarray(bytearray(resp.read()), dtype="uint8")
         return image
