@@ -6,10 +6,12 @@ import itertools
 import os
 import re
 import sys
+from pathlib import Path
 
 from setuptools import setup
 
 SOURCE_DIR = "src/squirrel_datasets_core"
+PACKAGE_DIR = {SOURCE_DIR: SOURCE_DIR}
 
 # Read package information from other files so that just one version has to be maintained.
 _version_re = re.compile(r"__version__\s+=\s+(.*)")
@@ -114,6 +116,18 @@ else:
 
 ENTRY_POINTS = {"squirrel": ["squirrel_datasets_core = squirrel_datasets_core.squirrel_plugin"]}
 
+this_directory = Path(__file__).parent
+LONG_DESCRIPTION = (this_directory / "README.md").read_text()
+
+# TODO remove after beta-testing phase
+CLASSIFIERS = [
+    "Private :: Do Not Upload",
+    "Development Status :: 4 - Beta",
+    "License :: OSI Approved :: Apache Software License",
+    "Programming Language :: Python :: 3.8",
+    "Typing :: Typed",
+]
+
 # Setup package using PIP
 if __name__ == "__main__":
     setup(
@@ -121,11 +135,11 @@ if __name__ == "__main__":
         version=version,
         python_requires=">=3.8.0",
         description="Squirrel public datasets collection",
-        long_description=f"{readme}\n\n{history}",
+        long_description=LONG_DESCRIPTION,
         author="Merantix Labs GmbH",
         license="Apache 2.0",
         # Needed to make jinja work and not get linting errors in the rendered file
-        package_dir={"": "src"},
+        package_dir=PACKAGE_DIR,
         packages=["squirrel_datasets_core"],
         scripts=SCRIPTS,
         include_package_data=True,
@@ -133,6 +147,6 @@ if __name__ == "__main__":
         tests_require=extras_require["dev"],
         extras_require=extras_require,
         entry_points=ENTRY_POINTS,
-        classifiers=["Public"],
+        classifiers=CLASSIFIERS,
         package_data={"": ["*.rst"]},
     )
