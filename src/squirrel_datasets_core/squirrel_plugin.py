@@ -29,10 +29,10 @@ def squirrel_drivers() -> List[Type[Driver]]:
 @hookimpl
 def squirrel_sources() -> List[Tuple[CatalogKey, Source]]:
     """Custom sources added by this package.
+
     Returns:
         List of (CatalogKey, Source) tuples.
     """
-    """Custom sources added by this package."""
     datasets = []
 
     import squirrel_datasets_core.datasets as ds
