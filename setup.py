@@ -7,6 +7,7 @@ import os
 import re
 import sys
 
+from pathlib import Path
 from setuptools import setup
 
 SOURCE_DIR = "src/squirrel_datasets_core"
@@ -61,17 +62,6 @@ if "--version_tag" in sys.argv:
     sys.argv.remove("--version_tag")
     sys.argv.pop(v_idx)
 
-if os.path.exists("README.rst"):
-    with open("README.rst") as fh:
-        readme = fh.read()
-else:
-    readme = ""
-if os.path.exists("HISTORY.md"):
-    with open("HISTORY.md") as fh:
-        history = fh.read().replace(".. :changelog:", "")
-else:
-    history = ""
-
 
 def parse_req(spec: str) -> str:
     """Parse package name==version out of requirements file."""
@@ -114,6 +104,19 @@ else:
 
 ENTRY_POINTS = {"squirrel": ["squirrel_datasets_core = squirrel_datasets_core.squirrel_plugin"]}
 
+# read the contents of your README file
+this_directory = Path(__file__).parent
+long_description = (this_directory / "README.md").read_text()
+
+# TODO remove after beta-testing phase
+classifiers = [
+    "Private :: Do Not Upload",
+    "Development Status :: 4 - Beta",
+    "License :: OSI Approved :: Apache Software License",
+    "Programming Language :: Python :: 3.8",
+    "Typing :: Typed",
+]
+
 # Setup package using PIP
 if __name__ == "__main__":
     setup(
@@ -121,7 +124,8 @@ if __name__ == "__main__":
         version=version,
         python_requires=">=3.8.0",
         description="Squirrel public datasets collection",
-        long_description=f"{readme}\n\n{history}",
+        long_description=long_description,
+        long_description_content_type="text/markdown",
         author="Merantix Labs GmbH",
         license="Apache 2.0",
         # Needed to make jinja work and not get linting errors in the rendered file
@@ -133,6 +137,6 @@ if __name__ == "__main__":
         tests_require=extras_require["dev"],
         extras_require=extras_require,
         entry_points=ENTRY_POINTS,
-        classifiers=["Public"],
+        classifiers=classifiers,
         package_data={"": ["*.rst"]},
     )
