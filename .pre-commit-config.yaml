@@ -6,8 +6,8 @@ default_language_version:
   python: python3.8
 exclude: (?x)(^docs/_build)
 repos:
-- repo: https://github.com/ambv/black
-  rev: 21.9b0
+- repo: https://github.com/psf/black
+  rev: 22.3.0
   hooks:
   - id: black # Format Python code
     additional_dependencies: ["--index-url=https://pypi.org/simple/"]
@@ -58,7 +58,7 @@ repos:
     args: ["--dialect", "ansi"]
     additional_dependencies: ["--index-url=https://pypi.org/simple/"]
 - repo: https://github.com/psf/black
-  rev: 21.9b0
+  rev: 22.3.0
   hooks:
   - id: black-jupyter # Format jupyter notebooks
     additional_dependencies: [".[jupyter]", "--index-url=https://pypi.org/simple/"]
