@@ -4,7 +4,7 @@ Squirrel Datasets Documentation
 It includes common drivers for public datasets, which are ready to use along with data preprocessing logic.
 Visit the official `Squirrel Documentation <https://squirrel.readthedocs.io>`_ on more information how to use Squirrel.
 
-Find out more about Merantix Labs on our `Website <https://www.merantixlabs.com/>`_.
+Find out more about Merantix Momentum on our `Website <https://merantix-momentum.com/>`_.
 
 Available Datasets
 ------------------
