@@ -3,7 +3,6 @@ import typing as t
 from collections import defaultdict
 
 import numpy as np
-import PIL
 import torch
 import torch.distributed as dist
 import torch.nn as nn
@@ -14,25 +13,8 @@ from squirrel.catalog import Catalog
 from squirrel.iterstream.torch_composables import SplitByRank, SplitByWorker, TorchIterable
 from torch.nn.parallel import DistributedDataParallel as DDP
 
+# check out the other tutorials if you are unfamiliar with the squirrel Catalog API
 CATALOG = Catalog.from_plugins()
-
-train_augment = tr.Compose([tr.ToTensor(), tr.Lambda(lambda x: (255 * x + torch.rand_like(x)) / 256 - 0.5)])
-
-
-test_augment = tr.Compose([tr.ToTensor(), tr.Lambda(lambda x: 255 * x / 256 - 0.5)])
-
-
-def augmentation(image: PIL.Image, augmentation: tr.Compose) -> torch.Tensor:
-    """Applies a given augmentation to an image.
-
-    Args:
-        image (PIL.Image): Image to augment.
-        augmentation (tr.Compose): Augmentation to use.
-
-    Returns:
-        torch.Tensor: Augmented image.
-    """
-    return augmentation(image)
 
 
 def collate(records: t.List[t.Dict[str, t.Any]]) -> t.Dict[str, t.List[t.Any]]:
@@ -55,51 +37,47 @@ def collate(records: t.List[t.Dict[str, t.Any]]) -> t.Dict[str, t.List[t.Any]]:
     return out
 
 
-def train_augmentation_map(r: t.Dict[str, t.Any]) -> t.Dict[str, t.Any]:
-    """Applies train augmentation to image.
+def augmentation_map(r: t.Dict[str, t.Any], augmentation: tr.Compose) -> t.Dict[str, t.Any]:
+    """Applies augmentation to image.
 
     Args:
         r (t.Dict[str, t.Any]): A dict containing "image".
+        augmentation (tr.Compose): Torch augmentation to use.
 
     Returns:
         t.Dict[str, t.Any]: A dict with an augmented image.
     """
 
-    return {"image": augmentation(r["image"], train_augment), "label": r["label"]}
+    return {"image": augmentation(r["image"]), "label": r["label"]}
 
 
-def test_augmentation_map(r: t.Dict[str, t.Any]) -> t.Dict[str, t.Any]:
-    """Applies test augmentation to image.
-
-    Args:
-        r (t.Dict[str, t.Any]): A dict containing "image".
-
-    Returns:
-        t.Dict[str, t.Any]: A dict with an augmented image.
-    """
-
-    return {"image": augmentation(r["image"], test_augment), "label": r["label"]}
-
-
-def get_dataloaders() -> t.Tuple[tud.DataLoader, tud.DataLoader]:
+def get_dataloaders(num_workers=2) -> t.Tuple[tud.DataLoader, tud.DataLoader]:
     """Constructs train and test dataloader objects for the MNIST train set.
 
     Returns:
         t.Tuple[tud.DataLoader, tud.DataLoader]: Train and test dataloader objects.
     """
 
+    # convert data to Tensor, s.t. tud.DataLoader can handle it
+    train_augment = tr.Compose([tr.ToTensor(), tr.Lambda(lambda x: (255 * x + torch.rand_like(x)) / 256 - 0.5)])
+    test_augment = tr.Compose([tr.ToTensor(), tr.Lambda(lambda x: 255 * x / 256 - 0.5)])
+
+    train_augmentation_map = lambda x: augmentation_map(x, train_augment)
+    test_augmentation_map = lambda x: augmentation_map(x, test_augment)
+
     mnist_train = (
         CATALOG["mnist"]
         .get_driver()
-        .get_iter("train")
-        .compose(SplitByRank)
-        .compose(SplitByWorker)
-        .map(train_augmentation_map)
-        .take(10000)
-        .batched(20, collation_fn=collate)
-        .compose(TorchIterable)
+        .get_iter("train")  # use squirrel API from previous tutorials up to this point
+        .compose(SplitByRank)  # split data for each GPU
+        .compose(SplitByWorker)  # split data for each process on each GPU
+        .map(train_augmentation_map)  # run-time transformation (convert to torch.Tensor here)
+        .take(10000)  # return only on the first 10000 samples (only to make demo faster)
+        .batched(20, collation_fn=collate)  # create batches here, not in tud.DataLoader
+        .compose(TorchIterable)  # make iterable compatible with tud.DataLoader
     )
 
+    # same comments apply as for mnist_train
     mnist_test = (
         CATALOG["mnist"]
         .get_driver()
@@ -112,8 +90,9 @@ def get_dataloaders() -> t.Tuple[tud.DataLoader, tud.DataLoader]:
         .compose(TorchIterable)
     )
 
-    train_loader = tud.DataLoader(mnist_train, batch_size=None)
-    test_loader = tud.DataLoader(mnist_test, batch_size=None)
+    # batch_size=None, because we already batched the data using squirrel
+    train_loader = tud.DataLoader(mnist_train, num_workers=num_workers, batch_size=None)
+    test_loader = tud.DataLoader(mnist_test, num_workers=num_workers, batch_size=None)
 
     return train_loader, test_loader
 
@@ -212,13 +191,18 @@ def main_worker(rank: int) -> None:
     init_dist(rank)
     print(f"Rank {rank} initialized? {dist.is_initialized()}")
 
-    torch.multiprocessing.set_start_method("spawn", force=True)
     run(rank)
 
 
 if __name__ == "__main__":
     """
-    NOTE: The multiprocess spawning is taken care of by the PyTorch launch utilities.
+    INSTRUCTIONS: This tutorial showcases how to train a classifier using squirrel on multiple GPUs.
+        The multiprocess spawning is taken care of by the PyTorch launch utilities. On the squirrel
+        side, you just need to add `.compose(SplitByRank)` and `.compose(SplitByWorker)` to your iterable
+        to train on multiple GPUs. Thereby your data is split by rank (i.e., your different GPUs)
+        and by workers (i.e., the number of processes running on this rank). Don't forget to make your
+        iterable a TorchIterable by calling `.compose(TorchIterable)`. Finally, simply pass your
+        iterable to a torch DataLoader.
 
     SYSTEM: Code was tested on the following system:
         - OS: Ubuntu 20.04.3 LTS
