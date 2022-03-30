@@ -23,7 +23,7 @@ class HuggingfaceDriver(IterDriver):
         subset: Optional[str] = None,
         streaming: bool = True,
         catalog: Optional[Catalog] = None,
-        **kwargs
+        **kwargs,
     ) -> None:
         """Load huggingface dataset."""
         super().__init__(catalog=catalog)

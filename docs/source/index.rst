@@ -10,7 +10,7 @@ Available Datasets
 ------------------
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
 
    dataset_links/allenai_c4
    dataset_links/camvid
@@ -25,5 +25,7 @@ Contribute
 ------------------
 
 .. toctree::
+   :maxdepth: 1
 
+   code_of_conduct
    add_dataset
