@@ -17,14 +17,14 @@ from torch.nn.parallel import DistributedDataParallel as DDP
 CATALOG = Catalog.from_plugins()
 
 
-def collate(records: t.List[t.Dict[str, t.Any]]) -> t.Dict[str, t.List[t.Any]]:
+def collate(records: t.List[t.Dict[str, t.Any]]) -> t.Dict[str, t.List[torch.Tensor]]:
     """Specifies how to create a batch from a list of records.
 
     Args:
         records (t.List[t.Dict[str, t.Any]]): A list of records to package in a batch.
 
     Returns:
-        t.Dict[str, t.List[t.Any]]: The resulting batch.
+        t.Dict[str, t.List[torch.Tensor]]: The resulting batch.
     """
 
     batch = defaultdict(list)
