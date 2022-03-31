@@ -4,7 +4,7 @@
 # https://medium.com/staqu-dev-logs/keeping-python-code-clean-with-pre-commit-hooks-black-flake8-and-isort-cac8b01e0ea1
 default_language_version:
   python: python3.8
-exclude: (?x)(^docs/_build)
+exclude: (?x)(^wandb| ^docs/_build)
 repos:
 - repo: https://github.com/psf/black
   rev: 22.3.0
@@ -21,7 +21,6 @@ repos:
   hooks:
   - id: flake8 # Apply flake 8 python file linter
     additional_dependencies:
-    - keyrings.google-artifactregistry-auth
     - "--index-url=https://pypi.org/simple/"
     - "flake8-annotations==2.5.0"
     - "flake8-bugbear==21.9.2"
