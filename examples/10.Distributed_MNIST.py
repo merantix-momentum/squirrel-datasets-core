@@ -51,7 +51,7 @@ def augmentation_map(r: t.Dict[str, t.Any], augmentation: tr.Compose) -> t.Dict[
     return {"image": augmentation(r["image"]), "label": r["label"]}
 
 
-def get_dataloaders(num_workers=2) -> t.Tuple[tud.DataLoader, tud.DataLoader]:
+def get_dataloaders() -> t.Tuple[tud.DataLoader, tud.DataLoader]:
     """Constructs train and test dataloader objects for the MNIST train set.
 
     Returns:
@@ -62,8 +62,11 @@ def get_dataloaders(num_workers=2) -> t.Tuple[tud.DataLoader, tud.DataLoader]:
     train_augment = tr.Compose([tr.ToTensor(), tr.Lambda(lambda x: (255 * x + torch.rand_like(x)) / 256 - 0.5)])
     test_augment = tr.Compose([tr.ToTensor(), tr.Lambda(lambda x: 255 * x / 256 - 0.5)])
 
-    train_augmentation_map = lambda x: augmentation_map(x, train_augment)
-    test_augmentation_map = lambda x: augmentation_map(x, test_augment)
+    def train_augmentation_map(x: t.Dict[str, t.Any]) -> t.Dict[str, t.Any]:
+        return augmentation_map(x, train_augment)
+
+    def test_augmentation_map(x: t.Dict[str, t.Any]) -> t.Dict[str, t.Any]:
+        return augmentation_map(x, test_augment)
 
     mnist_train = (
         CATALOG["mnist"]
@@ -91,8 +94,8 @@ def get_dataloaders(num_workers=2) -> t.Tuple[tud.DataLoader, tud.DataLoader]:
     )
 
     # batch_size=None, because we already batched the data using squirrel
-    train_loader = tud.DataLoader(mnist_train, num_workers=num_workers, batch_size=None)
-    test_loader = tud.DataLoader(mnist_test, num_workers=num_workers, batch_size=None)
+    train_loader = tud.DataLoader(mnist_train, num_workers=2, batch_size=None)
+    test_loader = tud.DataLoader(mnist_test, num_workers=2, batch_size=None)
 
     return train_loader, test_loader
 
@@ -211,7 +214,7 @@ if __name__ == "__main__":
         - torch 1.10.2+cu113, torchvision 0.11.3+cu113 installed with
             `pip install torch==1.10.2+cu113 torchvision==0.11.3+cu113
             -f https://download.pytorch.org/whl/cu113/torch_stable.html`
-        - squirrel-core==0.11.1, squirrel-datasets-core==0.0.1
+        - squirrel-core==0.12.0, squirrel-datasets-core==0.0.1
 
     USAGE: To start the training process run the following command in the terminal
         `torchrun --nproc_per_node=GPU_COUNT 10.Distributed_MNIST.py` where GPU_COUNT is the
