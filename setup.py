@@ -110,8 +110,7 @@ long_description = (this_directory / "README.md").read_text()
 
 # TODO remove after beta-testing phase
 classifiers = [
-    "Private :: Do Not Upload",
-    "Development Status :: 4 - Beta",
+    "Development Status :: 5 - Production/Stable",
     "License :: OSI Approved :: Apache Software License",
     "Programming Language :: Python :: 3.8",
     "Typing :: Typed",
@@ -126,7 +125,7 @@ if __name__ == "__main__":
         description="Squirrel public datasets collection",
         long_description=long_description,
         long_description_content_type="text/markdown",
-        author="Merantix Labs GmbH",
+        author="Merantix Momentum",
         license="Apache 2.0",
         # Needed to make jinja work and not get linting errors in the rendered file
         package_dir={"": "src"},
