@@ -3,7 +3,7 @@
 # To update, run:
 #
 #    pip-compile --generate-hashes --no-annotate --no-emit-index-url --output-file=requirements.txt --strip-extras requirements.dev.in requirements.hub.in requirements.in requirements.preprocessing.in requirements.torchvision.in
-
+#
 aiohttp==3.8.1 \
     --hash=sha256:11691cf4dc5b94236ccc609b70fec991234e7ef8d4c02dd0c9668d1e486f5abf
 aiosignal==1.2.0 \
@@ -12,9 +12,6 @@ alabaster==0.7.12 \
     --hash=sha256:446438bdcca0e05bd45ea2de1668c1d9b032e1a9154c2c259092d77031ddd359
 antlr4-python3-runtime==4.8 \
     --hash=sha256:15793f5d0512a372b4e7d2284058ad32ce7dd27126b105fb0b2245130445db33
-appnope==0.1.2 \
-    --hash=sha256:93aa393e9d6c54c5cd570ccadd8edad61ea0c4b9ea7a01409020c9aa019eb442 \
-    --hash=sha256:dd83cd4b5b460958838f6eb3000c660b1f9caf2a5b1de4264e941512f603258a
 argon2-cffi==21.3.0 \
     --hash=sha256:8c976986f2c5c0e5000919e6de187906cfd81fb1c72bf9d88c01177e77da7f80 \
     --hash=sha256:b746dba803a79238e925d9046a63aa26bf86ab2a2fe74ce6b009a1c3f5c8f2ae
@@ -56,6 +53,11 @@ colorclass==2.2.2 \
     --hash=sha256:6f10c273a0ef7a1150b1120b6095cbdd68e5cf36dfd5d0fc957a2500bbf99a55
 coverage==6.3.2 \
     --hash=sha256:8fbbdc8d55990eac1b0919ca69eb5a988a802b854488c34b8f37f3e2025fa90d
+cryptography==36.0.2 \
+    --hash=sha256:70f8f4f7bb2ac9f340655cbac89d68c527af5bb4387522a8413e841e3e6628c9 \
+    --hash=sha256:7b2d54e787a884ffc6e187262823b6feb06c338084bbe80d45166a1cb1c6c5bf \
+    --hash=sha256:c2c5250ff0d36fd58550252f54915776940e4e866f38f3a7866d92b32a654b86 \
+    --hash=sha256:ea634401ca02367c1567f012317502ef3437522e2fc44a3ea1844de028fa4b84
 datasets==1.18.4 \
     --hash=sha256:e13695ad7aeda2af4430ac1a0b62def9c4b60bb4cc14dbaa240e6683cac50c49
 debugpy==1.5.1 \
@@ -138,6 +140,9 @@ ipywidgets==7.6.5 \
     --hash=sha256:d258f582f915c62ea91023299603be095de19afb5ee271698f88327b9fe9bf43
 jedi==0.18.1 \
     --hash=sha256:637c9635fcf47945ceb91cd7f320234a7be540ded6f3e99a50cb6febdfd1ba8d
+jeepney==0.8.0 \
+    --hash=sha256:5efe48d255973902f6badc3ce55e2aa6c5c3b3bc642059ef3a91247bcfcc5806 \
+    --hash=sha256:c0a454ad016ca575060802ee4d590dd912e35c122fa04e70306de3d076cce755
 jinja2==3.0.3 \
     --hash=sha256:077ce6014f7b40d03b47d1f1ca4b0fc8328a692bd284016f806ed0eaca390ad8
 jmespath==0.10.0 \
@@ -352,6 +357,9 @@ s3transfer==0.5.2 \
     --hash=sha256:7a6f4c4d1fdb9a2b640244008e142cbc2cd3ae34b386584ef044dd0f27101971
 scipy==1.8.0 \
     --hash=sha256:ad5be4039147c808e64f99c0e8a9641eb5d2fa079ff5894dcd8240e94e347af4
+secretstorage==3.3.1 \
+    --hash=sha256:422d82c36172d88d6a0ed5afdec956514b189ddbfb72fefab0c8a1cee4eaf71f \
+    --hash=sha256:fd666c51a6bf200643495a04abb261f83229dcb6fd8472ec393df7ffc8b6f195
 send2trash==1.8.0 \
     --hash=sha256:f20eaadfdb517eaca5ce077640cb261c7d2698385a6a0f072a4a5447fd49fa08
 six==1.16.0 \
@@ -385,9 +393,9 @@ sphinxcontrib-qthelp==1.0.3 \
     --hash=sha256:bd9fc24bcb748a8d51fd4ecaade681350aa63009a347a8c14e637895444dfab6
 sphinxcontrib-serializinghtml==1.1.5 \
     --hash=sha256:352a9a00ae864471d3a7ead8d7d79f5fc0b57e8b3f95e9867eb9eb28999b92fd
-squirrel-core==0.12.0 \
-    --hash=sha256:9780240c15b5e84535285f01b3c4ccad2dc0bb21e379bb0f68b62f73cf283e83 \
-    --hash=sha256:eeed4feada50316e101cca5e5879eac6c1944c6c41a5615e62a3ea74f290aa14
+squirrel-core==0.12.1 \
+    --hash=sha256:3556d1d602b0bbca4f5362a4f659cb063aae691db0a4c0aa33f6a5674d809f8b \
+    --hash=sha256:ebc787a41b7e05806909626a815ac1765e5ee5d8af4d95de36943e77a78e35e6
 stack-data==0.2.0 \
     --hash=sha256:999762f9c3132308789affa03e9271bbbe947bf78311851f4d485d8402ed858e
 termcolor==1.1.0 \
