@@ -4,8 +4,8 @@ import datetime
 # -- Project information
 
 project = "Squirrel Datasets"
-copyright = f"{datetime.datetime.now().year}, Merantix Labs GmbH"
-author = "Merantix Labs GmbH"
+copyright = f"{datetime.datetime.now().year}, Merantix Momentum"
+author = "Merantix Momentum"
 # -- General configuration
 
 extensions = [
