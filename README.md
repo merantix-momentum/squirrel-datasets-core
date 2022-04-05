@@ -27,8 +27,8 @@ If you have any questions or would like to contribute, join our [Slack community
 Install `squirrel-core` and `squirrel-datasets-core` with pip:
 
 ```shell
-pip install squirrel-core
-pip install squirrel-datasets-core
+pip install squirrel-core[all]
+pip install squirrel-datasets-core[all]
 ```
 # Documentation
 

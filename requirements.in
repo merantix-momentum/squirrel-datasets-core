@@ -1,5 +1,5 @@
 datasets
-squirrel-core[gcp, zarr]==0.12.1
+squirrel-core[gcp, zarr]>=0.12.1
 numpy
 pillow
 torchvision
