@@ -1,6 +1,6 @@
 <div align="center">
   
-# <img src="docs/source/_static/logo.png" width="150px"> Squirrel Datasets Core
+# <img src="https://raw.githubusercontent.com/merantix-momentum/squirrel-datasets-core/main/docs/source/_static/logo.png" width="150px"> Squirrel Datasets Core
   
 [![Python](https://img.shields.io/pypi/pyversions/squirrel-datasets-core.svg?style=plastic)](https://badge.fury.io/py/squirrel-datasets-core)
 [![PyPI](https://badge.fury.io/py/squirrel-datasets-core.svg)](https://badge.fury.io/py/squirrel-datasets-core)
