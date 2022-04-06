@@ -4,8 +4,8 @@
   
 [![Python](https://img.shields.io/pypi/pyversions/squirrel-datasets-core.svg?style=plastic)](https://badge.fury.io/py/squirrel-datasets-core)
 [![PyPI](https://badge.fury.io/py/squirrel-datasets-core.svg)](https://badge.fury.io/py/squirrel-datasets-core)
-[![Downloads](https://pepy.tech/badge/squirrel-datasets-core)](https://pepy.tech/project/squirrel-datasets-core)
-[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
+[![Downloads](https://static.pepy.tech/personalized-badge/squirrel-datasets-core?period=total&units=international_system&left_color=grey&right_color=blue&left_text=Downloads)](https://pepy.tech/project/squirrel-datasets-core)
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://raw.githubusercontent.com/merantix-momentum/squirrel-datasets-core/main/LICENSE)
 [![Documentation Status](https://readthedocs.org/projects/squirrel-datasets-core/badge/?version=latest)](https://squirrel-datasets-core.readthedocs.io)
 [![Generic badge](https://img.shields.io/badge/Website-Merantix%20Momentum-blue)](https://merantix-momentum.com)
 [![Slack](https://img.shields.io/badge/slack-chat-green.svg?logo=slack)](https://join.slack.com/t/squirrel-core/shared_invite/zt-14k6sk6sw-zQPHfqAI8Xq5WYd~UqgNFw)
