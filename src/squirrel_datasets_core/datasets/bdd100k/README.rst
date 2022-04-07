@@ -14,7 +14,7 @@
     *   - multilinguality
         -
     *   - size_categories
-        - 100<n<1K
+        - 1K<n<10K
     *   - source_datasets
         -
     *   - task_categories
@@ -39,7 +39,8 @@ BDD100K:  A Diverse Driving Dataset for Heterogeneous Multitask Learning
 Download and prepare data
 *************************
 
-Download the data from this `website <https://bdd-data.berkeley.edu/>`_ and extract it.
+Login or register at this `website <https://bdd-data.berkeley.edu/>`_, download the `segmentation` and `10K Images` parts and extract them.
+Make sure to copy both the `images` folder as well as the `labels` folder in the same directory and use that below.
 Replace {PATH_TO_DATA} below with the location of the BDD100k folder. Use the following code to load it:
 
 .. code-block:: python

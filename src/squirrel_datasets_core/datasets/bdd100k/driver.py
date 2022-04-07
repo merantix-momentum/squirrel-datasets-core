@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import os
 from functools import partial
+from pathlib import Path
 from typing import Callable, Dict, List, Optional, TYPE_CHECKING
 from squirrel.driver import IterDriver
 from squirrel.iterstream import FilePathGenerator, IterableSource
@@ -100,7 +101,7 @@ class BDD100KDriver(IterDriver):
         else:
             labels_dir = os.path.join(self.url, "labels/sem_seg/masks", split)
             gen = FilePathGenerator(imgs_dir).map(
-                lambda x: dict(image_url=x, label_url=os.path.join(labels_dir, os.path.basename(x)), split=split)
+                lambda x: dict(image_url=x, label_url=os.path.join(labels_dir, Path(x).stem + ".png"), split=split)
             )
 
         it = IterableSource(gen).shuffle(size=shuffle_size, initial=shuffle_initial)
