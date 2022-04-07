@@ -54,5 +54,5 @@ register the dataset into a catalog plugin.
 
 .. _Apache Spark: https://spark.apache.org/docs/latest/
 .. _PySpark: https://spark.apache.org/docs/latest/api/python/
-.. _squirrel.driver: https://squirrel.readthedocs.io/
-.. _squirrel_datasets_core.datasets.imagenet: https://squirrel.readthedocs.io/
+.. _squirrel.driver: https://squirrel-core.readthedocs.io/
+.. _squirrel_datasets_core.datasets.imagenet: https://squirrel-core.readthedocs.io/
