@@ -136,8 +136,9 @@ ipython==8.1.1 \
     --hash=sha256:72dd37233799e619666c9f639a9da83c34013a73e8bbc79a7a6348d93c61fab8
 ipython-genutils==0.2.0 \
     --hash=sha256:72dd37233799e619666c9f639a9da83c34013a73e8bbc79a7a6348d93c61fab8
-ipywidgets==7.6.5 \
-    --hash=sha256:d258f582f915c62ea91023299603be095de19afb5ee271698f88327b9fe9bf43
+ipywidgets==7.7.0 \
+    --hash=sha256:ab4a5596855a88b83761921c768707d65e5847068139bc1729ddfe834703542a \
+    --hash=sha256:e58ff58bc94d481e91ecb6e13a5cb96a87b6b8ade135e055603d0ca24593df38
 jedi==0.18.1 \
     --hash=sha256:637c9635fcf47945ceb91cd7f320234a7be540ded6f3e99a50cb6febdfd1ba8d
 jeepney==0.8.0 \
@@ -150,22 +151,21 @@ jmespath==0.10.0 \
 jsonschema==4.4.0 \
     --hash=sha256:77281a1f71684953ee8b3d488371b162419767973789272434bbc3f29d9c8823
 jupyter==1.0.0 \
+    --hash=sha256:3e1f86076bbb7c8c207829390305a2b1fe836d471ed54be66a3b8c41e7f46cc7 \
     --hash=sha256:5b290f93b98ffbc21c0c7e749f054b3267782166d72fa5e3ed1ed4eaf34a2b78 \
-    --hash=sha256:abfb880fd1561987efaefcb2d2ac75145d2a5d0139b1876d5be806e32f630008 \
-    --hash=sha256:d56f1c57bef42ff31e61b1185d3348a5b2bcde7c9a05523ae4dbe5ee0871797c \
-    --hash=sha256:e630bcb682c0088dda45688ad7c2424d4a825c8acf494cb036ced03ed0424841 \
-    --hash=sha256:f5d9efface8ec62941173ba1cffb2edd0ecddc801c11ae2931e30b50492eb8f7 \
-    --hash=sha256:f875e4d27e202590311d468fa55f90c575f201490bd0c18acabe4e318db4a46d
+    --hash=sha256:d9dc4b3318f310e34c82951ea5d6683f67bed7def4b259fafbfe4f1beb1d8e5f
 jupyter-client==7.1.2 \
     --hash=sha256:d56f1c57bef42ff31e61b1185d3348a5b2bcde7c9a05523ae4dbe5ee0871797c
 jupyter-console==6.4.3 \
+    --hash=sha256:55f32626b0be647a85e3217ddcdb22db69efc79e8b403b9771eb9ecc696019b5 \
     --hash=sha256:e630bcb682c0088dda45688ad7c2424d4a825c8acf494cb036ced03ed0424841
 jupyter-core==4.9.2 \
     --hash=sha256:f875e4d27e202590311d468fa55f90c575f201490bd0c18acabe4e318db4a46d
 jupyterlab-pygments==0.1.2 \
     --hash=sha256:abfb880fd1561987efaefcb2d2ac75145d2a5d0139b1876d5be806e32f630008
-jupyterlab-widgets==1.0.2 \
-    --hash=sha256:f5d9efface8ec62941173ba1cffb2edd0ecddc801c11ae2931e30b50492eb8f7
+jupyterlab-widgets==1.1.0 \
+    --hash=sha256:c2a9bd3789f120f64d73268c066ed3b000c56bc1dda217be5cdc43e7b4ebad3f \
+    --hash=sha256:d5f41bc1713795385f718d44dcba47e1e1473c6289f28a95aa6b2c0782ee372a
 keyring==23.5.0 \
     --hash=sha256:abbda4133107876a948f5ac8da2513fefa47280ca17be48dc7b0c226175d1922 \
     --hash=sha256:b0d28928ac3ec8e42ef4cc227822647a19f1d544f21f96457965dc01cf555261
@@ -212,8 +212,9 @@ networkx==2.7.1 \
     --hash=sha256:011e85d277c89681e8fa661cf5ff0743443445049b0b68789ad55ef09340c6e0
 nodeenv==1.6.0 \
     --hash=sha256:621e6b7076565ddcacd2db0294c0381e01fd28945ab36bcf00f41c5daf63bef7
-notebook==6.4.8 \
-    --hash=sha256:3e702fcc54b8ae597533c3864793b7a1e971dec9e112f67235828d8a798fd654
+notebook==6.4.10 \
+    --hash=sha256:2408a76bc6289283a8eecfca67e298ec83c67db51a4c2e1b713dd180bb39e90e \
+    --hash=sha256:49cead814bff0945fcb2ee07579259418672ac175d3dc3d8102a4b0a656ed4df
 numba==0.55.1 \
     --hash=sha256:6d0042371880fa56ed58be27502b11a08bff0b6335f0ebde82af1a7aef5e1287
 numcodecs==0.9.1 \
@@ -326,9 +327,11 @@ pyyaml==6.0 \
     --hash=sha256:277a0ef2981ca40581a47093e9e2d13b3f1fbbeffae064c1d21bfceba2030287
 pyzmq==22.3.0 \
     --hash=sha256:7dc09198e4073e6015d9a8ea093fc348d4e59de49382476940c3dd9ae156fba8
-qtconsole==5.2.2 \
-    --hash=sha256:4aa6a3e600e0c8cf16853f2378311bc2371f57cb0f22ecfc28994f4cf409ee2e
+qtconsole==5.3.0 \
+    --hash=sha256:75f2ded876444454edcb5a53262149e33b53db3a4a53116b7c3df52830905b0f \
+    --hash=sha256:8e3520fdc75e46abc4cc6cffeca16fa2652754109b8ae839fa28e27d1eba5625
 qtpy==2.0.1 \
+    --hash=sha256:adfd073ffbd2de81dc7aaa0b983499ef5c59c96adcfdcc9dea60d42ca885eb8f \
     --hash=sha256:d93f2c98e97387fcc9d623d509772af5b6c15ab9d8f9f4c5dfbad9a73ad34812
 random-name==0.1.1 \
     --hash=sha256:9905292851b2adceabccafd8998e59acbe3a88e59ac2bd81f8fd9225bd46843b
@@ -435,8 +438,9 @@ webencodings==0.5.1 \
 wheel==0.37.1 \
     --hash=sha256:4bdcd7d840138086126cd09254dc6195fb4fc6f01c050a1d7236f2630db1d22a \
     --hash=sha256:e9a504e793efbca1b8e0e9cb979a249cf4a0a7b5b8c9e8b65a5e39d49529c1c4
-widgetsnbextension==3.5.2 \
-    --hash=sha256:763a9fdc836d141fa080005a886d63f66f73d56dba1fb5961afc239c77708569
+widgetsnbextension==3.6.0 \
+    --hash=sha256:4fd321cad39fdcf8a8e248a657202d42917ada8e8ed5dd3f60f073e0d54ceabd \
+    --hash=sha256:e84a7a9fcb9baf3d57106e184a7389a8f8eb935bf741a5eb9d60aa18cc029a80
 xxhash==3.0.0 \
     --hash=sha256:91fa4df41bda3cbec4084d9696028780b47128c1f8450d1ad9c3e4b6bf8b1f99
 yarl==1.7.2 \
