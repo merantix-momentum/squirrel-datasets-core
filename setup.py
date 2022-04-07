@@ -8,7 +8,7 @@ import re
 import sys
 
 from pathlib import Path
-from setuptools import setup
+from setuptools import find_packages, setup
 
 SOURCE_DIR = "src/squirrel_datasets_core"
 
@@ -129,7 +129,7 @@ if __name__ == "__main__":
         license="Apache 2.0",
         # Needed to make jinja work and not get linting errors in the rendered file
         package_dir={"": "src"},
-        packages=["squirrel_datasets_core"],
+        packages=find_packages(where="src"),
         scripts=SCRIPTS,
         include_package_data=True,
         install_requires=requirements,
