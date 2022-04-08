@@ -17,7 +17,7 @@
 ---
 # What is Squirrel Datasets Core?
 
-`squirrel-datasets-core` is a hub where the user can 1) explore existing datasets registered in the data mesh by other users and 2) preprocess their datasets and share them with other users. As an end user, you will
+`squirrel-datasets-core` is an extension of the [Squirrel](https://github.com/merantix-momentum/squirrel-core) library. `squirrel-datasets-core` is a hub where the user can 1) explore existing datasets registered in the data mesh by other users and 2) preprocess their datasets and share them with other users. As an end user, you will
 be able to load many publically available datasets with ease and speed with the help of `squirrel`, or load and preprocess
 your own datasets with the tools we provide here. 
 
