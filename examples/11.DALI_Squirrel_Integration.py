@@ -1,9 +1,8 @@
 from __future__ import annotations
 
 import time
-import types
 from collections import defaultdict
-from typing import Any, Dict, List
+from typing import Any, Dict, List, Tuple
 
 import cupy
 import numpy as np
@@ -11,21 +10,21 @@ import nvidia.dali.fn as fn
 import nvidia.dali.types as types
 import torch
 from nvidia.dali import pipeline_def
+from nvidia.dali.pipeline import DataNode
 from nvidia.dali.plugin.pytorch import DALIGenericIterator
 from squirrel.catalog import Catalog
 from squirrel.iterstream import Composable
 
-#### INSTALLATION
+# INSTALLATION
 # pip install cupy-cuda110 squirrel-core squirrel-datasets-core
 # pip install --extra-index-url https://developer.download.nvidia.com/compute/redist --upgrade nvidia-dali-cuda110
-#### INSTALLATION END
 
 # some metadata for cifar100
 BATCH_SIZE = 16
 DS_SPLIT = "train"
 DS = "cifar100"
 DS_LEN = 50000
-DS_VERSION = 1 # uses Huggingface version of the dataset
+DS_VERSION = 1  # uses Huggingface version of the dataset
 NUM_OUTPUTS = 3  # img, fine_label, coarse_label
 
 
@@ -98,7 +97,12 @@ source = SquirrelGpuIterator(it, BATCH_SIZE, DS_LEN)
 
 
 @pipeline_def
-def pipeline():
+def pipeline() -> Tuple[DataNode]:
+    """DALI pipeline defining the data processing graph.
+
+    Returns:
+        Tuple[DataNode]: The outputs of the operators.
+    """
     imgs, fine_labels, coarse_labels = fn.external_source(
         source=it,
         num_outputs=NUM_OUTPUTS,
