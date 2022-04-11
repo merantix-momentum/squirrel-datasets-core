@@ -16,11 +16,11 @@ from squirrel.catalog import Catalog
 from squirrel.iterstream import Composable
 
 # INSTALLATION
-# pip install cupy-cuda110 squirrel-core squirrel-datasets-core
+# pip install cupy-cuda113 squirrel-core squirrel-datasets-core
 # pip install --extra-index-url https://developer.download.nvidia.com/compute/redist --upgrade nvidia-dali-cuda110
 
 # some metadata for cifar100
-BATCH_SIZE = 16
+BATCH_SIZE = 256
 DS_SPLIT = "train"
 DS = "cifar100"
 DS_LEN = 50000
@@ -104,7 +104,7 @@ def pipeline() -> Tuple[DataNode]:
         Tuple[DataNode]: The outputs of the operators.
     """
     imgs, fine_labels, coarse_labels = fn.external_source(
-        source=it,
+        source=source,
         num_outputs=NUM_OUTPUTS,
         device="gpu",
         dtype=types.UINT8,
@@ -112,7 +112,7 @@ def pipeline() -> Tuple[DataNode]:
     enhanced = fn.brightness_contrast(imgs, contrast=2)
     return enhanced, fine_labels, coarse_labels
 
-
+print("Building pipeline ...")
 pipe = pipeline(batch_size=BATCH_SIZE, num_threads=2, device_id=0)
 pipe.build()
 
