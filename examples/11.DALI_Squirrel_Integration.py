@@ -15,9 +15,24 @@ from nvidia.dali.plugin.pytorch import DALIGenericIterator
 from squirrel.catalog import Catalog
 from squirrel.iterstream import Composable
 
-# INSTALLATION
-# pip install cupy-cuda113 squirrel-core squirrel-datasets-core
-# pip install --extra-index-url https://developer.download.nvidia.com/compute/redist --upgrade nvidia-dali-cuda110
+"""
+    INSTRUCTIONS: This tutorial showcases how to use Nvidia DALI in combination with squirrel
+        by defining an "external source" for a DALI Pipeline
+        (https://docs.nvidia.com/deeplearning/dali/user-guide/docs/examples/general/data_loading/external_input.html)
+        DALI is a library that is highly optimised for computations on the GPU.
+        With this integration we get very fast image augmentations and other image processing that DALI offers,
+        right out of the box.
+
+    SYSTEM: Code was tested on the following system:
+        - OS: Ubuntu 20.04.3 LTS
+        - NVIDIA-SMI 450.119.04, Driver Version: 450.119.04, CUDA Version: 11.0
+        - One Tesla T4 GPU
+        - squirrel-core==0.12.3, squirrel-datasets-core==0.1.2
+
+    INSTALLATION
+        pip install cupy-cuda113 squirrel-core squirrel-datasets-core
+        pip install --extra-index-url https://developer.download.nvidia.com/compute/redist --upgrade nvidia-dali-cuda110
+    """
 
 # some metadata for cifar100
 BATCH_SIZE = 256
