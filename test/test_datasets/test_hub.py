@@ -25,12 +25,3 @@ def test_hub_driver(tmpdir: Path) -> None:
         assert s["image"].numpy().shape == (32, 32, 3)
         i += 1
     assert i == SAMPLES
-
-
-def test_hub_driver_hosted() -> None:
-    """Test reading from a hosted hub dataset."""
-    driver = HubDriver("hub://activeloop/coco-train")
-    data = driver.get_iter().take(5).collect()
-    assert len(data) == 5
-    for k in ("images", "images_meta", "masks"):
-        assert k in data[0]
