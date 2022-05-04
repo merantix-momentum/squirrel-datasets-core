@@ -112,6 +112,7 @@ def pipeline() -> Tuple[DataNode]:
     enhanced = fn.brightness_contrast(imgs, contrast=2)
     return enhanced, fine_labels, coarse_labels
 
+
 print("Building pipeline ...")
 pipe = pipeline(batch_size=BATCH_SIZE, num_threads=2, device_id=0)
 pipe.build()
