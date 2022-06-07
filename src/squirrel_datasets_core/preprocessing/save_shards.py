@@ -35,7 +35,7 @@ def save_composable_to_shards(
     session: SparkSession,
     out_url: str,
     num_shards: int,
-    num_samples: int = None,
+    num_samples: Optional[int] = None,
     hooks: Optional[List[Callable[[Dict], Dict]]] = None,
     save_catalog: Optional[bool] = False,
     catalog_identifier: Optional[str] = "",
