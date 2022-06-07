@@ -1,11 +1,11 @@
 datasets
-squirrel-core[gcp, zarr]>=0.12.1
-numpy
-pillow
-torchvision
-scipy
-pyspark==3.2.0
-hydra-core>=1.1.0
-hub
 docutils
 fire
+hub
+hydra-core>=1.1.0
+numpy
+pillow
+pyspark==3.2.0
+scipy
+squirrel-core[gcp, zarr]>=0.13.2
+torchvision
