@@ -1,18 +1,25 @@
-keyrings.google-artifactregistry-auth==0.0.3 # TODO remove after public release
-twine
-wheel
+# testing
+flaky # to retry flaky tests
 pytest>=5.3.5
-pytest-timeout
 pytest-cov
+pytest-timeout
 pytest-xdist
+
+# docs
+myst_parser # For importing md into rst files.
 Sphinx<4.0.0
 sphinx-rtd-theme
 sphinx_versions
-myst_parser # For importing md into rst files.
-pyspark>=3.2.0
-flaky # for retry flaky tests
-nbmake
-notebook>=6.4.10
+
+# notebooks
 jupyter
+nbmake
 networkx
+notebook>=6.4.10
+
+# linting
 pre-commit==2.16.0
+
+# deploying
+twine
+wheel

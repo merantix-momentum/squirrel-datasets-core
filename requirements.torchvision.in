@@ -1,2 +1,0 @@
-torchvision
-scipy # required by torch dataset "caltech"

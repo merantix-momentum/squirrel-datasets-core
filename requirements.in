@@ -2,10 +2,8 @@ datasets
 docutils
 fire
 hub
-hydra-core>=1.1.0
 numpy
 pillow
-pyspark==3.2.0
-scipy
+scipy # required by torch dataset "caltech"
 squirrel-core[gcp, zarr]>=0.13.2
 torchvision
