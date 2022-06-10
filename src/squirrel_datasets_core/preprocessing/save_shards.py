@@ -97,7 +97,7 @@ def save_source_to_shards(
     # get raw data
     cat = Catalog.from_plugins()
     d = cat[cfg.identifier][cfg.version]
-    src_it = d.load.get_iter(**iter_kwargs)
+    src_it = d.get_driver().get_iter(**iter_kwargs)
 
     save_composable_to_shards(
         src_it,
