@@ -1,11 +1,10 @@
 datasets
-squirrel-core[gcp, zarr]>=0.12.1
-numpy
-pillow
-torchvision
-scipy
-pyspark==3.2.0
-hydra-core>=1.1.0
-hub
 docutils
 fire
+hub
+numpy
+pillow
+pyspark==3.2.0
+scipy # required by torch dataset "caltech"
+squirrel-core[gcp, zarr]>=0.12.1
+torchvision
