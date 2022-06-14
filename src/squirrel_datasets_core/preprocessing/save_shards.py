@@ -100,12 +100,12 @@ def save_source_to_shards(
     src_it = d.get_driver().get_iter(**iter_kwargs)
 
     save_composable_to_shards(
-        src_it,
-        session,
-        cfg.output_data_url,
-        cfg.num_samples,
-        cfg.num_shards,
-        hooks,
+        src_it=src_it,
+        session=session,
+        out_url=cfg.output_data_url,
+        num_samples=cfg.num_samples,
+        num_shards=cfg.num_shards,
+        hooks=hooks,
         save_catalog=True,
         catalog_identifier=cfg.identifier,
         catalog_version=cfg.version,
