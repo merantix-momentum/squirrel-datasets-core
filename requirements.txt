@@ -212,9 +212,14 @@ nodeenv==1.6.0 \
 notebook==6.4.12 \
     --hash=sha256:6268c9ec9048cff7a45405c990c29ac9ca40b0bc3ec29263d218c5e01f2b4e86 \
     --hash=sha256:8c07a3bb7640e371f8a609bdbb2366a1976c6a2589da8ef917f761a61e3ad8b1
+<<<<<<< HEAD
 numba==0.55.2 \
     --hash=sha256:68bb33eaef1d6155fc1ae4fa6c915b8a42e5052c89a58742254eaad072eab118 \
     --hash=sha256:e428d9e11d9ba592849ccc9f7a009003eb7d30612007e365afe743ce7118c6f4
+=======
+numba==0.55.1 \
+    --hash=sha256:6d0042371880fa56ed58be27502b11a08bff0b6335f0ebde82af1a7aef5e1287
+>>>>>>> Fix dependabot alert
 numcodecs==0.9.1 \
     --hash=sha256:3fdb7b43984d77f7fa7e7fb0776ad552d1bd7c078bc08564b439202235f52cbe
 numpy==1.22.4 \
