@@ -3,14 +3,14 @@ from typing import Iterator
 
 from squirrel_datasets_core.datasets.camvid import CamvidDriver
 
-from mock_utils import create_image_folder, create_random_name
+from mock_utils import create_image_folder, create_random_str
 
 
 def mock_camvid_data(samples: int, tmp_path: Path) -> None:
     """Create a dataset mock for camvid"""
-    image_names_test = [create_random_name() for _ in range(samples)]
-    image_names_train = [create_random_name() for _ in range(samples)]
-    image_names_val = [create_random_name() for _ in range(samples)]
+    image_names_test = [create_random_str() for _ in range(samples)]
+    image_names_train = [create_random_str() for _ in range(samples)]
+    image_names_val = [create_random_str() for _ in range(samples)]
 
     create_image_folder(tmp_path / "test", image_names_test, (480, 360))
     create_image_folder(tmp_path / "testannot", image_names_test, (480, 360))

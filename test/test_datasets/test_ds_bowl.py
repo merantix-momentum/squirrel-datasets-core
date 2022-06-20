@@ -6,15 +6,15 @@ from squirrel_datasets_core.datasets.ds_bowl_2018.driver import (
     DataScienceBowl2018Driver,
 )
 
-from mock_utils import create_image, create_image_folder, create_random_name
+from mock_utils import create_image, create_image_folder, create_random_str
 
 
 def mock_ds_bowl_data(samples: int, tmp_path: Path) -> None:
     """Create a dataset mock for datascience bowl"""
     for _ in range(samples):
-        random_str_train = create_random_name()
-        random_str_test1 = create_random_name()
-        random_str_test2 = create_random_name()
+        random_str_train = create_random_str()
+        random_str_test1 = create_random_str()
+        random_str_test2 = create_random_str()
 
         create_image(tmp_path / "stage1_train" / random_str_train / "images", random_str_train, (256, 256))
         create_image_folder(tmp_path / "stage1_train" / random_str_train / "masks", np.random.randint(1, 5), (256, 256))
