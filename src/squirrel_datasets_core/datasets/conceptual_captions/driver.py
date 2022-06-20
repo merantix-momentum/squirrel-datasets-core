@@ -4,14 +4,16 @@ import logging
 import sys
 import typing as t
 import urllib
+from typing import TYPE_CHECKING
 from urllib.request import Request
 
 import numpy as np
 import requests
+
 from squirrel.driver import IterDriver
 from squirrel.iterstream.source import IterableSource
 
-if t.TYPE_CHECKING:
+if TYPE_CHECKING:
     from squirrel.catalog import Catalog
     from squirrel.iterstream import Composable
 
@@ -58,7 +60,7 @@ class CC12MDriver(IterDriver):
             url: location of the image
         """
         req = Request(url, headers={"User-Agent": "Mozilla/5.0"})
-        resp = urllib.request.urlopen(req)
+        resp = urllib.request.urlopen(req, timeout=1)
         image = np.asarray(bytearray(resp.read()), dtype="uint8")
         return image
 
