@@ -1,13 +1,14 @@
+import gzip
 import random
 import string
 from pathlib import Path
-from typing import List, Tuple, Union
+from typing import Dict, List, Tuple, Union
 
 import numpy as np
 from PIL import Image
 
 
-def create_random_name(length: int = 10) -> str:
+def create_random_str(length: int = 10) -> str:
     """Generate a random file name"""
     return "".join(random.choices(string.ascii_uppercase + string.digits, k=length))
 
@@ -24,7 +25,21 @@ def create_image(folder: Path, image_name: str, resolution: Tuple, format: str =
 def create_image_folder(folder: Path, image_names: Union[int, List], resolution: Tuple, format: str = "png") -> None:
     """Create an example directory filled with random images"""
     if isinstance(image_names, int):
-        image_names = [create_random_name() for _ in range(image_names)]
+        image_names = [create_random_str() for _ in range(image_names)]
 
     for name in image_names:
         create_image(folder, name, resolution, format)
+
+
+def create_random_dict(attributes: List[str]) -> Dict:
+    """Create random blob of json"""
+    result_dict = {}
+    for a in attributes:
+        result_dict[a] = create_random_str()
+    return result_dict
+
+
+def save_gzip(file: Path, content: str) -> None:
+    """Save string as gz"""
+    with gzip.open(file, "wb") as f:
+        f.write(content.encode())
