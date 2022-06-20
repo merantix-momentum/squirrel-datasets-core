@@ -1,4 +1,5 @@
 import gzip
+import lzma as xz
 import random
 import string
 from pathlib import Path
@@ -43,3 +44,9 @@ def save_gzip(file: Path, content: str) -> None:
     """Save string as gz"""
     with gzip.open(file, "wb") as f:
         f.write(content.encode())
+
+
+def save_xz(file: Path, content: str) -> None:
+    """Save string as gz"""
+    with open(file, "wb") as f:
+        f.write(xz.compress(content.encode()))
