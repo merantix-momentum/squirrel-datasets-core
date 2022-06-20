@@ -5,11 +5,12 @@ from __future__ import annotations
 import os
 from functools import partial
 from pathlib import Path
-from typing import Callable, Dict, List, Optional, TYPE_CHECKING
-from squirrel.driver import IterDriver
-from squirrel.iterstream import FilePathGenerator, IterableSource
+from typing import TYPE_CHECKING, Callable, Dict, List, Optional
 
 from squirrel_datasets_core.io.io import load_image
+
+from squirrel.driver import IterDriver
+from squirrel.iterstream import FilePathGenerator, IterableSource
 
 if TYPE_CHECKING:
     from squirrel.iterstream import Composable
@@ -60,8 +61,9 @@ class BDD100KDriver(IterDriver):
         Image and label are stored under the keys "image" and "label", respectively.
         """
         if parse_image:
+            print(sample)
             sample["image"] = load_image(sample["image_url"])
-        if parse_label:
+        if parse_label and "label_url" in sample:
             sample["label"] = load_image(sample["label_url"])
         return sample
 
@@ -97,7 +99,7 @@ class BDD100KDriver(IterDriver):
         imgs_dir = os.path.join(self.url, "images/10k", split)
 
         if split == "test":
-            gen = FilePathGenerator(imgs_dir)
+            gen = FilePathGenerator(imgs_dir).map(lambda x: dict(image_url=x, split=split))
         else:
             labels_dir = os.path.join(self.url, "labels/sem_seg/masks", split)
             gen = FilePathGenerator(imgs_dir).map(
