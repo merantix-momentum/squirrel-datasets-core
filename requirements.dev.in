@@ -16,4 +16,8 @@ notebook>=6.4.12
 jupyter
 networkx
 pre-commit==2.16.0
+<<<<<<< HEAD
 pip-tools
+=======
+mock>=4.0.3
+>>>>>>> Add mock to requirements
