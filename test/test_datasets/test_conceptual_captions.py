@@ -1,9 +1,11 @@
+import io
 import urllib
 from typing import Any, Iterable
 
 import numpy as np
 import requests
 from mock import patch
+from PIL import Image
 from squirrel_datasets_core.datasets.conceptual_captions.driver import CC12MDriver
 
 from mock_utils import create_random_str
@@ -18,7 +20,11 @@ class MockImageResponse:
         if MockImageResponse.calls == 1:
             raise urllib.error.HTTPError(None, None, None, None, None)
 
-        return np.random.randint(0, 255, size=(10, 10, 3)).astype(np.uint8).tobytes()
+        rand_img = np.random.randint(0, 255, size=(10, 10, 3)).astype(np.uint8)
+        img_byte_arr = io.BytesIO()
+        Image.fromarray(rand_img).save(img_byte_arr, format="PNG")
+        img_byte_arr.seek(0)
+        return img_byte_arr.read()
 
 
 class MockTextResponse:

@@ -9,6 +9,7 @@ from urllib.request import Request
 
 import numpy as np
 import requests
+from PIL import Image
 
 from squirrel.driver import IterDriver
 from squirrel.iterstream.source import IterableSource
@@ -61,8 +62,7 @@ class CC12MDriver(IterDriver):
         """
         req = Request(url, headers={"User-Agent": "Mozilla/5.0"})
         resp = urllib.request.urlopen(req, timeout=1)
-        image = np.asarray(bytearray(resp.read()), dtype="uint8")
-        return image
+        return np.array(Image.open(resp))
 
     @staticmethod
     def _map_fn(record: t.Dict[str, str]) -> t.Dict[str, t.Union[str, np.ndarray]]:
