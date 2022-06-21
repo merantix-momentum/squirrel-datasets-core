@@ -19,7 +19,12 @@ def create_image(folder: Path, image_name: str, resolution: Tuple, format: str =
     folder.mkdir(exist_ok=True, parents=True)
 
     img = np.random.rand(resolution[0], resolution[1], 3) * 255
-    img = Image.fromarray(img.astype("uint8")).convert("RGBA")
+
+    if format == "png":
+        img = Image.fromarray(img.astype("uint8")).convert("RGBA")
+    else:
+        img = Image.fromarray(img.astype("uint8")).convert("RGB")
+
     img.save(folder / f"{image_name}.{format}")
 
 
