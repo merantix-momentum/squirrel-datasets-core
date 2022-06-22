@@ -2,7 +2,7 @@ datasets
 docutils
 fire
 hub
-numpy
+numpy>=1.21
 pillow
 pyspark==3.2.0
 scipy # required by torch dataset "caltech"
