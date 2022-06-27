@@ -1,10 +1,10 @@
 import io
 import urllib
 from typing import Any, Iterable
+from unittest.mock import patch
 
 import numpy as np
 import requests
-from mock import patch
 from PIL import Image
 from squirrel_datasets_core.datasets.conceptual_captions.driver import CC12MDriver
 
