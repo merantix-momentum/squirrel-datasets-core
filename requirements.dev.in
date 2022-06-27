@@ -12,7 +12,8 @@ myst_parser # For importing md into rst files.
 pyspark>=3.2.0
 flaky # for retry flaky tests
 nbmake
-notebook>=6.4.10
+notebook>=6.4.12
 jupyter
 networkx
 pre-commit==2.16.0
+pip-tools
