@@ -16,4 +16,4 @@ notebook>=6.4.12
 jupyter
 networkx
 pre-commit==2.16.0
-mock>=4.0.3
+pip-tools
