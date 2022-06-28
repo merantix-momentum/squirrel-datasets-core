@@ -88,7 +88,7 @@ else:
 
 # generate extras based on requirements files
 extras_require = dict()
-for a_extra in ["dev", "preprocessing", "torchvision", "hub", "spark"]:
+for a_extra in ["dev", "preprocessing", "torchvision", "hub"]:
     req_file = f"requirements.{a_extra}.in"
     if os.path.exists(req_file):
         with open(req_file) as fh:
