@@ -6,8 +6,8 @@ import itertools
 import os
 import re
 import sys
-
 from pathlib import Path
+
 from setuptools import find_packages, setup
 
 SOURCE_DIR = "src/squirrel_datasets_core"
@@ -88,7 +88,7 @@ else:
 
 # generate extras based on requirements files
 extras_require = dict()
-for a_extra in ["dev", "preprocessing", "torchvision", "hub"]:
+for a_extra in ["dev", "preprocessing", "torchvision", "hub", "spark"]:
     req_file = f"requirements.{a_extra}.in"
     if os.path.exists(req_file):
         with open(req_file) as fh:
