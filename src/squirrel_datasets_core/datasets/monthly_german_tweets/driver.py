@@ -1,6 +1,6 @@
 """
 This driver can be used to parse the Zenodo Monthly German Tweet dataset obtainable at
-    https://zenodo.org/record/3633935#.YcMujb1Khqt
+    https://zenodo.org/record/3633935
 """
 from __future__ import annotations
 

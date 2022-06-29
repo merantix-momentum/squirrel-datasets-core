@@ -28,7 +28,7 @@
 Dataset Description
 ###################
 
-* Homepage: `Monthly German Tweets <https://zenodo.org/record/3633935#.Yh48C1vMJk2>`_
+* Homepage: `Monthly German Tweets <https://zenodo.org/record/3633935>`_
 * Licenses: `Attribution 4.0 International <https://creativecommons.org/licenses/by/4.0/legalcode>`_
 
 Dataset Summary
@@ -39,7 +39,7 @@ Monthly records for Tweets in German.
 Download and prepare data
 *************************
 
-Download the data directly from `zenodo <https://zenodo.org/record/3633935#.Yh48e1vMJk3>`_, extract one or multiple zip files of several months. 
+Download the data directly from `zenodo <https://zenodo.org/record/3633935>`_, extract one or multiple zip files of several months. 
 Replace {PATH_TO_DATA} below with the location of a folder containing all gz files for the selected months. Use the following code to load the data:
 
 .. code-block:: python
