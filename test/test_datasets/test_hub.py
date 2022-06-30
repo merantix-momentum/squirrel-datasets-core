@@ -1,13 +1,12 @@
 from pathlib import Path
 
 import numpy as np
-
 from squirrel_datasets_core.driver.hub import HubDriver
 
 
-def test_hub_driver(tmpdir: Path) -> None:
+def test_hub_driver(tmp_path: Path) -> None:
     """Test writing and reading using hub driver."""
-    driver = HubDriver(str(tmpdir))
+    driver = HubDriver(str(tmp_path))
 
     # create dummy hub dataset
     SAMPLES = 10

@@ -1,13 +1,14 @@
 from __future__ import annotations
 
 import typing as t
+from typing import TYPE_CHECKING
 
 import fsspec
+
 from squirrel.driver import MapDriver
 from squirrel.iterstream import Composable
-from squirrel.iterstream.source import IterableSource
 
-if t.TYPE_CHECKING:
+if TYPE_CHECKING:
     from squirrel.catalog import Catalog
 
 
@@ -31,14 +32,6 @@ class CC100Driver(MapDriver):
         self._source = None
 
         self.compression = compression
-
-    @property
-    def _file_path_generator(self) -> IterableSource:
-        """Initializes the source for the CC100Driver to iterate over."""
-        if self._source is None:
-            self._init_source(self._lang)
-
-        return IterableSource(self._source)
 
     def _init_source(self, lang: t.List[str]) -> None:
         """

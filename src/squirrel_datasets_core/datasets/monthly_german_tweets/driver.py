@@ -5,7 +5,8 @@ This driver can be used to parse the Zenodo Monthly German Tweet dataset obtaina
 from __future__ import annotations
 
 import json
-from typing import Iterable, Iterator, List, TYPE_CHECKING
+from pathlib import Path
+from typing import TYPE_CHECKING, Iterable, Iterator, List, Union
 
 from squirrel.driver import MapDriver
 from squirrel.fsspec.fs import get_fs_from_url
@@ -18,13 +19,13 @@ if TYPE_CHECKING:
 class MonthlyGermanTweetsDriver(MapDriver):
     name = "raw_monthly_german_tweets"
 
-    def __init__(self, folder: str, **kwargs) -> None:
+    def __init__(self, folder: Union(str, Path), **kwargs) -> None:
         """Init the MonthlyGermanTweets driver.
 
         Args:
             folder: Path to the unzipped data dump
         """
-        self.folder = folder
+        self.folder = str(folder)
         self.compression = "gzip"
         self.parse_error_count = 0
 
@@ -36,7 +37,8 @@ class MonthlyGermanTweetsDriver(MapDriver):
             json_bytes = list(f)
 
         dec = "".join([b.decode("utf-8").strip() for b in json_bytes])[1:-1]
-        samples = ["{" + elem for elem in dec.split(",{") if not elem.startswith("{")]
+        samples = [(elem if elem.startswith("{") else "{" + elem) for elem in dec.split(",{")]
+
         return samples
 
     def get(self, url: str) -> Iterator:
@@ -56,7 +58,7 @@ class MonthlyGermanTweetsDriver(MapDriver):
         dataset.
 
         Args:
-            flatten (bool): Whether to flatten the returned iterable. Defaults to False.
+            flatten (bool): Whether to flatten the returned iterable. Defaults to True.
             **kwargs: Other keyword arguments passed to :py:meth:`MapDriver.get_iter`.
         """
 

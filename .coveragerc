@@ -11,3 +11,6 @@ exclude_lines =
 
     # skip lines that are only "pass"
     ^\s*pass\s*$
+
+    # skip type checking
+    if TYPE_CHECKING:
