@@ -82,8 +82,8 @@ def test_conceptual_captions_driver() -> None:
     driver = CC12MDriver("test")
     assert len(driver.get_iter().collect()) == MockTextResponse.N_SAMPLES - MockImageResponse.fail_n_times
 
-    sample = driver.get_iter().take(1).collect()[0]
-    assert sample["caption"] is not None
-    assert sample["url"] is not None
-    assert not sample["error"]
-    assert sample["image"].shape == SHAPE
+    for sample in driver.get_iter():
+        assert sample["caption"] is not None
+        assert sample["url"] is not None
+        assert not sample["error"]
+        assert sample["image"].shape == SHAPE

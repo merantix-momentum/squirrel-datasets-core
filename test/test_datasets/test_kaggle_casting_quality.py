@@ -30,10 +30,10 @@ def test_casting_quality_driver(tmp_path: Path) -> None:
     assert len(driver.get_iter("train").collect()) == N * 2
     assert len(driver.get_iter("test").collect()) == N * 2
 
-    sample = driver.get_iter("train").take(1).collect()[0]
-    assert sample["url"] is not None
-    assert sample["label"] is not None
-    assert sample["image"].shape == (300, 300, 4)
+    for sample in driver.get_iter("train"):
+        assert sample["url"] is not None
+        assert sample["label"] is not None
+        assert sample["image"].shape == (300, 300, 4)
 
     def _test_hook(it: Iterator) -> Iterator:
         for element in it:

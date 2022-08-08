@@ -34,10 +34,10 @@ def test_ds_bowl_driver(tmp_path: Path) -> None:
     assert len(driver.get_iter("stage1_test").collect()) == N
     assert len(driver.get_iter("stage2_test_final").collect()) == N
 
-    sample = driver.get_iter("stage1_train").take(1).collect()[0]
-    assert sample["split"] == "stage1_train"
-    assert sample["image"].shape == (256, 256, 4)
-    assert sample["masks"][0].shape == (256, 256, 4)
+    for sample in driver.get_iter("stage1_train"):
+        assert sample["split"] == "stage1_train"
+        assert sample["image"].shape == (256, 256, 4)
+        assert sample["masks"][0].shape == (256, 256, 4)
 
     def _test_hook(it: Iterator) -> Iterator:
         for element in it:
