@@ -6,7 +6,7 @@ from squirrel_datasets_core.datasets.cc100 import CC100Driver
 from mock_utils import create_random_str, save_xz
 
 
-def mock_cc100_data(samples: int, tmp_path: Path) -> None:
+def mock_cc100_data(samples: int, tmp_path: Path) -> Path:
     """Create a dataset mock for cc100"""
     record = ""
 
