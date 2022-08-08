@@ -15,7 +15,7 @@ class MockImageResponse:
     calls = 0
 
     def read(self) -> bytes:
-        """Mock reading file"""
+        """Mock reading file. This method will be called for each url returned by MockTextResponse."""
         MockImageResponse.calls += 1
         if MockImageResponse.calls == 1:
             raise urllib.error.HTTPError(None, None, None, None, None)
