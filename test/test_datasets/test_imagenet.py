@@ -164,8 +164,7 @@ def test_raw_imagenet_driver_test_set(use_hook: bool, parse: bool, imagenet_gene
         .collect()
     )
 
-    if use_hook:
-        assert len(samples) == 1
+    assert len(samples) == 1 if use_hook else N_SAMPLES_TO_TAKE
 
     if parse:
         for sample in samples:
