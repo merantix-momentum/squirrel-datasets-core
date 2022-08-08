@@ -64,7 +64,7 @@ def mock_location_info(image_names: List, cls_names: List, tmp_path: Path) -> st
     with open(txt_loc, "w") as f:
         for i, name in enumerate(image_names):
             cls = cls_names[i % len(cls_names)]
-            f.write(f"{name},{cls} 1 161 383 268\n")
+            f.write(f"{name},{cls} 1 161 218 183\n")
 
     return txt_loc
 

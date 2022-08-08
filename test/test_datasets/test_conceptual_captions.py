@@ -10,17 +10,21 @@ from squirrel_datasets_core.datasets.conceptual_captions.driver import CC12MDriv
 
 from mock_utils import create_random_str
 
+SHAPE = (10, 10, 3)
+
 
 class MockImageResponse:
     calls = 0
+    fail_n_times = 1
 
     def read(self) -> bytes:
         """Mock reading file. This method will be called for each url returned by MockTextResponse."""
         MockImageResponse.calls += 1
-        if MockImageResponse.calls == 1:
+        if MockImageResponse.calls > 1 and MockImageResponse.calls < MockImageResponse.fail_n_times + 2:
+            # test broken URL
             raise urllib.error.HTTPError(None, None, None, None, None)
 
-        rand_img = np.random.randint(0, 255, size=(10, 10, 3)).astype(np.uint8)
+        rand_img = np.random.randint(0, 255, size=SHAPE).astype(np.uint8)
         img_byte_arr = io.BytesIO()
         Image.fromarray(rand_img).save(img_byte_arr, format="PNG")
         img_byte_arr.seek(0)
@@ -59,17 +63,16 @@ def requests_get_mock(*args, **kwargs) -> MockTextResponse:
 @patch("requests.get", requests_get_mock)
 def test_read_from_mocks() -> None:
     """Test all the mocks themselves"""
-    req = urllib.Request("test.png", headers={"User-Agent": "Mozilla/5.0"})
+    req = urllib.request.Request("http://test.png", headers={"User-Agent": "Mozilla/5.0"})
     resp = urllib.request.urlopen(req)
-    image = np.asarray(bytearray(resp.read()), dtype="uint8")
+    image = np.array(Image.open(resp))
 
-    assert image.shape == (10, 10, 3)
+    assert image.shape == SHAPE
 
     req = requests.get("some_url", stream=True)
 
     for line in req.iter_lines():
-        url, caption = line.decode("utf-8").split("\t")
-        yield {"caption": caption, "url": url}
+        line.decode("utf-8").split("\t")
 
 
 @patch("urllib.request.urlopen", open_url_mock)
@@ -77,10 +80,10 @@ def test_read_from_mocks() -> None:
 def test_conceptual_captions_driver() -> None:
     """Unit test for conceptual captions driver with mocked data"""
     driver = CC12MDriver("test")
-    assert len(driver.get_iter().collect()) == MockTextResponse.N_SAMPLES - 1
+    assert len(driver.get_iter().collect()) == MockTextResponse.N_SAMPLES - MockImageResponse.fail_n_times
 
     sample = driver.get_iter().take(1).collect()[0]
     assert sample["caption"] is not None
     assert sample["url"] is not None
     assert not sample["error"]
-    assert sample["image"].shape == (10, 10, 3)
+    assert sample["image"].shape == SHAPE

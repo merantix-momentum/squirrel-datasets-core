@@ -52,6 +52,11 @@ class C4DatasetDriver(MapDriver):
         """
         self._source = []
         for iso in lang:
+            if iso not in self._subsets:
+                raise RuntimeError(f"The language {iso} does not exist")
+            if split not in self._subsets[iso]:
+                raise RuntimeError(f"The split {split} does not exist")
+
             self._source += self._subsets[iso][split]
 
     def select(self, lang: t.Optional[t.Union[str, t.List[str]]] = None, split: str = "train") -> C4DatasetDriver:
@@ -66,6 +71,8 @@ class C4DatasetDriver(MapDriver):
                 lang = [lang]
 
             self._lang = lang
+        else:
+            self._lang = list(self._subsets.keys())
 
         self._split = split
         self._init_source(self._lang, self._split)

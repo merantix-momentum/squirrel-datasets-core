@@ -54,14 +54,14 @@ class CC100Driver(MapDriver):
                 lang = [lang]
 
             self._lang = lang
+        else:
+            self._lang = list(self._subsets.keys())
 
+        self._init_source(self._lang)
         return self
 
     def keys(self, **kwargs) -> t.List[str]:
         """Returns the list of urls for the archive file of the selected language(s)."""
-        if self._source is None:
-            self._init_source(self._lang)
-
         return self._source
 
     @staticmethod

@@ -7,13 +7,13 @@ from functools import partial
 from pathlib import Path
 from typing import TYPE_CHECKING, Callable, Dict, List, Optional
 
-from squirrel_datasets_core.io.io import load_image
-
 from squirrel.driver import IterDriver
 from squirrel.iterstream import FilePathGenerator, IterableSource
 
 if TYPE_CHECKING:
     from squirrel.iterstream import Composable
+
+from squirrel_datasets_core.io.io import load_image
 
 
 class BDD100KDriver(IterDriver):
@@ -61,7 +61,6 @@ class BDD100KDriver(IterDriver):
         Image and label are stored under the keys "image" and "label", respectively.
         """
         if parse_image:
-            print(sample)
             sample["image"] = load_image(sample["image_url"])
         if parse_label and "label_url" in sample:
             sample["label"] = load_image(sample["label_url"])
