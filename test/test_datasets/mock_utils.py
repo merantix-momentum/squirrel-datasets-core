@@ -39,10 +39,7 @@ def create_image_folder(folder: Path, image_names: Union[int, List], resolution:
 
 def create_random_dict(attributes: List[str]) -> Dict:
     """Create random blob of json"""
-    result_dict = {}
-    for a in attributes:
-        result_dict[a] = create_random_str()
-    return result_dict
+    return {a: create_random_str() for a in attributes}
 
 
 def save_gzip(file: Path, content: str) -> None:
