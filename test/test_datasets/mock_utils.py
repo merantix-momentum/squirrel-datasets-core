@@ -49,6 +49,6 @@ def save_gzip(file: Path, content: str) -> None:
 
 
 def save_xz(file: Path, content: str) -> None:
-    """Save string as gz"""
+    """Save string as gz with xz compression"""
     with open(file, "wb") as f:
         f.write(xz.compress(content.encode()))
