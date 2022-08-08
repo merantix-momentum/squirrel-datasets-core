@@ -33,7 +33,8 @@ class MockTextResponse:
     def iter_lines(self) -> Iterable:
         """Mock iteratively fetching lines from web document"""
         for _ in range(MockTextResponse.N_SAMPLES):
-            yield f"https://{create_random_str()}\t{create_random_str()}".encode("utf-8")
+            url, caption = f"https://{create_random_str()}", create_random_str()
+            yield f"{url}\t{caption}".encode("utf-8")
 
     def __enter__(self, *args, **kwargs) -> Any:
         """Mock using block"""
