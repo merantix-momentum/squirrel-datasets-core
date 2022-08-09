@@ -8,7 +8,7 @@ from squirrel_datasets_core.datasets.allenai_c4 import C4DatasetDriver
 from mock_utils import create_random_dict, save_gzip
 
 
-def mock_allenai_data(tmp_path: Path) -> Path:
+def mock_allenai_data(tmp_path: Path) -> Iterator[str, str, int, Path]:
     """Create a dataset mock for allenai"""
     for language, split, samples in [
         ("af", "train", 64),
