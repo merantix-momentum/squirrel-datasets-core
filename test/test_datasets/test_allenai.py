@@ -1,6 +1,7 @@
 import json
 from collections import defaultdict
 from pathlib import Path
+from typing import Iterator
 
 import pytest
 from squirrel_datasets_core.datasets.allenai_c4 import C4DatasetDriver
@@ -49,5 +50,5 @@ def test_allenai(tmp_path: Path) -> None:
     assert len(driver.select().get_iter().collect()) == sum(
         samples for _, split, samples, _ in mock_data if split == "train"
     )
-    with pytest.raises(RuntimeError):
+    with pytest.raises(ValueError):
         driver.select("en").get_iter().collect()
