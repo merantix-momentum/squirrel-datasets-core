@@ -47,7 +47,7 @@ def test_allenai(tmp_path: Path) -> None:
             assert language in driver.available_languages
 
     assert len(driver.select().get_iter().collect()) == sum(
-        [samples for _, split, samples, _ in mock_data if split == "train"]
+        samples for _, split, samples, _ in mock_data if split == "train"
     )
     with pytest.raises(RuntimeError):
         driver.select("en").get_iter().collect()
