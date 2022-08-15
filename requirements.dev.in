@@ -4,7 +4,7 @@ pytest>=5.3.5
 pytest-timeout
 pytest-cov
 pytest-xdist
-Sphinx<4.0.0
+Sphinx
 sphinx-rtd-theme
 sphinx_versions
 myst_parser # For importing md into rst files.
