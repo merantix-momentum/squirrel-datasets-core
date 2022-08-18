@@ -9,7 +9,7 @@ TAKE = 10
 
 
 @pytest.mark.skip(reason="Dataset is on public storage.")
-def test_mnist(plugin_catalog: Catalog) -> None:
+def test_mnist_public_data(plugin_catalog: Catalog) -> None:
     """Test loading MNIST hosted by Hugging Face"""
     driver: HuggingfaceDriver = plugin_catalog["mnist"].get_driver()
     data = driver.get_iter(split="train").take(TAKE).collect()
@@ -19,7 +19,7 @@ def test_mnist(plugin_catalog: Catalog) -> None:
 @pytest.mark.parametrize("cifar_set", ["cifar10", "cifar100"])
 @pytest.mark.parametrize("split", ["train", "test"])
 @pytest.mark.skip(reason="Dataset is on public storage.")
-def test_cifar(plugin_catalog: Catalog, cifar_set: str, split: str) -> None:
+def test_cifar_public_data(plugin_catalog: Catalog, cifar_set: str, split: str) -> None:
     """Test loading CIFAR10 hosted by Hugging Face."""
     # version==1 is huggingface
     driver: HuggingfaceDriver = plugin_catalog[(cifar_set, 1)].get_driver()
@@ -32,7 +32,7 @@ def test_cifar(plugin_catalog: Catalog, cifar_set: str, split: str) -> None:
 )
 @pytest.mark.parametrize("split", ["train", "test"])
 @pytest.mark.skip(reason="Dataset is on public storage.")
-def test_wikitext(plugin_catalog: Catalog, catalog_key: Tuple[str, int], split: str) -> None:
+def test_wikitext_public_data(plugin_catalog: Catalog, catalog_key: Tuple[str, int], split: str) -> None:
     """Test loading wikitext datasets hosted by Hugging Face."""
     driver: HuggingfaceDriver = plugin_catalog[catalog_key].get_driver()
     data = driver.get_iter(split=split).take(TAKE).collect()

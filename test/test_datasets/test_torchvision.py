@@ -5,7 +5,7 @@ TAKE = 1
 
 
 @pytest.mark.skip(reason="Dataset is on public storage.")
-def test_caltech(plugin_catalog: Catalog) -> None:
+def test_caltech_public_data(plugin_catalog: Catalog) -> None:
     """Test loading Caltech101 via torchvision."""
     try:
         plugin_catalog["caltech"].get_driver().get_iter().take(TAKE).join()
@@ -19,7 +19,7 @@ def test_caltech(plugin_catalog: Catalog) -> None:
 @pytest.mark.parametrize("cifar_set", ["cifar10", "cifar100"])
 @pytest.mark.parametrize("split", ["train", "test"])
 @pytest.mark.skip(reason="Dataset is on public storage.")
-def test_cifar(plugin_catalog: Catalog, cifar_set: str, split: str) -> None:
+def test_cifar_public_data(plugin_catalog: Catalog, cifar_set: str, split: str) -> None:
     """Test loading CIFAR-10 via torchvision."""
     # version==2 is torchvision
     version = 2
@@ -29,6 +29,6 @@ def test_cifar(plugin_catalog: Catalog, cifar_set: str, split: str) -> None:
 
 @pytest.mark.parametrize("split", ["byclass", "bymerge", "balanced", "letters", "digits", "mnist"])
 @pytest.mark.skip(reason="Dataset is on public storage.")
-def test_emnist(plugin_catalog: Catalog, split: str) -> None:
+def test_emnist_public_data(plugin_catalog: Catalog, split: str) -> None:
     """Test loading EMNIST via torchvision."""
     plugin_catalog["emnist"].get_driver().get_iter(split=split).take(1).join()
