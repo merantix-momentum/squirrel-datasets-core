@@ -4,8 +4,6 @@ from squirrel.catalog import Catalog
 TAKE = 1
 
 
-@pytest.mark.flaky(max_runs=5, min_passes=1)
-@pytest.mark.serial
 @pytest.mark.skip(reason="Dataset is on public storage.")
 def test_caltech(plugin_catalog: Catalog) -> None:
     """Test loading Caltech101 via torchvision."""
@@ -18,8 +16,6 @@ def test_caltech(plugin_catalog: Catalog) -> None:
             raise e
 
 
-@pytest.mark.flaky(max_runs=4, min_passes=1)
-@pytest.mark.serial
 @pytest.mark.parametrize("cifar_set", ["cifar10", "cifar100"])
 @pytest.mark.parametrize("split", ["train", "test"])
 @pytest.mark.skip(reason="Dataset is on public storage.")
@@ -31,7 +27,6 @@ def test_cifar(plugin_catalog: Catalog, cifar_set: str, split: str) -> None:
     plugin_catalog[cifar_set][version].get_driver().get_iter(train=(split == "train")).take(TAKE).join()
 
 
-@pytest.mark.serial  # reading diff splits from raw emnist somehow race each other, run in sequence instead.
 @pytest.mark.parametrize("split", ["byclass", "bymerge", "balanced", "letters", "digits", "mnist"])
 @pytest.mark.skip(reason="Dataset is on public storage.")
 def test_emnist(plugin_catalog: Catalog, split: str) -> None:
