@@ -4,11 +4,13 @@ from typing import Any, Iterable
 from unittest.mock import patch
 
 import numpy as np
+import pytest
 import requests
 from PIL import Image
-from squirrel_datasets_core.datasets.conceptual_captions.driver import CC12MDriver
+from squirrel.catalog import Catalog
 
 from mock_utils import create_random_str
+from squirrel_datasets_core.datasets.conceptual_captions.driver import CC12MDriver
 
 SHAPE = (10, 10, 3)
 
@@ -87,3 +89,14 @@ def test_conceptual_captions_driver() -> None:
         assert sample["url"] is not None
         assert not sample["error"]
         assert sample["image"].shape == SHAPE
+
+
+@pytest.mark.skip(reason="Dataset is on public storage.")
+def test_conceptual_captions_public_data(plugin_catalog: Catalog) -> None:
+    """Test the conceptual captions loader"""
+    driver: CC12MDriver = plugin_catalog["conceptual-captions-12m"].get_driver()
+    TAKE = 10
+    it = driver.get_iter(shuffle_key_buffer=1, shuffle_item_buffer=1, prefetch_buffer=1).take(TAKE)
+    data = it.collect()
+    assert sorted(data[0].keys()) == sorted(["url", "error", "image", "caption"])
+    assert len(data) == TAKE
