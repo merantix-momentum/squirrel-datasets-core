@@ -6,4 +6,3 @@ numpy>=1.22
 pillow
 scipy # required by torch dataset "caltech"
 squirrel-core[gcp, zarr]>=0.14.2
-torchvision
