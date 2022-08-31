@@ -16,4 +16,3 @@ jupyter
 networkx
 pre-commit==2.16.0
 pip-tools
-torchvision

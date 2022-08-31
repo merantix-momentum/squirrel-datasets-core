@@ -11,9 +11,9 @@ from squirrel.framework.plugins.hookimpl import hookimpl
 def squirrel_drivers() -> List[Type[Driver]]:
     """Custom drivers added by this package."""
     import squirrel_datasets_core.datasets as ds
+    from squirrel_datasets_core.driver.hub import HubDriver
     from squirrel_datasets_core.driver.huggingface import HuggingfaceDriver
     from squirrel_datasets_core.driver.torchvision import TorchvisionDriver
-    from squirrel_datasets_core.driver.hub import HubDriver
 
     drivers = [TorchvisionDriver, HuggingfaceDriver, HubDriver]
     for m in pkgutil.iter_modules(ds.__path__):
@@ -22,6 +22,8 @@ def squirrel_drivers() -> List[Type[Driver]]:
             drivers += d
         except AttributeError:
             pass
+        except ImportError as e:
+            print(f"Failed to import module {m.name} with error: {e}")
 
     return drivers
 
