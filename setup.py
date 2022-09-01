@@ -121,7 +121,6 @@ if __name__ == "__main__":
     setup(
         name="squirrel_datasets_core",
         version=version,
-        python_requires=">=3.8.0",
         description="Squirrel public datasets collection",
         long_description=long_description,
         long_description_content_type="text/markdown",
