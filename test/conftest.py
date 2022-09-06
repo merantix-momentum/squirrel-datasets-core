@@ -9,9 +9,16 @@ https://pytest.org/en/6.2.x/writing_plugins.html#conftest-py-local-per-directory
 """
 
 import pytest
+from squirrel.catalog import Catalog
 
 
 @pytest.fixture()
 def unit_test_fixture() -> str:
     """Fixture that is only used in the unit test scope."""
     return "unit test string"
+
+
+@pytest.fixture()
+def plugin_catalog() -> Catalog:
+    """Create catalog from plugins."""
+    return Catalog.from_plugins()

@@ -4,9 +4,11 @@ from pathlib import Path
 from typing import Iterator, Tuple
 
 import pytest
-from squirrel_datasets_core.datasets.allenai_c4 import C4DatasetDriver
+from squirrel.catalog import Catalog
 
 from mock_utils import create_random_dict, save_gzip
+from squirrel_datasets_core.datasets.allenai_c4 import C4DatasetDriver
+from squirrel_datasets_core.datasets.allenai_c4.constants import C4_MULTILINGUAL_CONFIG
 
 
 def mock_allenai_data(tmp_path: Path) -> Iterator[Tuple[str, str, int, Path]]:
@@ -52,3 +54,15 @@ def test_allenai(tmp_path: Path) -> None:
     )
     with pytest.raises(ValueError):
         driver.select("en").get_iter().collect()
+
+
+@pytest.mark.skip(reason="Dataset is on public storage.")
+def test_allenai_public_data(plugin_catalog: Catalog) -> None:
+    """Test loading a single language from the C4 corpus."""
+    driver: C4DatasetDriver = plugin_catalog["c4"].get_driver()
+    assert sorted(driver.available_languages) == sorted(C4_MULTILINGUAL_CONFIG.keys())
+
+    TAKE = 10
+    it = driver.select("af", "valid").get_iter(shuffle_key_buffer=1, shuffle_item_buffer=1, prefetch_buffer=1)
+    data = it.take(TAKE).tqdm().collect()
+    assert len(data) == TAKE

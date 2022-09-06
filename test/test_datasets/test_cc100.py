@@ -2,9 +2,11 @@ from pathlib import Path
 
 import numpy as np
 import pytest
-from squirrel_datasets_core.datasets.cc100 import CC100Driver
+from squirrel.catalog import Catalog
 
 from mock_utils import create_random_str, save_xz
+from squirrel_datasets_core.datasets.cc100 import CC100Driver
+from squirrel_datasets_core.datasets.cc100.constants import CC_100_CONFIG
 
 
 def mock_cc100_data(samples: int, tmp_path: Path) -> Path:
@@ -47,3 +49,15 @@ def test_cc100(tmp_path: Path) -> None:
 
     with pytest.raises(KeyError):
         driver.select("en").get_iter().collect()
+
+
+@pytest.mark.skip(reason="Dataset is on public storage.")
+def test_cc100_public_data(plugin_catalog: Catalog) -> None:
+    """Test loading a single language from the CC100 corpus."""
+    driver: CC100Driver = plugin_catalog["cc100"].get_driver()
+    assert sorted(driver.available_languages) == sorted(CC_100_CONFIG.keys())
+
+    TAKE = 10
+    it = driver.select("as").get_iter(shuffle_key_buffer=1, shuffle_item_buffer=1, prefetch_buffer=1)
+    data = it.take(TAKE).tqdm().collect()
+    assert len(data) == TAKE

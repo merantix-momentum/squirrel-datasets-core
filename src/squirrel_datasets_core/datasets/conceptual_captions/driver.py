@@ -9,8 +9,7 @@ from urllib.request import Request
 
 import numpy as np
 import requests
-from PIL import Image
-
+from PIL import Image, UnidentifiedImageError
 from squirrel.driver import IterDriver
 from squirrel.iterstream.source import IterableSource
 
@@ -78,6 +77,9 @@ class CC12MDriver(IterDriver):
             record["image"] = CC12MDriver._download_image(url)
         except (urllib.error.HTTPError, urllib.error.URLError) as e:
             logger.info(f"Cannot access url {url} due to Error {e}")
+            record["error"] = True
+        except UnidentifiedImageError as e:
+            logger.info(f"Cannot open image at {url} due to Error {e}")
             record["error"] = True
 
         return record
