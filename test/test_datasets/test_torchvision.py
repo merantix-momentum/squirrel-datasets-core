@@ -31,4 +31,4 @@ def test_cifar_public_data(plugin_catalog: Catalog, cifar_set: str, split: str) 
 @pytest.mark.skip(reason="Dataset is on public storage.")
 def test_emnist_public_data(plugin_catalog: Catalog, split: str) -> None:
     """Test loading EMNIST via torchvision."""
-    plugin_catalog["emnist"].get_driver().get_iter(split=split).take(1).join()
+    plugin_catalog["emnist"].get_driver().get_iter(split=split).take(TAKE).join()
