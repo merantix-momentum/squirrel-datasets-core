@@ -71,4 +71,4 @@ repos:
     rev: 0.6.0
     hooks:
       - id: nbstripout
-      - stages: [push]
+        stages: [push]
