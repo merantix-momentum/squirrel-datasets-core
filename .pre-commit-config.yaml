@@ -42,8 +42,8 @@ repos:
     hooks:
       - id: flake8-nb # Lint jupyter notebooks
         additional_dependencies: ["--index-url=https://pypi.org/simple/"]
-  - repo: https://github.com/kynan/nbstripout
+  - repo: https://github.com/pzdkn/mirror-nbstripout
     rev: 0.6.0
     hooks:
       - id: nbstripout
-        additional_dependencies: ["--index-url=https://pypi.org/simple/"]
+        additional_dependencies: [ "--index-url=https://pypi.org/simple/" ]
