@@ -11,28 +11,32 @@ from squirrel.iterstream import IterableSource
 if TYPE_CHECKING:
     from squirrel.iterstream import Composable
 
-URL = "https://competitions.codalab.org/my/datasets/download/09ada795-4052-4fac-957a-87f02229b201"
+URLS = {
+    'helena': "https://competitions.codalab.org/my/datasets/download/09ada795-4052-4fac-957a-87f02229b201",
+    'jannis': "http://www.causality.inf.ethz.ch/AutoML/jannis.zip"
+}
 
 
-class Helena(IterDriver):
+class AutoML(IterDriver):
 
-    name = "helena"
+    name = "automl"
 
-    def __init__(self, split:str = 'train', **kwargs) -> None:
+    def __init__(self, dataset_name: str, split:str = 'train', **kwargs) -> None:
         """Initialze the Helena dataset driver."""
         super().__init__(**kwargs)
-        self.zipfile = zipfile.ZipFile(io.BytesIO(requests.get(URL).content))
+        self.dataset_name=dataset_name
         self.split = split
+        self.zipfile = zipfile.ZipFile(io.BytesIO(requests.get(URLS[self.dataset_name]).content))
         if self.split == 'train':
             self._data = self._get_train_split()
         else:
-            self._data = self._get_test_or_valid_split(self.split)
+            self._data = self._get_test_or_valid_split()
     
     def _get_train_split(self):
         """Create train split"""
         records = []
-        for feat, lbl in zip(self.zipfile.read('helena_train.data').decode('utf-8').split('\n'),
-                             self.zipfile.read('helena_train.solution').decode('utf-8').split('\n')):
+        for feat, lbl in zip(self.zipfile.read(f'{self.dataset_name}_train.data').decode('utf-8').split('\n'),
+                             self.zipfile.read(f'{self.dataset_name}_train.solution').decode('utf-8').split('\n')):
             try:
                 records.append({
                     'features': [float(x) for x in feat.strip().split(" ")],
@@ -42,16 +46,13 @@ class Helena(IterDriver):
                 pass
         return records
 
-    def _get_test_or_valid_split(self, split: str):
+    def _get_test_or_valid_split(self):
         """
         Create test or validation split
-        
-        Args:
-            split (str): can be `valid` or `test`.
         """
 
         records = []
-        for feat in self.zipfile.read(f'helena_{split}.data').decode('utf-8').split('\n'):
+        for feat in self.zipfile.read(f'{self.dataset_name}_{self.split}.data').decode('utf-8').split('\n'):
             try:
                 records.append({
                     'features': [float(x) for x in feat.strip().split(" ")],

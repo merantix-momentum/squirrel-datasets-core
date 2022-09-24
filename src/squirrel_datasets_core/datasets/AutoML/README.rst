@@ -2,7 +2,7 @@
     :header-rows: 1
 
     *   - pretty_name
-        - Helena
+        - Automated Deep Learning
     *   - annotations_creators
         -
     *   - language_creators
@@ -36,7 +36,7 @@ Dataset Description
 Dataset Summary
 ***************
 
-Tabular data containing float elements with 27 features for 100 classes.
+Tabular data containing float elements.
 
 Download and prepare data
 *************************
@@ -49,13 +49,19 @@ Use the following code to load the data:
     from squirrel.catalog import Catalog
     plugin_catalog = Catalog.from_plugins()
     it = plugin_catalog["helena"].get_driver(split="train").get_iter()
+
+.. code-block:: python
+    from squirrel.catalog import Catalog
+    plugin_catalog = Catalog.from_plugins()
+    it = plugin_catalog["jannis"].get_driver(split="train").get_iter()
+
 Dataset Structure
 ###################
 
 Data Instances
 **************
 
-A sample from the training set is provided below:
+A sample from the Helena training set is provided below:
 
 .. code-block::
     {
@@ -105,4 +111,7 @@ Data Splits
 |Helena train|65,196|
 |Helena test |18,628|
 |Helena valid| 9,314|
+|Jannis train|83,733|
+|Jannis test | 9,851|
+|Jannis valid| 4,926|
 +------------+------+
