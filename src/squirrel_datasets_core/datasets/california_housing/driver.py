@@ -23,8 +23,9 @@ _FEATURE_NAMES = [
     "population",
     "households",
     "medianIncome",
-    "medianHouseValue"
+    "medianHouseValue",
 ]
+
 
 class CaliforniaHousing(IterDriver):
 
@@ -32,12 +33,13 @@ class CaliforniaHousing(IterDriver):
 
     def __init__(self, **kwargs) -> None:
         super().__init__(**kwargs)
-        self._data = (pd.read_csv(os.path.join(META_DATA["url"], META_DATA["filename"]),
-                         compression="gzip", index_col=None, header=None, names=_FEATURE_NAMES)
-                         .to_dict(orient='records'))
+        self._data = pd.read_csv(
+            os.path.join(META_DATA["url"], META_DATA["filename"]),
+            compression="gzip",
+            index_col=None,
+            header=None,
+            names=_FEATURE_NAMES,
+        ).to_dict(orient="records")
 
-    def get_iter(
-        self,
-        shuffle_item_buffer: int = 100,
-         **kwargs) -> Composable:
+    def get_iter(self, shuffle_item_buffer: int = 100, **kwargs) -> Composable:
         return IterableSource(self._data).shuffle(size=shuffle_item_buffer)
