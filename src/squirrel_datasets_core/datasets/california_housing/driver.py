@@ -32,6 +32,7 @@ class CaliforniaHousing(IterDriver):
     name = "california_housing"
 
     def __init__(self, **kwargs) -> None:
+        """Initialze the California housing dataset driver."""
         super().__init__(**kwargs)
         self._data = pd.read_csv(
             os.path.join(META_DATA["url"], META_DATA["filename"]),
@@ -42,4 +43,11 @@ class CaliforniaHousing(IterDriver):
         ).to_dict(orient="records")
 
     def get_iter(self, shuffle_item_buffer: int = 100, **kwargs) -> Composable:
+        """
+        Get an iterator over samples.
+
+        Args:
+            shuffle_item_buffer (int): the size of the buffer used to shuffle samples after being fetched. Please note
+                the memory footprint of samples
+        """
         return IterableSource(self._data).shuffle(size=shuffle_item_buffer)

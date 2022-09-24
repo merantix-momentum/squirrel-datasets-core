@@ -10,7 +10,8 @@ SOURCES = [
         Source(
             driver_name="california_housing",
             metadata={
-                "src": "https://github.com/scikit-learn/scikit-learn/blob/36958fb24/sklearn/datasets/_california_housing.py"
+                "src": "https://github.com/scikit-learn/scikit-learn/blob/"
+                + "36958fb24/sklearn/datasets/_california_housing.py"
             },
         ),
     )
