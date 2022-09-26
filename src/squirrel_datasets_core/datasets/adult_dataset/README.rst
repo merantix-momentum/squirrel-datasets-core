@@ -45,7 +45,7 @@ Use the following code to load the data:
 .. code-block:: python
     from squirrel.catalog import Catalog
     plugin_catalog = Catalog.from_plugins()
-    it = plugin_catalog["adult_income"].get_driver().get_iter()
+    it = plugin_catalog["adult_income"].get_driver().get_iter(split="train")
 Dataset Structure
 ###################
 
