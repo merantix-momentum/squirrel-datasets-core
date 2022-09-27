@@ -48,12 +48,12 @@ Use the following code to load the data:
 .. code-block:: python
     from squirrel.catalog import Catalog
     plugin_catalog = Catalog.from_plugins()
-    it = plugin_catalog["helena"].get_driver(split="train").get_iter()
+    it = plugin_catalog["helena"].get_driver().get_iter(split="train")
 
 .. code-block:: python
     from squirrel.catalog import Catalog
     plugin_catalog = Catalog.from_plugins()
-    it = plugin_catalog["jannis"].get_driver(split="train").get_iter()
+    it = plugin_catalog["jannis"].get_driver().get_iter(split="train")
 
 Dataset Structure
 ###################

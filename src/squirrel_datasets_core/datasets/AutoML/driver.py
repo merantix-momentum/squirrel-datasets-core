@@ -1,9 +1,11 @@
 from __future__ import annotations
-from typing import TYPE_CHECKING, List, Dict, Any
+
 import io
 import zipfile
-import requests
+from typing import TYPE_CHECKING, Any, Dict, List
+
 import numpy as np
+import requests
 
 from squirrel.driver import IterDriver
 from squirrel.iterstream import IterableSource
@@ -21,16 +23,11 @@ class AutoML(IterDriver):
 
     name = "automl"
 
-    def __init__(self, dataset_name: str, split: str = "train", **kwargs) -> None:
-        """Initialze the Helena dataset driver."""
+    def __init__(self, dataset_name: str, **kwargs) -> None:
+        """Initialize the Helena dataset driver."""
         super().__init__(**kwargs)
         self.dataset_name = dataset_name
-        self.split = split
         self.zipfile = zipfile.ZipFile(io.BytesIO(requests.get(URLS[self.dataset_name]).content))
-        if self.split == "train":
-            self._data = self._get_train_split()
-        else:
-            self._data = self._get_test_or_valid_split()
 
     def _get_train_split(self) -> List[Dict[str, Any]]:
         """Create train split"""
@@ -50,22 +47,27 @@ class AutoML(IterDriver):
                 pass
         return records
 
-    def _get_test_or_valid_split(self) -> List[Dict[str, Any]]:
+    def _get_test_or_valid_split(self, split: str = "train") -> List[Dict[str, Any]]:
         """Create test or validation split"""
         records = []
-        for feat in self.zipfile.read(f"{self.dataset_name}_{self.split}.data").decode("utf-8").split("\n"):
+        for feat in self.zipfile.read(f"{self.dataset_name}_{split}.data").decode("utf-8").split("\n"):
             try:
                 records.append({"features": [float(x) for x in feat.strip().split(" ")], "class": None})
             except ValueError:
                 pass
         return records
 
-    def get_iter(self, shuffle_item_buffer: int = 100, **kwargs) -> Composable:
+    def get_iter(self, split: str = "train", shuffle_item_buffer: int = 100, **kwargs) -> Composable:
         """
         Get an iterator over samples.
 
         Args:
+            split (str): can be "train" or "test"
             shuffle_item_buffer (int): the size of the buffer used to shuffle samples after being fetched.
                 Please note the memory footprint of samples
         """
-        return IterableSource(self._data).shuffle(size=shuffle_item_buffer)
+        assert split in ["train", "test"]
+        if split == "train":
+            return IterableSource(self._get_train_split()).shuffle(size=shuffle_item_buffer)
+        else:
+            return IterableSource(self._get_test_or_valid_split(split)).shuffle(size=shuffle_item_buffer)

@@ -1,5 +1,6 @@
-from squirrel.catalog import Source, CatalogKey
-from squirrel_datasets_core.datasets.helena.driver import AutoML
+from squirrel_datasets_core.datasets.AutoML.driver import AutoML
+
+from squirrel.catalog import CatalogKey, Source
 
 __all__ = ["SOURCES", "DRIVERS"]
 
