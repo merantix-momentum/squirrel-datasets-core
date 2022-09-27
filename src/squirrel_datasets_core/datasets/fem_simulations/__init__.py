@@ -123,4 +123,64 @@ SOURCES = [
             metadata={"publisher": "Merantix Momentum", "paper url": "https://arxiv.org/abs/2206.14092"},
         ),
     ),
+    (
+        CatalogKey("GnnBvpElTrainNoMa", 1),
+        Source(
+            driver_name="messagepack",
+            driver_kwargs={
+                "url": "gs://squirrel-core-public-data/gnn_bvp_solver/ElasticityFixedLineGenerator/norm_train_no_ma"
+            },
+            metadata={"publisher": "Merantix Momentum", "paper url": "https://arxiv.org/abs/2206.14092"},
+        ),
+    ),
+    (
+        CatalogKey("GnnBvpElTrainMa", 1),
+        Source(
+            driver_name="messagepack",
+            driver_kwargs={
+                "url": "gs://squirrel-core-public-data/gnn_bvp_solver/ElasticityFixedLineGenerator/norm_train_ma"
+            },
+            metadata={"publisher": "Merantix Momentum", "paper url": "https://arxiv.org/abs/2206.14092"},
+        ),
+    ),
+    (
+        CatalogKey("GnnBvpElValNoMa", 1),
+        Source(
+            driver_name="messagepack",
+            driver_kwargs={
+                "url": "gs://squirrel-core-public-data/gnn_bvp_solver/ElasticityFixedLineGenerator/norm_val_no_ma"
+            },
+            metadata={"publisher": "Merantix Momentum", "paper url": "https://arxiv.org/abs/2206.14092"},
+        ),
+    ),
+    (
+        CatalogKey("GnnBvpElValMa", 1),
+        Source(
+            driver_name="messagepack",
+            driver_kwargs={
+                "url": "gs://squirrel-core-public-data/gnn_bvp_solver/ElasticityFixedLineGenerator/norm_val_ma"
+            },
+            metadata={"publisher": "Merantix Momentum", "paper url": "https://arxiv.org/abs/2206.14092"},
+        ),
+    ),
+    (
+        CatalogKey("GnnBvpElTestShape", 1),
+        Source(
+            driver_name="messagepack",
+            driver_kwargs={
+                "url": "gs://squirrel-core-public-data/gnn_bvp_solver/ElasticityFixedLineGenerator/norm_test_shape"
+            },
+            metadata={"publisher": "Merantix Momentum", "paper url": "https://arxiv.org/abs/2206.14092"},
+        ),
+    ),
+    (
+        CatalogKey("GnnBvpElTestSup", 1),
+        Source(
+            driver_name="messagepack",
+            driver_kwargs={
+                "url": "gs://squirrel-core-public-data/gnn_bvp_solver/ElasticityFixedLineGenerator/norm_test_sup"
+            },
+            metadata={"publisher": "Merantix Momentum", "paper url": "https://arxiv.org/abs/2206.14092"},
+        ),
+    ),
 ]
