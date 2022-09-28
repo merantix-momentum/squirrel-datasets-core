@@ -10,6 +10,7 @@ SOURCES = [
         Source(
             driver_name="california_housing",
             metadata={
+                "uri": "https://ndownloader.figshare.com/files/5976036/cal_housing.tgz"
                 "src": "https://github.com/scikit-learn/scikit-learn/blob/"
                 + "36958fb24/sklearn/datasets/_california_housing.py"
             },
