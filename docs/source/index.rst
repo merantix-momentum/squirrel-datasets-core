@@ -23,6 +23,7 @@ Available Datasets
    dataset_links/monthly_german_tweets
    dataset_links/bdd100k
    dataset_links/adult
+   dataset_links/automl
 
 Contribute
 ------------------
