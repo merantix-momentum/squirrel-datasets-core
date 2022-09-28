@@ -28,7 +28,7 @@ Dataset Description
 ###################
 
 * Paper: `Sparse spatial autoregressions <https://www.sciencedirect.com/science/article/abs/pii/S016771529600140X>`_
-* Licenses: `CC0`_
+* Licenses: `CC0 <https://creativecommons.org/publicdomain/zero/1.0/>`_
  
 Dataset Summary
 ***************
