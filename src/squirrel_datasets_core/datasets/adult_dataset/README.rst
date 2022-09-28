@@ -28,7 +28,7 @@ Dataset Description
 ###################
 
 * Paper: `Scaling Up the Accuracy of Naive-Bayes Classifiers: a Decision-Tree Hybrid <http://robotics.stanford.edu/~ronnyk/nbtree.pdf>`_
-* Licenses: `Unknown`_
+* Licenses: Unknown
 
 Dataset Summary
 ***************

@@ -26,11 +26,19 @@ For preprocessing, we currently support Spark as the main tool to carry out the 
 If you have any questions or would like to contribute, join our [Slack community](https://join.slack.com/t/squirrel-core/shared_invite/zt-14k6sk6sw-zQPHfqAI8Xq5WYd~UqgNFw)!
 
 # Installation
-Install `squirrel-core` and `squirrel-datasets-core` with pip:
-
+Install `squirrel-core` and `squirrel-datasets-core` with pip. Note that you can install with different dependencies based on your requirements for squirrel drivers.
+For using the torchvision driver call:
 ```shell
-pip install squirrel-core[all]
-pip install squirrel-datasets-core[all]
+pip install "squirrel-core[torch]"
+pip install "squirrel-datasets-core[torchvision]"
+```
+For using the hub driver call:
+```shell
+pip install "squirrel-datasets-core[hub]"
+```
+For using the spark preprocessing pipelines call:
+```shell
+pip install "squirrel-datasets-core[preprocessing]"
 ```
 # Documentation
 
@@ -38,6 +46,11 @@ Visit our documentation on [Readthedocs](https://squirrel-datasets-core.readthed
 
 # Contributing
 `squirrel-datasets-core` is open source and community contributions are welcome!
+# Contributing
+`squirrel-datasets-core` is open source and community contributions are welcome!
+
+Check out the [contribution guide](https://squirrel-datasets-core.readthedocs.io/en/latest/contribute.html) to learn how to get involved. 
+Please follow our recommendations for best practices and code style. 
 
 # The humans behind Squirrel
 We are [Merantix Momentum](https://merantix-momentum.com/), a team of ~30 machine learning engineers, developing machine learning solutions for industry and research. Each project comes with its own challenges, data types and learnings, but one issue we always faced was scalable data loading, transforming and sharing. We were looking for a solution that would allow us to load the data in a fast and cost-efficient way, while keeping the flexibility to work with any possible dataset and integrate with any API. That's why we build Squirrel – and we hope you'll find it as useful as we do! By the way, [we are hiring](https://merantix-momentum.com/about#jobs)!

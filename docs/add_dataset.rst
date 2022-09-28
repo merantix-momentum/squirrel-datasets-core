@@ -1,4 +1,4 @@
-Contribute to Squirrel Datasets
+Add a dataset
 ===============================
 
 Squirrel-datasets supports you with two tasks:
