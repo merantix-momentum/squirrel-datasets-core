@@ -31,7 +31,7 @@ Dataset Description
 * Relevant Links:
     - `Data <https://automl.chalearn.org/data>`_
     - `Challenge webpage <https://automl.chalearn.org/home>`_
-* Licenses: `unknown`_
+* Licenses: Unknown
 
 Dataset Summary
 ***************
