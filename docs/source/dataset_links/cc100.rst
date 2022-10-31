@@ -1,3 +1,0 @@
-CC100
-=====================================
-.. include:: ../../../src/squirrel_datasets_core/datasets/cc100/README.rst
