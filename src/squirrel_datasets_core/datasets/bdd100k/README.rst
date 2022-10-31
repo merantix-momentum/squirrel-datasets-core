@@ -1,6 +1,8 @@
 .. list-table::
     :header-rows: 1
-
+    
+    *   - Attribute
+        - Value
     *   - pretty_name
         - BDD100K Dataset
     *   - annotations_creators

@@ -7,29 +7,16 @@ Visit the official `Squirrel Documentation <https://squirrel-core.readthedocs.io
 
 Find out more about Merantix Momentum on our `Website <https://merantix-momentum.com/>`_.
 
-Available Datasets
-------------------
+.. toctree::
+   :maxdepth: 1
+   :caption: Available Datasets:
+   :glob:
+
+   dataset_links/*
 
 .. toctree::
    :maxdepth: 1
-
-   dataset_links/allenai_c4
-   dataset_links/camvid
-   dataset_links/cc100
-   dataset_links/conceptual_captions
-   dataset_links/datascience_bowl
-   dataset_links/kaggle_casting_quality
-   dataset_links/imagenet
-   dataset_links/monthly_german_tweets
-   dataset_links/bdd100k
-   dataset_links/adult
-   dataset_links/automl
-
-Contribute
-------------------
-
-.. toctree::
-   :maxdepth: 1
+   :caption: Contribute:
 
    code_of_conduct
    add_dataset

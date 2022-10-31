@@ -1,6 +1,8 @@
 .. list-table::
     :header-rows: 1
-
+    
+    *   - Attribute
+        - Value
     *   - pretty_name
         - Adult income
     *   - annotations_creators
@@ -28,7 +30,7 @@ Dataset Description
 ###################
 
 * Paper: `Scaling Up the Accuracy of Naive-Bayes Classifiers: a Decision-Tree Hybrid <http://robotics.stanford.edu/~ronnyk/nbtree.pdf>`_
-* Licenses: `Unknown`_
+* Licenses: Unknown
 
 Dataset Summary
 ***************
@@ -43,9 +45,11 @@ Make sure that squirrel-dataset-core is installed via pip, which will register t
 Use the following code to load the data:
 
 .. code-block:: python
+
     from squirrel.catalog import Catalog
     plugin_catalog = Catalog.from_plugins()
     it = plugin_catalog["adult_income"].get_driver().get_iter(split="train")
+
 Dataset Structure
 ###################
 
@@ -55,6 +59,7 @@ Data Instances
 A sample from the training set is provided below:
 
 .. code-block::
+
     {
         'age': 1,
         'workclass': 'Private',
@@ -72,6 +77,7 @@ A sample from the training set is provided below:
         'native-country': 'United-States',
         'class': '>50K'
     }
+
 Dataset Schema
 **************
 
