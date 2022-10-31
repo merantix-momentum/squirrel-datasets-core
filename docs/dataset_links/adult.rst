@@ -1,3 +1,3 @@
-Dataset Card - Adult Dataset
+Adult
 =====================================
 .. include:: ../../src/squirrel_datasets_core/datasets/adult_dataset/README.rst

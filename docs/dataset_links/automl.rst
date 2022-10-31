@@ -1,3 +1,3 @@
-Dataset Card - AutoML
+AutoML
 =====================================
 .. include:: ../../src/squirrel_datasets_core/datasets/AutoML/README.rst
