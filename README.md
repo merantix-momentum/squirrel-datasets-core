@@ -40,6 +40,12 @@ For using the spark preprocessing pipelines call:
 ```shell
 pip install "squirrel-datasets-core[preprocessing]"
 ```
+If you would like to get Squirrel's full functionality, install squirrel-core and squirrel-datasets-core with all their dependencies.
+```shell
+pip install "squirrel-core[all]"
+pip install "squirrel-datasets-core[all]"
+```
+
 # Documentation
 
 Visit our documentation on [Readthedocs](https://squirrel-datasets-core.readthedocs.io).

@@ -69,7 +69,6 @@ autoapi_member_order = "groupwise"
 autoapi_options = [
     "members",
     "undoc-members",
-    # "private-members",
     "show-inheritance",
     "show-module-summary",
     "special-members",

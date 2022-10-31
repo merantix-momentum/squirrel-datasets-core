@@ -1,4 +1,4 @@
-Add a dataset
+Add a Dataset
 ===============================
 
 Squirrel-datasets supports you with two tasks:
