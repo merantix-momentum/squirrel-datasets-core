@@ -9,7 +9,7 @@ Find out more about Merantix Momentum on our `Website <https://merantix-momentum
 
 .. toctree::
    :maxdepth: 1
-   :caption: Available Datasets:
+   :caption: Dataset Cards:
    :glob:
 
    dataset_links/*
@@ -18,6 +18,6 @@ Find out more about Merantix Momentum on our `Website <https://merantix-momentum
    :maxdepth: 1
    :caption: Contribute:
 
-   code_of_conduct
    add_dataset
+   code_of_conduct
    contribute
