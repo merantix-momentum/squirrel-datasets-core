@@ -32,9 +32,9 @@ For using the torchvision driver call:
 pip install "squirrel-core[torch]"
 pip install "squirrel-datasets-core[torchvision]"
 ```
-For using the hub driver call:
+For using the deeplake driver call:
 ```shell
-pip install "squirrel-datasets-core[hub]"
+pip install "squirrel-datasets-core[deeplake]"
 ```
 For using the spark preprocessing pipelines call:
 ```shell
@@ -46,9 +46,9 @@ pip install "squirrel-core[all]"
 pip install "squirrel-datasets-core[all]"
 ```
 
-## Huggingface, Hub and Torchvision Integration
+## Huggingface, Deeplake, Hub and Torchvision Integration
 
-A great feature of squirrel-datasets-core is that you can easily load data from common databases such as Huggingface, Activeloop Hub and Torchvision with one line of code. And you get to enjoy all of Squirrel’s benefits for free! Check out the [documentation](https://squirrel-datasets-core.readthedocs.io/en/latest/driver_integration.html) on how to interface with these libraries.
+A great feature of squirrel-datasets-core is that you can easily load data from common databases such as Huggingface, Activeloop Deeplake, Hub and Torchvision with one line of code. And you get to enjoy all of Squirrel’s benefits for free! Check out the [documentation](https://squirrel-datasets-core.readthedocs.io/en/latest/driver_integration.html) on how to interface with these libraries.
 ```python
 from squirrel_datasets_core.driver import HuggingfaceDriver
 

@@ -27,7 +27,7 @@ def hf_pre_proc(item: t.Dict[str, t.Any]) -> t.Dict[str, torch.Tensor]:
 
 
 train_driver = (
-    HuggingfaceDriver("cifar100")
+    HuggingfaceDriver("cifar100")  # can be any of above drivers, just adapt hf_pre_proc
     .get_iter("train")
     .split_by_worker_pytorch()
     .map(hf_pre_proc)
@@ -38,6 +38,6 @@ train_loader = DataLoader(train_driver, batch_size=None, num_workers=2)
 
 # your train loop
 for batch in train_loader:
-    print("hi")
     assert type(batch["img"]) == torch.Tensor
     assert len(batch["img"]) == BATCH_SIZE
+    # forward pass ...

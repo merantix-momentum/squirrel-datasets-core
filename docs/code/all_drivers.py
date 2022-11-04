@@ -1,6 +1,7 @@
 from squirrel_datasets_core.driver import (
-    HubDriver,
     HuggingfaceDriver,
+    DeeplakeDriver,
+    HubDriver,
     TorchvisionDriver,
 )
 
@@ -12,11 +13,19 @@ HuggingfaceDriver("cifar100").get_iter("train").take(1).map(print).join()
 #     "coarse_label": 11,
 # }
 
-HubDriver("hub://activeloop/cifar100-train").get_iter().take(1).map(print).join()
+DeeplakeDriver("hub://activeloop/cifar100-train").get_iter().take(1).map(print).join()
 # prints
 # {
 #     "images": Tensor(key="images", index=Index([0])),
 #     "labels": Tensor(key="labels", index=Index([0])),
+#     "coarse_labels": Tensor(key="coarse_labels", index=Index([0])),
+# }
+
+HubDriver("hub://activeloop/cifar100-train").get_iter().take(1).map(print).join()
+# {
+#     "images": Tensor(key="images", index=Index([0])),
+#     "labels": Tensor(key="labels", index=Index([0])),
+#     "coarse_labels": Tensor(key="coarse_labels", index=Index([0])),
 # }
 
 TorchvisionDriver("cifar100", download=True).get_iter().take(1).map(print).join()
