@@ -1,6 +1,8 @@
 .. list-table::
     :header-rows: 1
-
+    
+    *   - Attribute
+        - Value
     *   - pretty_name
         - CC 100
     *   - annotations_creators

@@ -9,30 +9,14 @@ Find out more about Merantix Momentum on our `Website <https://merantix-momentum
 
 .. toctree::
    :maxdepth: 1
-   :caption: Dataset Cards:
+   :caption: Dataset Cards
+   :glob:
 
-   dataset_links/adult
-   dataset_links/allenai_c4
-   dataset_links/automl
-   dataset_links/california_housing
-   dataset_links/camvid
-   dataset_links/cc100
-   dataset_links/conceptual_captions
-   dataset_links/datascience_bowl
-   dataset_links/kaggle_casting_quality
-   dataset_links/imagenet
-   dataset_links/monthly_german_tweets
-   dataset_links/bdd100k
-   dataset_links/adult
-   dataset_links/automl
-   dataset_links/fem_simulations
-
-Contribute
-------------------
+   dataset_links/*
 
 .. toctree::
    :maxdepth: 1
-   :caption: Developer Guide:
+   :caption: Contribute
 
    add_dataset
    code_of_conduct

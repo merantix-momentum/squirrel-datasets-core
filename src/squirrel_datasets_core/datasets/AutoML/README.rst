@@ -1,6 +1,8 @@
 .. list-table::
     :header-rows: 1
-
+    
+    *   - Attribute
+        - Value
     *   - pretty_name
         - Automated Deep Learning
     *   - annotations_creators
@@ -46,11 +48,13 @@ Make sure that squirrel-dataset-core is installed via pip, which will register t
 Use the following code to load the data:
 
 .. code-block:: python
+
     from squirrel.catalog import Catalog
     plugin_catalog = Catalog.from_plugins()
     it = plugin_catalog["helena"].get_driver().get_iter(split="train")
 
 .. code-block:: python
+
     from squirrel.catalog import Catalog
     plugin_catalog = Catalog.from_plugins()
     it = plugin_catalog["jannis"].get_driver().get_iter(split="train")
@@ -64,6 +68,7 @@ Data Instances
 A sample from the Helena training set is provided below:
 
 .. code-block::
+
     {
         'features': [
             0.200384,
@@ -95,7 +100,7 @@ A sample from the Helena training set is provided below:
             0.394317
         ],
         'class': 9
-}
+    }
 
 Dataset Schema
 **************
@@ -105,13 +110,20 @@ All features are continuous floats. There are in total 100 classes to predict. T
 Data Splits
 ***********
 
-+------------+------+
-|   name     |      |
-+------------+------+
-|Helena train|65,196|
-|Helena test |18,628|
-|Helena valid| 9,314|
-|Jannis train|83,733|
-|Jannis test | 9,851|
-|Jannis valid| 4,926|
-+------------+------+
+.. list-table::
+    :header-rows: 1
+
+    *   - name
+        - samples
+    *   - Helena train
+        - 65,196
+    *   - Helena test
+        - 18,628
+    *   - Helena valid
+        - 9,314
+    *   - Jannis train
+        - 83,733
+    *   - Jannis test
+        - 9,851
+    *   - Jannis valid
+        - 4,926

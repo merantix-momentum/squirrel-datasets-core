@@ -1,6 +1,8 @@
 .. list-table::
     :header-rows: 1
-
+    
+    *   - Attribute
+        - Value
     *   - pretty_name
         - 2018 Datascience Bowl
     *   - annotations_creators
