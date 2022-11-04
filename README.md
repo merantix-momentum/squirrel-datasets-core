@@ -1,6 +1,6 @@
 <div align="center">
   
-# <img src="https://raw.githubusercontent.com/merantix-momentum/squirrel-datasets-core/main/docs/source/_static/logo.png" width="150px"> Squirrel Datasets Core
+# <img src="docs/_static/logo.png" width="150px"> Squirrel Datasets Core
   
 [![Python](https://img.shields.io/pypi/pyversions/squirrel-datasets-core.svg?style=plastic)](https://badge.fury.io/py/squirrel-datasets-core)
 [![PyPI](https://badge.fury.io/py/squirrel-datasets-core.svg)](https://badge.fury.io/py/squirrel-datasets-core)
@@ -15,17 +15,17 @@
 </div>
 
 ---
-# What is Squirrel Datasets Core?
+## What is Squirrel Datasets Core?
 
-`squirrel-datasets-core` is an extension of the [Squirrel](https://github.com/merantix-momentum/squirrel-core) library. `squirrel-datasets-core` is a hub where the user can 1) explore existing datasets registered in the data mesh by other users and 2) preprocess their datasets and share them with other users. As an end user, you will
-be able to load many publically available datasets with ease and speed with the help of `squirrel`, or load and preprocess
-your own datasets with the tools we provide here. 
+`squirrel-datasets-core` is an extension of the [Squirrel](https://github.com/merantix-momentum/squirrel-core) library. `squirrel-datasets-core` is a hub where the user can 
+1) explore existing public datasets registered in the data mesh and load them with the ease and speed of `squirrel`
+2) preprocess their datasets and share them with other users. 
 
 For preprocessing, we currently support Spark as the main tool to carry out the task.
 
 If you have any questions or would like to contribute, join our [Slack community](https://join.slack.com/t/squirrel-core/shared_invite/zt-14k6sk6sw-zQPHfqAI8Xq5WYd~UqgNFw)!
 
-# Installation
+## Installation
 Install `squirrel-core` and `squirrel-datasets-core` with pip. Note that you can install with different dependencies based on your requirements for squirrel drivers.
 For using the torchvision driver call:
 ```shell
@@ -46,23 +46,35 @@ pip install "squirrel-core[all]"
 pip install "squirrel-datasets-core[all]"
 ```
 
-# Documentation
+## Huggingface, Hub and Torchvision Integration
+
+A great feature of squirrel-datasets-core is that you can easily load data from common databases such as Huggingface, Activeloop Hub and Torchvision with one line of code. And you get to enjoy all of Squirrel’s benefits for free! Check out the [documentation](https://squirrel-datasets-core.readthedocs.io/en/latest/driver_integration.html) on how to interface with these libraries.
+```python
+from squirrel_datasets_core.driver import HuggingfaceDriver
+
+it = HuggingfaceDriver("cifar100").get_iter("train").filter(custom_filter).map(custom_augmentation)
+
+# your train loop
+for item in it:
+  out = model(item)
+  # ...
+```
+
+## Documentation
 
 Visit our documentation on [Readthedocs](https://squirrel-datasets-core.readthedocs.io).
 
-# Contributing
-`squirrel-datasets-core` is open source and community contributions are welcome!
-# Contributing
+## Contributing
 `squirrel-datasets-core` is open source and community contributions are welcome!
 
 Check out the [contribution guide](https://squirrel-datasets-core.readthedocs.io/en/latest/contribute.html) to learn how to get involved. 
 Please follow our recommendations for best practices and code style. 
 
-# The humans behind Squirrel
+## The Humans behind Squirrel
 We are [Merantix Momentum](https://merantix-momentum.com/), a team of ~30 machine learning engineers, developing machine learning solutions for industry and research. Each project comes with its own challenges, data types and learnings, but one issue we always faced was scalable data loading, transforming and sharing. We were looking for a solution that would allow us to load the data in a fast and cost-efficient way, while keeping the flexibility to work with any possible dataset and integrate with any API. That's why we build Squirrel – and we hope you'll find it as useful as we do! By the way, [we are hiring](https://merantix-momentum.com/about#jobs)!
 
 
-# Citation
+## Citation
 
 If you use Squirrel Datasets in your research, please cite Squirrel using:
 ```bibtex
