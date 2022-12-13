@@ -1,9 +1,14 @@
-Huggingface, Hub, Torchvision
-=============================
+Huggingface, Deeplake, Hub, Torchvision
+=======================================
 
-Ever wondered how you can tap into common databases like `Huggingface <https://huggingface.co/>`_, `Activeloop Hub <https://www.activeloop.ai/>`_ and `Torchvision <https://pytorch.org/vision/stable/datasets.html>`_ with Squirrel? Squirrel creates lightweight wrappers around these libraries' APIs, which means you can quickly and easily load data from the mentioned servers. The benefit is that you get Squirrel's stream manipulation functionality on-top. Say you want to pre-process a Huggingface dataset with a Squirrel multi-processing :code:`async_map` that is easily achievable with the :py:class:`HuggingfaceDriver`. 
+Ever wondered how you can tap into common databases like `Huggingface <https://huggingface.co/>`_, `Activeloop Deeplake <https://www.deeplake.ai/>`_, `Activeloop Hub <https://www.activeloop.ai/>`_ and `Torchvision <https://pytorch.org/vision/stable/datasets.html>`_ with Squirrel? Squirrel creates lightweight wrappers around these libraries' APIs, which means you can quickly and easily load data from the mentioned servers. The benefit is that you get Squirrel's stream manipulation functionality on-top. Say you want to pre-process a Huggingface dataset with a Squirrel multi-processing :code:`async_map` that is easily achievable with the :py:class:`HuggingfaceDriver`. 
 
-The below examples show how to instantiate the three drivers and shows what they output. Note that we simply “forward” the output of these libraries, so the format of whatever they output may differ. For example, in the below code we take the first item of the pipeline with :code:`.take(1)` and we map a :code:`print` function over this pipeline, which outputs something different for each backend. The images coming from the Huggingface servers are :py:class:`PIL` images, while for Hub they are in their custom :py:class:`Tensor` format. The user should write corresponding pre-processing functions that suit their use-case.
+To use the drivers, you need to install :py:class:`squirrel-datasets-core` with the corresponding dependency.
+
+.. literalinclude:: code/install.sh
+    :language: shell
+
+The below examples show how to instantiate the three drivers and shows what they output. Note that we simply “forward” the output of these libraries, so the format of whatever they output may differ. For example, in the below code we take the first item of the pipeline with :code:`.take(1)` and we map a :code:`print` function over this pipeline, which outputs something different for each backend. The images coming from the Huggingface servers are :py:class:`PIL` images, while for Hub and Deeplake they are in their custom :py:class:`Tensor` format. The user should write corresponding pre-processing functions that suit their use-case.
 
 .. literalinclude:: code/all_drivers.py
     :language: python

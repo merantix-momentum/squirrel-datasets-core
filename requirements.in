@@ -1,7 +1,5 @@
-datasets
 docutils
 fire
-hub
 numpy
 pillow
 scipy # required by torch dataset "caltech"
