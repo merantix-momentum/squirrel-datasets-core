@@ -27,16 +27,17 @@ If you have any questions or would like to contribute, join our [Slack community
 
 ## Installation
 Install `squirrel-core` and `squirrel-datasets-core` with pip. Note that you can install with different dependencies based on your requirements for squirrel drivers.
-For using the torchvision driver call:
+For using the Torchvision driver call:
 ```shell
 pip install "squirrel-core[torch]"
 pip install "squirrel-datasets-core[torchvision]"
 ```
-For using the deeplake driver call:
+For using the Huggingface or Deeplake driver call:
 ```shell
+pip install "squirrel-datasets-core[huggingface]"
 pip install "squirrel-datasets-core[deeplake]"
 ```
-For using the spark preprocessing pipelines call:
+For using the Spark preprocessing pipelines call:
 ```shell
 pip install "squirrel-datasets-core[preprocessing]"
 ```

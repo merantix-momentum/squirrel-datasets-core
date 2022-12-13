@@ -3,7 +3,7 @@ Huggingface, Deeplake, Hub, Torchvision
 
 Ever wondered how you can tap into common databases like `Huggingface <https://huggingface.co/>`_, `Activeloop Deeplake <https://www.deeplake.ai/>`_, `Activeloop Hub <https://www.activeloop.ai/>`_ and `Torchvision <https://pytorch.org/vision/stable/datasets.html>`_ with Squirrel? Squirrel creates lightweight wrappers around these libraries' APIs, which means you can quickly and easily load data from the mentioned servers. The benefit is that you get Squirrel's stream manipulation functionality on-top. Say you want to pre-process a Huggingface dataset with a Squirrel multi-processing :code:`async_map` that is easily achievable with the :py:class:`HuggingfaceDriver`. 
 
-To use the drivers, you need to install :py:class:`squirrel-datasets-core` with the corresponding dependency. Note that the Huggingface dependency already comes pre-installed with :py:class:`squirrel-datasets-core`, because it's considered a core component of it.
+To use the drivers, you need to install :py:class:`squirrel-datasets-core` with the corresponding dependency.
 
 .. literalinclude:: code/install.sh
     :language: shell
