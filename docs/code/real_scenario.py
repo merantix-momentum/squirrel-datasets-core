@@ -4,7 +4,7 @@ import torch
 import torchvision.transforms.functional as F
 from squirrel_datasets_core.driver.huggingface import HuggingfaceDriver
 from torch.utils.data import DataLoader
-from torch.utils.data._utils.collate import default_collate 
+from torch.utils.data._utils.collate import default_collate
 
 BATCH_SIZE = 16
 
