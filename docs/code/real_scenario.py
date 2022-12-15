@@ -2,9 +2,9 @@ import typing as t
 
 import torch
 import torchvision.transforms.functional as F
-from squirrel_datasets_core.driver import HuggingfaceDriver
+from squirrel_datasets_core.driver.huggingface import HuggingfaceDriver
 from torch.utils.data import DataLoader
-from torch.utils.data._utils.collate import default_collate as torch_default_collate
+from torch.utils.data._utils.collate import default_collate 
 
 BATCH_SIZE = 16
 
@@ -31,7 +31,7 @@ train_driver = (
     .get_iter("train")
     .split_by_worker_pytorch()
     .map(hf_pre_proc)
-    .batched(BATCH_SIZE, torch_default_collate)
+    .batched(BATCH_SIZE, default_collate)
     .to_torch_iterable()
 )
 train_loader = DataLoader(train_driver, batch_size=None, num_workers=2)

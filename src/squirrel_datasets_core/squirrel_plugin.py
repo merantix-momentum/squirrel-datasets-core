@@ -1,3 +1,4 @@
+import contextlib
 import importlib
 import pkgutil
 from typing import List, Tuple, Type
@@ -12,6 +13,13 @@ def get_hub_driver() -> Driver:
     from squirrel_datasets_core.driver.hub import HubDriver
 
     return HubDriver
+
+
+def get_deeplake_driver() -> Driver:
+    """Imports and returns the deeplake driver class"""
+    from squirrel_datasets_core.driver.deeplake import DeeplakeDriver
+
+    return DeeplakeDriver
 
 
 def get_huggingface_driver() -> Driver:
@@ -36,6 +44,7 @@ def squirrel_drivers() -> List[Type[Driver]]:
     drivers = []
     add_drivers = {
         "hub": get_hub_driver,
+        "deeplake": get_deeplake_driver,
         "huggingface": get_huggingface_driver,
         "torchvision": get_torchvision_driver,
     }
@@ -70,10 +79,7 @@ def squirrel_sources() -> List[Tuple[CatalogKey, Source]]:
     import squirrel_datasets_core.datasets as ds
 
     for m in pkgutil.iter_modules(ds.__path__):
-        try:
+        with contextlib.suppress(AttributeError):
             d = importlib.import_module(f"{ds.__package__}.{m.name}").SOURCES
             datasets += d
-        except AttributeError:
-            pass
-
     return datasets

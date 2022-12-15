@@ -51,7 +51,7 @@ pip install "squirrel-datasets-core[all]"
 
 A great feature of squirrel-datasets-core is that you can easily load data from common databases such as Huggingface, Activeloop Deeplake, Hub and Torchvision with one line of code. And you get to enjoy all of Squirrel’s benefits for free! Check out the [documentation](https://squirrel-datasets-core.readthedocs.io/en/latest/driver_integration.html) on how to interface with these libraries.
 ```python
-from squirrel_datasets_core.driver import HuggingfaceDriver
+from squirrel_datasets_core.driver.huggingface import HuggingfaceDriver
 
 it = HuggingfaceDriver("cifar100").get_iter("train").filter(custom_filter).map(custom_augmentation)
 
