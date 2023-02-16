@@ -23,8 +23,10 @@ ENV SPARK_HOME="/opt/spark"
 # add shaded gcs connector
 ADD https://repo1.maven.org/maven2/com/google/cloud/bigdataoss/gcs-connector/hadoop3-2.2.2/gcs-connector-hadoop3-2.2.2-shaded.jar /opt/spark/jars/gcs-connector-hadoop3-latest.jar
 
-ADD . .
+ADD requirements.txt requirements.txt
 
 RUN pip3 install --upgrade pip && \
     pip3 install --require-hashes -r requirements.txt --no-deps --disable-pip-version-check && \
     pip3 cache purge
+
+ADD . .
