@@ -350,14 +350,14 @@ toml = "*"
 
 [[package]]
 name = "babel"
-version = "2.12.0"
+version = "2.12.1"
 description = "Internationalization utilities"
 category = "dev"
 optional = false
 python-versions = ">=3.7"
 files = [
-    {file = "Babel-2.12.0-py3-none-any.whl", hash = "sha256:8f8b752c803e9f9e03ff219b644aceb0dbcf081c55a88ea11f86291e60a7bb68"},
-    {file = "Babel-2.12.0.tar.gz", hash = "sha256:468e6cd1e2b571a1663110fc737e3a7d9069d038e0c9c4a7f158caeeafe4089c"},
+    {file = "Babel-2.12.1-py3-none-any.whl", hash = "sha256:b4246fb7677d3b98f501a39d43396d3cafdc8eadb045f4a31be01863f655c610"},
+    {file = "Babel-2.12.1.tar.gz", hash = "sha256:cc2d99999cd01d44420ae725a21c9e3711b3aadc7976d6147f622d8581963455"},
 ]
 
 [package.dependencies]
@@ -462,18 +462,18 @@ css = ["tinycss2 (>=1.1.0,<1.2)"]
 
 [[package]]
 name = "boto3"
-version = "1.26.80"
+version = "1.26.82"
 description = "The AWS SDK for Python"
 category = "main"
 optional = true
 python-versions = ">= 3.7"
 files = [
-    {file = "boto3-1.26.80-py3-none-any.whl", hash = "sha256:704065abc8fdd2519491c11eeb65d69f21d0baf278b66b0b44090cc09c8c7bf8"},
-    {file = "boto3-1.26.80.tar.gz", hash = "sha256:7816da48b9626a482e955628ade527a4a84ff462043ac1a129011f7f66e8648c"},
+    {file = "boto3-1.26.82-py3-none-any.whl", hash = "sha256:f618f2e8a4b9d5cb9f05d3a5628ca2afa4bcd3e8b4b8413d11dea0f4c4480b3c"},
+    {file = "boto3-1.26.82.tar.gz", hash = "sha256:f50c048b4f3223dd57afb6eee1189ef9a472bf0ed9b26ff9db65ec13275c4414"},
 ]
 
 [package.dependencies]
-botocore = ">=1.29.80,<1.30.0"
+botocore = ">=1.29.82,<1.30.0"
 jmespath = ">=0.7.1,<2.0.0"
 s3transfer = ">=0.6.0,<0.7.0"
 
@@ -482,14 +482,14 @@ crt = ["botocore[crt] (>=1.21.0,<2.0a0)"]
 
 [[package]]
 name = "botocore"
-version = "1.29.80"
+version = "1.29.82"
 description = "Low-level, data-driven core of boto 3."
 category = "main"
 optional = true
 python-versions = ">= 3.7"
 files = [
-    {file = "botocore-1.29.80-py3-none-any.whl", hash = "sha256:9a301cb4de8ec6efe4e4b6ebb29b4301decd5b00c1a7f9187652002efb520ad0"},
-    {file = "botocore-1.29.80.tar.gz", hash = "sha256:19d4cadc79f75b31ffa78b5e750833d53e0edfe414d308b6788382ad32d23e12"},
+    {file = "botocore-1.29.82-py3-none-any.whl", hash = "sha256:b31e86f9b51eced5506a0f6038370fe8c1355000379610def1bb9e91cae9e77e"},
+    {file = "botocore-1.29.82.tar.gz", hash = "sha256:913ca09a184cf4428f05838afc631c4fb93f3b173871b69d66230fd14656a3a1"},
 ]
 
 [package.dependencies]
@@ -907,14 +907,14 @@ tox = ["tox"]
 
 [[package]]
 name = "datasets"
-version = "2.10.0"
+version = "2.10.1"
 description = "HuggingFace community-driven open-source library of datasets"
 category = "main"
 optional = true
 python-versions = ">=3.7.0"
 files = [
-    {file = "datasets-2.10.0-py3-none-any.whl", hash = "sha256:42968d0cc88608ebc4a92a2fc26b4cd65e38f3ce3f5bb90a468cae6a6f0de989"},
-    {file = "datasets-2.10.0.tar.gz", hash = "sha256:c2ddab0899e17590fe39bc5783828ac9a7331c74508ab7a345ea0dca3112ead0"},
+    {file = "datasets-2.10.1-py3-none-any.whl", hash = "sha256:bfde7253b31abfd075f9ad55961b13c135a5a9295cea04ae86c47b9c0e0466fd"},
+    {file = "datasets-2.10.1.tar.gz", hash = "sha256:e2764c90aa3af96450a9747a934b8893b121f79f58d89e123cb1a7046bb8e81e"},
 ]
 
 [package.dependencies]
@@ -990,13 +990,13 @@ files = [
 
 [[package]]
 name = "deeplake"
-version = "3.2.11"
+version = "3.2.12"
 description = "Activeloop Deep Lake"
 category = "main"
 optional = true
 python-versions = "*"
 files = [
-    {file = "deeplake-3.2.11.tar.gz", hash = "sha256:6a42a6520720d51166eafc141f2b8bfc517d0209773b7d95dbd76a8c63a1c307"},
+    {file = "deeplake-3.2.12.tar.gz", hash = "sha256:57f2fc89a90ec2d82c1cbcf9e9eb9e09321e0452f83380a804d416fb981fd3b4"},
 ]
 
 [package.dependencies]
@@ -1764,14 +1764,14 @@ test = ["flaky", "ipyparallel", "pre-commit", "pytest (>=7.0)", "pytest-asyncio"
 
 [[package]]
 name = "ipython"
-version = "8.10.0"
+version = "8.11.0"
 description = "IPython: Productive Interactive Computing"
 category = "dev"
 optional = false
 python-versions = ">=3.8"
 files = [
-    {file = "ipython-8.10.0-py3-none-any.whl", hash = "sha256:b38c31e8fc7eff642fc7c597061fff462537cf2314e3225a19c906b7b0d8a345"},
-    {file = "ipython-8.10.0.tar.gz", hash = "sha256:b13a1d6c1f5818bd388db53b7107d17454129a70de2b87481d555daede5eb49e"},
+    {file = "ipython-8.11.0-py3-none-any.whl", hash = "sha256:5b54478e459155a326bf5f42ee4f29df76258c0279c36f21d71ddb560f88b156"},
+    {file = "ipython-8.11.0.tar.gz", hash = "sha256:735cede4099dbc903ee540307b9171fbfef4aa75cfcacc5a273b2cda2f02be04"},
 ]
 
 [package.dependencies]
@@ -1783,7 +1783,7 @@ jedi = ">=0.16"
 matplotlib-inline = "*"
 pexpect = {version = ">4.3", markers = "sys_platform != \"win32\""}
 pickleshare = "*"
-prompt-toolkit = ">=3.0.30,<3.1.0"
+prompt-toolkit = ">=3.0.30,<3.0.37 || >3.0.37,<3.1.0"
 pygments = ">=2.4.0"
 stack-data = "*"
 traitlets = ">=5"
@@ -2283,6 +2283,26 @@ files = [
 ]
 
 [[package]]
+name = "mako"
+version = "1.2.4"
+description = "A super-fast templating language that borrows the best ideas from the existing templating languages."
+category = "main"
+optional = false
+python-versions = ">=3.7"
+files = [
+    {file = "Mako-1.2.4-py3-none-any.whl", hash = "sha256:c97c79c018b9165ac9922ae4f32da095ffd3c4e6872b45eded42926deea46818"},
+    {file = "Mako-1.2.4.tar.gz", hash = "sha256:d60a3903dc3bb01a18ad6a89cdbe2e4eadc69c0bc8ef1e3773ba53d44c3f7a34"},
+]
+
+[package.dependencies]
+MarkupSafe = ">=0.9.2"
+
+[package.extras]
+babel = ["Babel"]
+lingua = ["lingua"]
+testing = ["pytest"]
+
+[[package]]
 name = "markdown-it-py"
 version = "2.2.0"
 description = "Python port of markdown-it. Markdown parsing, done right!"
@@ -2311,7 +2331,7 @@ testing = ["coverage", "pytest", "pytest-cov", "pytest-regressions"]
 name = "markupsafe"
 version = "2.1.2"
 description = "Safely add untrusted strings to HTML/XML markup."
-category = "dev"
+category = "main"
 optional = false
 python-versions = ">=3.7"
 files = [
@@ -3352,14 +3372,14 @@ files = [
 
 [[package]]
 name = "pip-tools"
-version = "6.12.2"
+version = "6.12.3"
 description = "pip-tools keeps your pinned dependencies fresh."
 category = "dev"
 optional = false
 python-versions = ">=3.7"
 files = [
-    {file = "pip-tools-6.12.2.tar.gz", hash = "sha256:8b903696df4598b10d469026ef9995c5f9a874b416e88e7a214884ebe4a70245"},
-    {file = "pip_tools-6.12.2-py3-none-any.whl", hash = "sha256:6a51f4fd67140d5e83703ebfa9610fb61398727151f56a1be02a972d062e4679"},
+    {file = "pip-tools-6.12.3.tar.gz", hash = "sha256:480d44fae6e09fad3f9bd3d0a7e8423088715d10477e8ef0663440db25e3114f"},
+    {file = "pip_tools-6.12.3-py3-none-any.whl", hash = "sha256:8510420f46572b2e26c357541390593d9365eb6edd2d1e7505267910ecaec080"},
 ]
 
 [package.dependencies]
@@ -4834,41 +4854,45 @@ test = ["pytest"]
 
 [[package]]
 name = "squirrel-core"
-version = "0.14.2"
-description = "Squirrel is a Python library that enables ML teams to share, load, and transform data in a collaborative, flexible, and efficient way."
+version = "0.19.0"
+description = "Squirrel is a Python library that enables ML teams to share, load, and transform data in a collaborative, flexible and efficient way."
 category = "main"
 optional = false
-python-versions = ">=3.8.0"
+python-versions = ">=3.8,<4.0"
 files = [
-    {file = "squirrel-core-0.14.2.tar.gz", hash = "sha256:49dd4b233685677e6e82f9865740bb881028a6465b396eaa005749ce3c7133e5"},
-    {file = "squirrel_core-0.14.2-py3-none-any.whl", hash = "sha256:54e8260983c1eb2e60378c69c03d8ff12f90703c0e85d9e7a2f6ece427743501"},
+    {file = "squirrel_core-0.19.0-py3-none-any.whl", hash = "sha256:b581587f5f89a54a47836de5bb8cf91f275cf490edada9ea92cff8a951324c15"},
+    {file = "squirrel_core-0.19.0.tar.gz", hash = "sha256:9dee110d7505ee3bb7d375dfe57512bdaeb2643d95a7c04d0e1be102f2c382f4"},
 ]
 
 [package.dependencies]
-aiohttp = ">=3.7.4"
-fsspec = ">=0.8.7"
-gcsfs = {version = ">=2021.06.0", optional = true, markers = "extra == \"gcp\""}
-more-itertools = "*"
-msgpack = "*"
-msgpack-numpy = "*"
-numba = ">=0.55.2"
-numpy = ">=1.22"
-pluggy = "*"
-pyjwt = ">=2.4.0"
-random-name = "*"
-"ruamel.yaml" = "*"
-tqdm = "*"
-zarr = {version = "2.10.3", optional = true, markers = "extra == \"zarr\""}
+aiohttp = ">=3.7.4,<4.0.0"
+fsspec = ">=2021.7.0"
+gcsfs = {version = ">=2021.7.0", optional = true, markers = "extra == \"gcp\" or extra == \"all\""}
+mako = ">=1.2.2,<2.0.0"
+more-itertools = ">=9.0.0,<10.0.0"
+msgpack = ">=1.0.4,<2.0.0"
+msgpack-numpy = ">=0.4.8,<0.5.0"
+numba = ">=0.56.4,<0.57.0"
+numpy = ">=1.23.5,<2.0.0"
+oauthlib = ">=3.2.1,<4.0.0"
+pluggy = ">=1.0.0,<2.0.0"
+pyjwt = ">=2.4.0,<3.0.0"
+random-name = ">=0.1.1,<0.2.0"
+ruamel-yaml = ">=0.17.21,<0.18.0"
+tqdm = ">=4.64.1,<5.0.0"
+zarr = {version = ">=2.10.3,<3.0.0", optional = true, markers = "extra == \"zarr\" or extra == \"all\""}
 
 [package.extras]
-all = ["adlfs (<2021.10)", "dask[dataframe,distributed]", "gcsfs (>=2021.06.0)", "mlflow", "pip-tools (>=6.6.2)", "pre-commit (==2.16.0)", "pytest (>=6.2.1)", "pytest-cov", "pytest-timeout", "pytest-xdist", "s3fs", "torch", "twine", "wandb", "wheel", "zarr (==2.10.3)"]
+all = ["adlfs (<2021.10)", "dask[dataframe,distributed] (>=2021.7.0)", "gcsfs (>=2021.7.0)", "odfpy (>=1.4.1,<2.0.0)", "openpyxl (>=3.1.1,<4.0.0)", "pyarrow (>=10.0.1,<11.0.0)", "pyxlsb (>=1.0.10,<2.0.0)", "s3fs (>=2021.7.0)", "torch (>=1.13.1,<2.0.0)", "xlrd (>=2.0.1,<3.0.0)", "zarr (>=2.10.3,<3.0.0)"]
 azure = ["adlfs (<2021.10)"]
-dask = ["dask[dataframe,distributed]"]
-dev = ["mlflow", "pip-tools (>=6.6.2)", "pre-commit (==2.16.0)", "pytest (>=6.2.1)", "pytest-cov", "pytest-timeout", "pytest-xdist", "twine", "wandb", "wheel"]
-gcp = ["gcsfs (>=2021.06.0)"]
-s3 = ["s3fs"]
-torch = ["torch"]
-zarr = ["zarr (==2.10.3)"]
+dask = ["dask[dataframe,distributed] (>=2021.7.0)"]
+excel = ["odfpy (>=1.4.1,<2.0.0)", "openpyxl (>=3.1.1,<4.0.0)", "pyxlsb (>=1.0.10,<2.0.0)", "xlrd (>=2.0.1,<3.0.0)"]
+feather = ["pyarrow (>=10.0.1,<11.0.0)"]
+gcp = ["gcsfs (>=2021.7.0)"]
+parquet = ["pyarrow (>=10.0.1,<11.0.0)"]
+s3 = ["s3fs (>=2021.7.0)"]
+torch = ["torch (>=1.13.1,<2.0.0)"]
+zarr = ["zarr (>=2.10.3,<3.0.0)"]
 
 [[package]]
 name = "stack-data"
@@ -5188,14 +5212,14 @@ socks = ["PySocks (>=1.5.6,!=1.5.7,<2.0)"]
 
 [[package]]
 name = "virtualenv"
-version = "20.19.0"
+version = "20.20.0"
 description = "Virtual Python Environment builder"
 category = "dev"
 optional = false
 python-versions = ">=3.7"
 files = [
-    {file = "virtualenv-20.19.0-py3-none-any.whl", hash = "sha256:54eb59e7352b573aa04d53f80fc9736ed0ad5143af445a1e539aada6eb947dd1"},
-    {file = "virtualenv-20.19.0.tar.gz", hash = "sha256:37a640ba82ed40b226599c522d411e4be5edb339a0c0de030c0dc7b646d61590"},
+    {file = "virtualenv-20.20.0-py3-none-any.whl", hash = "sha256:3c22fa5a7c7aa106ced59934d2c20a2ecb7f49b4130b8bf444178a16b880fa45"},
+    {file = "virtualenv-20.20.0.tar.gz", hash = "sha256:a8a4b8ca1e28f864b7514a253f98c1d62b64e31e77325ba279248c65fb4fcef4"},
 ]
 
 [package.dependencies]
@@ -5570,24 +5594,24 @@ multidict = ">=4.0"
 
 [[package]]
 name = "zarr"
-version = "2.10.3"
-description = "An implementation of chunked, compressed, N-dimensional arrays for Python."
+version = "2.14.2"
+description = "An implementation of chunked, compressed, N-dimensional arrays for Python"
 category = "main"
 optional = false
-python-versions = ">=3.7, <4"
+python-versions = ">=3.8"
 files = [
-    {file = "zarr-2.10.3-py3-none-any.whl", hash = "sha256:1354d6de15683a3f7ea9c47e7bfa5772da445d25298988bacc8e499db8896186"},
-    {file = "zarr-2.10.3.tar.gz", hash = "sha256:76932665c2146ebdf15f6dba254f9e0030552fbfcf9322dea822bff96fbce693"},
+    {file = "zarr-2.14.2-py3-none-any.whl", hash = "sha256:feb72d6ccc43c447661861020dbf2e685a8367e80d890b6f5905954400394ed2"},
+    {file = "zarr-2.14.2.tar.gz", hash = "sha256:68ec59b8ebdfc4fee5e32bd6c0ce273f72f7d4ed017454b45327c673c60907bc"},
 ]
 
 [package.dependencies]
 asciitree = "*"
 fasteners = "*"
-numcodecs = ">=0.6.4"
-numpy = ">=1.7"
+numcodecs = ">=0.10.0"
+numpy = ">=1.20"
 
 [package.extras]
-jupyter = ["ipytree", "notebook"]
+jupyter = ["ipytree (>=0.2.2)", "ipywidgets (>=8.0.0)", "notebook"]
 
 [[package]]
 name = "zipp"
@@ -5616,4 +5640,4 @@ torchvision = ["torchvision"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.8"
-content-hash = "c9653196ca2c14228b67c3d340a3f6ce24d903aa66e6b6b3802f460b0ab96b39"
+content-hash = "ceb0acbc765070bb6fdc9bbd7ab127e5371c7732a7ab3d9166a7e341624a1cea"
