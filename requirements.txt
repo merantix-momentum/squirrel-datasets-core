@@ -572,8 +572,8 @@ fastjsonschema==2.16.3 ; python_version >= "3.8" and python_version < "4.0" \
 filelock==3.9.0 ; python_version >= "3.8" and python_version < "4.0" \
     --hash=sha256:7b319f24340b51f55a2bf7a12ac0755a9b03e718311dac567a0f4f7fabd2f5de \
     --hash=sha256:f58d535af89bb9ad5cd4df046f741f8553a418c01a7856bf0d173bbc9f6bd16d
-fire==0.5.0 ; python_version >= "3.8" and python_version < "4.0" \
-    --hash=sha256:a6b0d49e98c8963910021f92bba66f65ab440da2982b78eb1bbf95a0a34aacc6
+fire==0.4.0 ; python_version >= "3.8" and python_version < "4.0" \
+    --hash=sha256:c5e2b8763699d1142393a46d0e3e790c5eb2f0706082df8f647878842c216a62
 flaky==3.7.0 ; python_version >= "3.8" and python_version < "4.0" \
     --hash=sha256:3ad100780721a1911f57a165809b7ea265a7863305acb66708220820caf8aa0d \
     --hash=sha256:d6eda73cab5ae7364504b7c44670f70abed9e75f77dd116352f662817592ec9c

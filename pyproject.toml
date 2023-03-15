@@ -22,7 +22,7 @@ classifiers = [
 [tool.poetry.dependencies]
 python = "^3.8"
 docutils = "^0.17.1"
-fire = "^0.5.0"
+fire = "^0.4.0"
 pillow = "^9.4.0"
 scipy = "^1.9.3"
 squirrel-core = {extras = ["gcp", "zarr"], version = "^0.19.0"}
