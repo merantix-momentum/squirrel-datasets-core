@@ -1,1 +1,3 @@
-__version__ = "0.2.0"
+from importlib import metadata
+
+__version__ = metadata.version("squirrel-datasets-core")
