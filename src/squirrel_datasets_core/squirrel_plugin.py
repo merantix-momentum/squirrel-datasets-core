@@ -6,6 +6,11 @@ from squirrel.catalog import CatalogKey, Source
 from squirrel.driver import Driver
 from squirrel.framework.plugins.hookimpl import hookimpl
 
+def get_sklearn_driver() -> Driver:
+    """Imports and returns the sklearn driver class"""
+    from squirrel_datasets_core.driver.sklearn import SklearnDriver
+    
+    return SklearnDriver
 
 def get_hub_driver() -> Driver:
     """Imports and returns the hub driver class"""
@@ -38,6 +43,7 @@ def squirrel_drivers() -> List[Type[Driver]]:
         "hub": get_hub_driver,
         "huggingface": get_huggingface_driver,
         "torchvision": get_torchvision_driver,
+        "sklearn": get_sklearn_driver
     }
 
     for d in add_drivers:

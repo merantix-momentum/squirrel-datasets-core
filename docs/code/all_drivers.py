@@ -2,6 +2,7 @@ from squirrel_datasets_core.driver import (
     HubDriver,
     HuggingfaceDriver,
     TorchvisionDriver,
+    # SklearnDriver
 )
 
 HuggingfaceDriver("cifar100").get_iter("train").take(1).map(print).join()
