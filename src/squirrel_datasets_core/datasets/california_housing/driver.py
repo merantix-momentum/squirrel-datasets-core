@@ -50,15 +50,17 @@ class CaliforniaHousing(IterDriver):
             urllib.request.urlretrieve(download_url, archive_filepath)
 
             with tarfile.open(mode="r:gz", name=archive_filepath) as f:
-                cal_housing = pd.read_csv(
+                calif_housing = pd.read_csv(
                     f.extractfile("CaliforniaHousing/cal_housing.data"), 
                     index_col=None,
                     header=None,
                     names=_FEATURE_NAMES,
-                ).to_csv(local_filepath, index=False)
+                )
+                calif_housing.to_csv(local_filepath, index=False)
+                self._data = calif_housing.to_dict(orient="records")
             os.remove(archive_filepath)
         else:
-            cal_housing = pd.read_csv(local_filepath).to_dict(orient="records")
+            self._data = pd.read_csv(local_filepath).to_dict(orient="records")
 
     def get_iter(self, shuffle_item_buffer: int = 100, **kwargs) -> Composable:
         """
