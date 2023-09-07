@@ -11,7 +11,7 @@ from squirrel_datasets_core.datasets.cc100.constants import CC_100_CONFIG
 
 def mock_cc100_data(samples: int, tmp_path: Path) -> Path:
     """Create a dataset mock for cc100"""
-    record = "" "\n\n".join([create_random_str(np.random.randint(10, 100)) for _ in range(samples)])
+    record = "\n\n".join([create_random_str(np.random.randint(10, 100)) for _ in range(samples)]) + "\n\n"
     save_path = tmp_path / "record.txt.xz"
     Path(save_path).parent.mkdir(parents=True, exist_ok=True)
     save_xz(save_path, record[:-2])
